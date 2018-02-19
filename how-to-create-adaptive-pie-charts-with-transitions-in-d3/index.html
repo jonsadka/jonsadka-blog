@@ -1,0 +1,110 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><link rel="preload" href="/jonsadka-blog/component---src-layouts-index-js-9bcc628ad035ecfaff6c.js" as="script"/><link rel="preload" href="/jonsadka-blog/component---src-templates-blog-post-js-5316f4e0a29c550d8de0.js" as="script"/><link rel="preload" href="/jonsadka-blog/path---how-to-create-adaptive-pie-charts-with-transitions-in-d-3-7bcb6afac163e5c215e6.js" as="script"/><link rel="preload" href="/jonsadka-blog/app-65ed1dfee9553e022a19.js" as="script"/><link rel="preload" href="/jonsadka-blog/commons-8b3777e9b7196ecd4564.js" as="script"/><title data-react-helmet="true">Your Blog Name - How to create adaptive pie donut charts with transitions in D3.js (interactive tutorial and example)</title><meta data-react-helmet="true" name="description" content="Sample"/><meta data-react-helmet="true" name="keywords" content="sample, something"/><style id="gatsby-inlined-css">html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block}audio:not([controls]){display:none;height:0}progress{vertical-align:baseline}[hidden],template{display:none}a{background-color:transparent;-webkit-text-decoration-skip:objects}a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit;font-weight:bolder}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}svg:not(:root){overflow:hidden}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}button,input,optgroup,select,textarea{font:inherit;margin:0}optgroup{font-weight:700}button,input{overflow:visible}button,select{text-transform:none}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-input-placeholder{color:inherit;opacity:.54}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}html{font:112.5%/1.45em georgia,serif;box-sizing:border-box;overflow-y:scroll}*,:after,:before{box-sizing:inherit}body{color:rgba(0,0,0,.8);font-family:georgia,serif;font-weight:400;word-wrap:break-word;-webkit-font-kerning:normal;font-kerning:normal;-ms-font-feature-settings:"kern","liga","clig","calt";-webkit-font-feature-settings:"kern","liga","clig","calt";font-feature-settings:"kern","liga","clig","calt","kern"}img{max-width:100%;margin:0 0 1.45rem;padding:0}h1{font-size:2.25rem}h1,h2{margin:0 0 1.45rem;padding:0;color:inherit;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:700;text-rendering:optimizeLegibility;line-height:1.1}h2{font-size:1.62671rem}h3{font-size:1.38316rem}h3,h4{margin:0 0 1.45rem;padding:0;color:inherit;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:700;text-rendering:optimizeLegibility;line-height:1.1}h4{font-size:1rem}h5{font-size:.85028rem}h5,h6{margin:0 0 1.45rem;padding:0;color:inherit;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:700;text-rendering:optimizeLegibility;line-height:1.1}h6{font-size:.78405rem}hgroup{margin:0 0 1.45rem;padding:0}ol,ul{margin:0 0 1.45rem 1.45rem;padding:0;list-style-position:outside;list-style-image:none}dd,dl,figure,p{margin:0 0 1.45rem;padding:0}pre{padding:0;font-size:.85rem;line-height:1.42;background:rgba(0,0,0,.04);border-radius:3px;overflow:auto;word-wrap:normal;padding:1.45rem}pre,table{margin:0 0 1.45rem}table{padding:0;font-size:1rem;line-height:1.45rem;border-collapse:collapse;width:100%}fieldset{margin:0 0 1.45rem;padding:0}blockquote{margin:0 1.45rem 1.45rem;padding:0}form,iframe,noscript{margin:0 0 1.45rem;padding:0}hr{margin:0 0 calc(1.45rem - 1px);padding:0;background:rgba(0,0,0,.2);border:none;height:1px}address{margin:0 0 1.45rem;padding:0}b,dt,strong,th{font-weight:700}li{margin-bottom:.725rem}ol li,ul li{padding-left:0}li>ol,li>ul{margin-left:1.45rem;margin-bottom:.725rem;margin-top:.725rem}blockquote :last-child,li :last-child,p :last-child{margin-bottom:0}li>p{margin-bottom:.725rem}code,kbd,samp{font-size:.85rem;line-height:1.45rem}abbr,abbr[title],acronym{border-bottom:1px dotted rgba(0,0,0,.5);cursor:help}abbr[title]{text-decoration:none}td,th,thead{text-align:left}td,th{border-bottom:1px solid rgba(0,0,0,.12);font-feature-settings:"tnum";-moz-font-feature-settings:"tnum";-ms-font-feature-settings:"tnum";-webkit-font-feature-settings:"tnum";padding:.725rem .96667rem calc(.725rem - 1px)}td:first-child,th:first-child{padding-left:0}td:last-child,th:last-child{padding-right:0}code,tt{background-color:rgba(0,0,0,.04);border-radius:3px;font-family:SFMono-Regular,Consolas,Roboto Mono,Droid Sans Mono,Liberation Mono,Menlo,Courier,monospace;padding:0;padding-top:.2em;padding-bottom:.2em}pre code{background:none;line-height:1.42}code:after,code:before,tt:after,tt:before{letter-spacing:-.2em;content:" "}pre code:after,pre code:before,pre tt:after,pre tt:before{content:""}@media only screen and (max-width:480px){html{font-size:100%}}</style></head><body><div id="___gatsby"><div data-reactroot="" data-reactid="1" data-react-checksum="1538881366"><!-- react-empty: 2 --><div style="background:rebeccapurple;margin-bottom:1.45rem;" data-reactid="3"><div style="margin:0 auto;max-width:960px;padding:1.45rem 1.0875rem;" data-reactid="4"><h1 style="margin:0;" data-reactid="5"><a style="color:white;text-decoration:none;" href="/jonsadka-blog/" data-reactid="6">Jon Sadka&#x27;s Blog</a></h1></div></div><div style="margin:0 auto;max-width:960px;padding:0px 1.0875rem 1.45rem;padding-top:0;" data-reactid="7"><div class="blog-post-container" data-reactid="8"><!-- react-empty: 9 --><div class="blog-post" data-reactid="10"><h1 data-reactid="11">How to create adaptive pie donut charts with transitions in D3.js (interactive tutorial and example)</h1><div class="blog-post-content" data-reactid="12"><p>Following up with my last blog post about adaptive line chart graphs (<a href="http://jonsadka.com/blog/how-to-create-live-updating-and-flexible-d3-line-charts-using-pseudo-data/">link</a>), I decided to apply this same concept of adaptive charts to a pie / donut chart. The goal is to create a chart similar to the one below, which updates to any new data thrown at it.</p>
+<p>NOTE: for mobile devices, view the visual here: <a href="http://bl.ocks.org/jonsadka/fa05f8d53d4e8b5f262e">link</a>.</p>
+<iframe width="960" height="500" src="https://cdn.rawgit.com/jonsadka/fa05f8d53d4e8b5f262e/raw/53a37004024c5fe5696156db2f56c755d5761d54/index.html" marginwidth="0" marginheight="0" scrolling="no" align="middle"></iframe>
+<h3>Generate data</h3>
+<p>The best way to test the functionality of your graph is to generate new pseudo-data at a set interval and update the graph at that interval. For those unfamiliar with quick data generation in D3, I recommend you take a look at my previous blog (<a href="http://jonsadka.com/blog/how-to-quickly-create-randomly-generated-datasets-in-javascript-with-d3/">link</a>). For this example, we need to create a single dimensional dataset. Typically pie / donut chart data would be multi-dimensional, at the very least, because it would contain a description of each data point however I will ignore it for this example. The data generation function below takes in one argument, the desired number of data points, and returns an array with that number of data elements. Data is multiplied by 100 to better exaggerate the visuals.</p>
+<pre><code class="language-javascript">function newData(lineNumber, points){
+function makeData(size){
+  return d3.range(size).map(function(item){
+   return Math.random()*100;
+  });
+};
+</code></pre>
+<h3>Setup page elements</h3>
+<p>Now, we can start to setup up our page elements, such as the svg dimensions. We need to translate our pie / donut chart container because by default, the center is set to the top left corner of our svg container. It’s good practice to make the translation amounts dynamic based on the page dimensions, but I will gloss over it purpose of this example.</p>
+<pre><code class="language-javascript">var width = 960;
+var height = 500;
+
+var svg = d3.select("body").append("svg")
+  .attr("height", height).attr("width", width);
+
+var g = svg.append('g')
+  .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
+</code></pre>
+<h3>Create initial chart</h3>
+<p>Next we can specify our color scale and set up our pie / donut and arc functions. The thickness of the donut chart is dependent on the difference between the outer and inner radii. Incorporating padding into the chart can be achieved by setting the outer radius as some percentage of the total container dimension (in this case, 90%).</p>
+<p>Hint: If you desire a pie chart rather than a donut chart, you can set the inner radius value to 0.</p>
+<p>The pie layout function calculates the location of each pie segment and the arc generator determines the path of the arc that is drawn and filled. Finally, we enter the data and save each angle to the <code>_current</code> property of the current element. The reason for this will become evident when we introduce the <code>render</code> function.</p>
+<pre><code class="language-javascript">var color = d3.scale.category20();
+
+var min = Math.min(width, height);
+var oRadius = min / 2 * 0.9;
+var iRadius = min / 2 * 0.85;
+
+// construct default pie layout
+var pie = d3.layout.pie().value(function(d){ return d; }).sort(null);
+
+// construct arc generator
+var arc = d3.svg.arc()
+  .outerRadius(oRadius)
+  .innerRadius(iRadius);
+
+// generate random data
+var data = makeData(20);
+
+// enter data and draw pie chart
+var path = g.datum(data).selectAll("path")
+  .data(pie)
+  .enter().append("path")
+    .attr("class","piechart")
+    .attr("fill", function(d,i){ return color(i); })
+    .attr("d", arc)
+  .each(function(d){ this._current = d; })
+</code></pre>
+<p>Your graph should change each time the page is refreshed and should look something like this:</p>
+<iframe width="480" height="250" src="https://cdn.rawgit.com/jonsadka/aaf46307876ebc0a8d08/raw/2632c29011f83fd55074eb2652f5d68de0a4a262/index.html" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+<h3>Create render function</h3>
+<p>Now what we must do is encapsulate the remaining portion of the program in a function, which I have called <code>render</code>. <code>render</code> will be invoked when we want to generate a new dataset and update our graph.</p>
+<pre><code class="language-javascript">function render(){
+  // generate new random data
+  data = makeData(Math.random()*20);
+
+  // add any new pie segments
+  g.datum(data).selectAll("path")
+  .data(pie)
+  .enter().append("path")
+    .attr("class","piechart")
+    .attr("fill", function(d,i){ return color(i); })
+    .attr("d", arc)
+  .each(function(d){ this._current = d; })
+
+  // remove data not used
+  g.datum(data).selectAll("path")
+    .data(pie).exit().remove();
+}
+
+setInterval(render,2000);
+</code></pre>
+<iframe width="480" height="250" src="https://cdn.rawgit.com/jonsadka/d8c94c75e66dcde5c5ac/raw/69846b4b78ea8f9db5ad15de1dde0c6a9538a38c/index.html" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+<p>Oh no! Why are the arc segments not expanding to fill in the voids? Turns out we need to transition any old paths to the new paths before entering or removing any new paths.</p>
+<pre><code class="language-javascript">function render(){
+  // generate new random data
+  data = makeData(Math.random()*20);
+
+  // add transition to new path
+  g.datum(data).selectAll("path").data(pie).transition().attr("d", arc);
+
+  // add any new pie segments
+  g.datum(data).selectAll("path")...
+}
+</code></pre>
+<iframe width="480" height="250" src="https://cdn.rawgit.com/jonsadka/7603ce14944c288e03fb/raw/37439aec6419296910eee356ee9791d33d51e021/index.html" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+<h3>Smooth transition</h3>
+<p>The graph still does not transition properly, but we're getting closer. The grand finale is curtosey of Mike Bostock (<a href="https://twitter.com/mbostock">@mbostock</a>), who came up with an elegant solution to this transition problem. Storing the angles in <code>_current</code> allows us to retrieve the existing angles and use them when transitioning to new angles. Instead of applying the arc function to the <code>.attr</code> of <code>d</code> when we re-render, we will apply the <code>arcTween</code> function to the <code>.attrTween</code> property of <code>d</code>.</p>
+<pre><code class="language-javascript">// add transition to new path
+g.datum(data).selectAll("path").data(pie).transition().attrTween("d", arcTween);
+
+// Store the displayed angles in _current.
+// Then, interpolate from _current to the new angles.
+// During the transition, _current is updated in-place by d3.interpolate.
+function arcTween(a) {
+  var i = d3.interpolate(this._current, a);
+  this._current = i(0);
+  return function(t) {
+  return arc(i(t));
+  };
+}
+</code></pre>
+<iframe width="480" height="250" src="https://cdn.rawgit.com/jonsadka/c51f3564ab70cb3cef12/raw/19f252d37a989755791d5ebf310fe9ff0562880c/index.html" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+<h3>Complete code</h3>
+<p>And that’s it! Now your pie chart updates and animates in a visually pleasing way. If you’re interested in seeing the complete code, go ahead and check out my bl.ock: <a href="http://bl.ocks.org/jonsadka/fa05f8d53d4e8b5f262e">http://bl.ocks.org/jonsadka/fa05f8d53d4e8b5f262e</a></p></div></div></div></div></div></div><script id="webpack-manifest">/*<![CDATA[*/window.webpackManifest={"231608221292675":"app-65ed1dfee9553e022a19.js","107818501498521":"component---src-templates-blog-post-js-5316f4e0a29c550d8de0.js","162898551421021":"component---src-pages-404-js-4503918ea3a16cfcdb75.js","35783957827783":"component---src-pages-index-js-1f464814ec1087b64fd4.js","218538773642512":"component---src-pages-page-2-js-8303b1dab01b6fff490b.js","60335399758886":"path----557518bd178906f8d58a.js","10171900593404":"path---choosing-the-best-numbers-in-nfl-football-squares-to-beat-your-friends-71dd690a8f6a19e224a6.js","50182333802029":"path---how-to-generate-time-series-week-over-week-year-over-year-aggregations-in-mongodb-using-unix-epoch-timestamps-tutorial-and-example-f6df15732aaed9da6980.js","226515019055661":"path---how-to-write-data-to-the-beginning-of-a-file-with-node-javascript-tutorial-and-example-7fee02881be96763d681.js","71122540562017":"path---how-apple-can-catch-up-to-google-ratings-and-yelp-reviews-overnight-f53ccca06962a3318385.js","61368061307467":"path---best-and-worst-times-to-take-an-uber-ca1a2a2f4255e8a87358.js","219282622727209":"path---how-to-create-adaptive-pie-charts-with-transitions-in-d-3-7bcb6afac163e5c215e6.js","27746275504635":"path---how-to-create-live-updating-and-flexible-d-3-line-charts-using-pseudo-data-814ac49acb19661fa0fd.js","176459137894972":"path---how-to-modify-filter-and-save-json-files-locally-using-jquery-316e2eeedcd35bff693f.js","28430980993147":"path---how-to-quickly-create-randomly-generated-datasets-in-javascript-with-d-3-de27b665e45a7cad19a6.js","140111421340535":"path---using-reduce-to-create-arrays-and-objects-in-javascript-cd817ad43fca6c04a3c2.js","238983728261001":"path---how-to-use-the-uber-api-to-get-pricing-data-82f59817e4c43edc61a8.js","64521555383069":"path---fight-on-the-power-of-javascript-closures-c1c5d3d67a13bdffe2ae.js","274554345536044":"path---prototypal-and-pseudoclassical-instantiation-in-javascript-0d7403c3aad990f9d66b.js","2567721212742":"path---type-coercion-in-d-3-js-63fe3fde1e13146131fa.js","224731842900174":"path---supercharge-your-falsey-conditional-statements-in-javascript-95456ddd1a7b9da44704.js","254022195166212":"path---404-a0e39f21c11f6a62c5ab.js","142629428675168":"path---index-86ff36649d59fd526cd1.js","135728916539164":"path---page-2-a0e39f21c11f6a62c5ab.js","178698757827068":"path---404-html-a0e39f21c11f6a62c5ab.js","114276838955818":"component---src-layouts-index-js-9bcc628ad035ecfaff6c.js"}/*]]>*/</script><script>/*<![CDATA[*/!function(e,t,r){function n(){for(;d[0]&&"loaded"==d[0][f];)c=d.shift(),c[o]=!i.parentNode.insertBefore(c,i)}for(var s,a,c,d=[],i=e.scripts[0],o="onreadystatechange",f="readyState";s=r.shift();)a=e.createElement(t),"async"in i?(a.async=!1,e.head.appendChild(a)):i[f]?(d.push(a),a[o]=n):e.write("<"+t+' src="'+s+'" defer></'+t+">"),a.src=s}(document,"script",["/jonsadka-blog/commons-8b3777e9b7196ecd4564.js","/jonsadka-blog/app-65ed1dfee9553e022a19.js","/jonsadka-blog/path---how-to-create-adaptive-pie-charts-with-transitions-in-d-3-7bcb6afac163e5c215e6.js","/jonsadka-blog/component---src-templates-blog-post-js-5316f4e0a29c550d8de0.js","/jonsadka-blog/component---src-layouts-index-js-9bcc628ad035ecfaff6c.js"])/*]]>*/</script></body></html>

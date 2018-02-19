@@ -1,20 +1,52 @@
 {
   "assetsByChunkName": {
+    "path---type-coercion-in-d-3-js": [
+      "path---type-coercion-in-d-3-js-63fe3fde1e13146131fa.js",
+      "path---type-coercion-in-d-3-js-63fe3fde1e13146131fa.js.map"
+    ],
+    "path---choosing-the-best-numbers-in-nfl-football-squares-to-beat-your-friends": [
+      "path---choosing-the-best-numbers-in-nfl-football-squares-to-beat-your-friends-71dd690a8f6a19e224a6.js",
+      "path---choosing-the-best-numbers-in-nfl-football-squares-to-beat-your-friends-71dd690a8f6a19e224a6.js.map"
+    ],
+    "path---how-to-create-live-updating-and-flexible-d-3-line-charts-using-pseudo-data": [
+      "path---how-to-create-live-updating-and-flexible-d-3-line-charts-using-pseudo-data-814ac49acb19661fa0fd.js",
+      "path---how-to-create-live-updating-and-flexible-d-3-line-charts-using-pseudo-data-814ac49acb19661fa0fd.js.map"
+    ],
+    "path---how-to-quickly-create-randomly-generated-datasets-in-javascript-with-d-3": [
+      "path---how-to-quickly-create-randomly-generated-datasets-in-javascript-with-d-3-de27b665e45a7cad19a6.js",
+      "path---how-to-quickly-create-randomly-generated-datasets-in-javascript-with-d-3-de27b665e45a7cad19a6.js.map"
+    ],
     "component---src-pages-index-js": [
       "component---src-pages-index-js-1f464814ec1087b64fd4.js",
       "component---src-pages-index-js-1f464814ec1087b64fd4.js.map"
     ],
+    "path---how-to-generate-time-series-week-over-week-year-over-year-aggregations-in-mongodb-using-unix-epoch-timestamps-tutorial-and-example": [
+      "path---how-to-generate-time-series-week-over-week-year-over-year-aggregations-in-mongodb-using-unix-epoch-timestamps-tutorial-and-example-f6df15732aaed9da6980.js",
+      "path---how-to-generate-time-series-week-over-week-year-over-year-aggregations-in-mongodb-using-unix-epoch-timestamps-tutorial-and-example-f6df15732aaed9da6980.js.map"
+    ],
     "path---": [
       "path----557518bd178906f8d58a.js",
       "path----557518bd178906f8d58a.js.map"
+    ],
+    "path---best-and-worst-times-to-take-an-uber": [
+      "path---best-and-worst-times-to-take-an-uber-ca1a2a2f4255e8a87358.js",
+      "path---best-and-worst-times-to-take-an-uber-ca1a2a2f4255e8a87358.js.map"
+    ],
+    "path---fight-on-the-power-of-javascript-closures": [
+      "path---fight-on-the-power-of-javascript-closures-c1c5d3d67a13bdffe2ae.js",
+      "path---fight-on-the-power-of-javascript-closures-c1c5d3d67a13bdffe2ae.js.map"
+    ],
+    "path---how-apple-can-catch-up-to-google-ratings-and-yelp-reviews-overnight": [
+      "path---how-apple-can-catch-up-to-google-ratings-and-yelp-reviews-overnight-f53ccca06962a3318385.js",
+      "path---how-apple-can-catch-up-to-google-ratings-and-yelp-reviews-overnight-f53ccca06962a3318385.js.map"
     ],
     "component---src-templates-blog-post-js": [
       "component---src-templates-blog-post-js-5316f4e0a29c550d8de0.js",
       "component---src-templates-blog-post-js-5316f4e0a29c550d8de0.js.map"
     ],
     "component---src-layouts-index-js": [
-      "component---src-layouts-index-js-c6d9730f6cc1624219f0.js",
-      "component---src-layouts-index-js-c6d9730f6cc1624219f0.js.map"
+      "component---src-layouts-index-js-9bcc628ad035ecfaff6c.js",
+      "component---src-layouts-index-js-9bcc628ad035ecfaff6c.js.map"
     ],
     "path---page-2": [
       "path---page-2-a0e39f21c11f6a62c5ab.js",
@@ -25,8 +57,8 @@
       "path---using-reduce-to-create-arrays-and-objects-in-javascript-cd817ad43fca6c04a3c2.js.map"
     ],
     "path---index": [
-      "path---index-6b91215d0ce7a3a355c2.js",
-      "path---index-6b91215d0ce7a3a355c2.js.map"
+      "path---index-86ff36649d59fd526cd1.js",
+      "path---index-86ff36649d59fd526cd1.js.map"
     ],
     "component---src-pages-404-js": [
       "component---src-pages-404-js-4503918ea3a16cfcdb75.js",
@@ -36,6 +68,10 @@
       "commons-8b3777e9b7196ecd4564.js",
       "commons-8b3777e9b7196ecd4564.js.map"
     ],
+    "path---how-to-modify-filter-and-save-json-files-locally-using-jquery": [
+      "path---how-to-modify-filter-and-save-json-files-locally-using-jquery-316e2eeedcd35bff693f.js",
+      "path---how-to-modify-filter-and-save-json-files-locally-using-jquery-316e2eeedcd35bff693f.js.map"
+    ],
     "path---404-html": [
       "path---404-html-a0e39f21c11f6a62c5ab.js",
       "path---404-html-a0e39f21c11f6a62c5ab.js.map"
@@ -44,15 +80,35 @@
       "component---src-pages-page-2-js-8303b1dab01b6fff490b.js",
       "component---src-pages-page-2-js-8303b1dab01b6fff490b.js.map"
     ],
+    "path---how-to-create-adaptive-pie-charts-with-transitions-in-d-3": [
+      "path---how-to-create-adaptive-pie-charts-with-transitions-in-d-3-7bcb6afac163e5c215e6.js",
+      "path---how-to-create-adaptive-pie-charts-with-transitions-in-d-3-7bcb6afac163e5c215e6.js.map"
+    ],
+    "path---supercharge-your-falsey-conditional-statements-in-javascript": [
+      "path---supercharge-your-falsey-conditional-statements-in-javascript-95456ddd1a7b9da44704.js",
+      "path---supercharge-your-falsey-conditional-statements-in-javascript-95456ddd1a7b9da44704.js.map"
+    ],
+    "path---how-to-write-data-to-the-beginning-of-a-file-with-node-javascript-tutorial-and-example": [
+      "path---how-to-write-data-to-the-beginning-of-a-file-with-node-javascript-tutorial-and-example-7fee02881be96763d681.js",
+      "path---how-to-write-data-to-the-beginning-of-a-file-with-node-javascript-tutorial-and-example-7fee02881be96763d681.js.map"
+    ],
     "app": [
-      "app-38f43c132519460a9c21.js",
+      "app-65ed1dfee9553e022a19.js",
       "build-js-styles.css",
-      "app-38f43c132519460a9c21.js.map",
+      "app-65ed1dfee9553e022a19.js.map",
       "build-js-styles.css.map"
+    ],
+    "path---how-to-use-the-uber-api-to-get-pricing-data": [
+      "path---how-to-use-the-uber-api-to-get-pricing-data-82f59817e4c43edc61a8.js",
+      "path---how-to-use-the-uber-api-to-get-pricing-data-82f59817e4c43edc61a8.js.map"
     ],
     "path---404": [
       "path---404-a0e39f21c11f6a62c5ab.js",
       "path---404-a0e39f21c11f6a62c5ab.js.map"
+    ],
+    "path---prototypal-and-pseudoclassical-instantiation-in-javascript": [
+      "path---prototypal-and-pseudoclassical-instantiation-in-javascript-0d7403c3aad990f9d66b.js",
+      "path---prototypal-and-pseudoclassical-instantiation-in-javascript-0d7403c3aad990f9d66b.js.map"
     ]
   }
 }
