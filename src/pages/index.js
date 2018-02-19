@@ -6,7 +6,7 @@ import Helmet from 'react-helmet'
 
 function formatData(ts) {
   const date = new Date(Number(ts))
-  return [ date.getMonth() + 1, date.getDate(), date.getFullYear() ].join("/")
+  return [date.getMonth() + 1, date.getDate(), date.getFullYear()].join('/')
 }
 
 export default function Index({ data }) {
