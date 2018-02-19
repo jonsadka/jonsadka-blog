@@ -1,5 +1,4 @@
 module.exports = {
-  pathPrefix: `/jonsadka-blog`,
   plugins: [
     'gatsby-plugin-catch-links',
     'gatsby-plugin-react-helmet',
