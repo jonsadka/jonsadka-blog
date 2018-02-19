@@ -4,7 +4,7 @@ import Link from 'gatsby-link'
 const Header = () => (
   <div
     style={{
-      background: 'rebeccapurple',
+      background: '#394047',
       marginBottom: '1.45rem',
     }}
   >
@@ -20,10 +20,11 @@ const Header = () => (
           to="/"
           style={{
             color: 'white',
+            fontFamily: 'Libre Franklin',
             textDecoration: 'none',
           }}
         >
-          Jon Sadka's Blog
+          Jon Sadka
         </Link>
       </h1>
     </div>
