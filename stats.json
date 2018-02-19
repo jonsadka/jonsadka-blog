@@ -4,6 +4,10 @@
       "path---type-coercion-in-d-3-js-63fe3fde1e13146131fa.js",
       "path---type-coercion-in-d-3-js-63fe3fde1e13146131fa.js.map"
     ],
+    "path---tags-ux-ui": [
+      "path---tags-ux-ui-8096d33bb2351ce71aa3.js",
+      "path---tags-ux-ui-8096d33bb2351ce71aa3.js.map"
+    ],
     "path---choosing-the-best-numbers-in-nfl-football-squares-to-beat-your-friends": [
       "path---choosing-the-best-numbers-in-nfl-football-squares-to-beat-your-friends-71dd690a8f6a19e224a6.js",
       "path---choosing-the-best-numbers-in-nfl-football-squares-to-beat-your-friends-71dd690a8f6a19e224a6.js.map"
@@ -16,13 +20,25 @@
       "path---how-to-quickly-create-randomly-generated-datasets-in-javascript-with-d-3-de27b665e45a7cad19a6.js",
       "path---how-to-quickly-create-randomly-generated-datasets-in-javascript-with-d-3-de27b665e45a7cad19a6.js.map"
     ],
+    "path---tags-mongo-db": [
+      "path---tags-mongo-db-e929d498656e364b5dac.js",
+      "path---tags-mongo-db-e929d498656e364b5dac.js.map"
+    ],
     "component---src-pages-index-js": [
-      "component---src-pages-index-js-1f464814ec1087b64fd4.js",
-      "component---src-pages-index-js-1f464814ec1087b64fd4.js.map"
+      "component---src-pages-index-js-04c87db7f0003db84879.js",
+      "component---src-pages-index-js-04c87db7f0003db84879.js.map"
     ],
     "path---how-to-generate-time-series-week-over-week-year-over-year-aggregations-in-mongodb-using-unix-epoch-timestamps-tutorial-and-example": [
       "path---how-to-generate-time-series-week-over-week-year-over-year-aggregations-in-mongodb-using-unix-epoch-timestamps-tutorial-and-example-ed6ac1f4955033856db7.js",
       "path---how-to-generate-time-series-week-over-week-year-over-year-aggregations-in-mongodb-using-unix-epoch-timestamps-tutorial-and-example-ed6ac1f4955033856db7.js.map"
+    ],
+    "component---src-templates-tags-js": [
+      "component---src-templates-tags-js-46f77b4651e0e872f739.js",
+      "component---src-templates-tags-js-46f77b4651e0e872f739.js.map"
+    ],
+    "path---tags": [
+      "path---tags-328153fa62f2f720e118.js",
+      "path---tags-328153fa62f2f720e118.js.map"
     ],
     "path---": [
       "path----557518bd178906f8d58a.js",
@@ -37,8 +53,8 @@
       "path---fight-on-the-power-of-javascript-closures-c1c5d3d67a13bdffe2ae.js.map"
     ],
     "path---how-apple-can-catch-up-to-google-ratings-and-yelp-reviews-overnight": [
-      "path---how-apple-can-catch-up-to-google-ratings-and-yelp-reviews-overnight-e14ae0d88fb15d805798.js",
-      "path---how-apple-can-catch-up-to-google-ratings-and-yelp-reviews-overnight-e14ae0d88fb15d805798.js.map"
+      "path---how-apple-can-catch-up-to-google-ratings-and-yelp-reviews-overnight-eb924336f4a0900b69a7.js",
+      "path---how-apple-can-catch-up-to-google-ratings-and-yelp-reviews-overnight-eb924336f4a0900b69a7.js.map"
     ],
     "component---src-templates-blog-post-js": [
       "component---src-templates-blog-post-js-6a66693c7bfbd14dc069.js",
@@ -48,9 +64,9 @@
       "component---src-layouts-index-js-9bcc628ad035ecfaff6c.js",
       "component---src-layouts-index-js-9bcc628ad035ecfaff6c.js.map"
     ],
-    "path---page-2": [
-      "path---page-2-a0e39f21c11f6a62c5ab.js",
-      "path---page-2-a0e39f21c11f6a62c5ab.js.map"
+    "path---tags-d-3-js": [
+      "path---tags-d-3-js-339ef5faed7508da74b1.js",
+      "path---tags-d-3-js-339ef5faed7508da74b1.js.map"
     ],
     "path---using-reduce-to-create-arrays-and-objects-in-javascript": [
       "path---using-reduce-to-create-arrays-and-objects-in-javascript-cd817ad43fca6c04a3c2.js",
@@ -60,13 +76,17 @@
       "path---index-86ff36649d59fd526cd1.js",
       "path---index-86ff36649d59fd526cd1.js.map"
     ],
+    "path---tags-api": [
+      "path---tags-api-68184236e20114c45c67.js",
+      "path---tags-api-68184236e20114c45c67.js.map"
+    ],
     "component---src-pages-404-js": [
       "component---src-pages-404-js-4503918ea3a16cfcdb75.js",
       "component---src-pages-404-js-4503918ea3a16cfcdb75.js.map"
     ],
     "commons": [
-      "commons-8b3777e9b7196ecd4564.js",
-      "commons-8b3777e9b7196ecd4564.js.map"
+      "commons-101651d16a9337c0a50f.js",
+      "commons-101651d16a9337c0a50f.js.map"
     ],
     "path---how-to-modify-filter-and-save-json-files-locally-using-jquery": [
       "path---how-to-modify-filter-and-save-json-files-locally-using-jquery-316e2eeedcd35bff693f.js",
@@ -76,9 +96,13 @@
       "path---404-html-a0e39f21c11f6a62c5ab.js",
       "path---404-html-a0e39f21c11f6a62c5ab.js.map"
     ],
-    "component---src-pages-page-2-js": [
-      "component---src-pages-page-2-js-8303b1dab01b6fff490b.js",
-      "component---src-pages-page-2-js-8303b1dab01b6fff490b.js.map"
+    "component---src-pages-tags-js": [
+      "component---src-pages-tags-js-878029e311c4b7e27b1e.js",
+      "component---src-pages-tags-js-878029e311c4b7e27b1e.js.map"
+    ],
+    "path---tags-java-script": [
+      "path---tags-java-script-c3008b1e4a79c09dd6d6.js",
+      "path---tags-java-script-c3008b1e4a79c09dd6d6.js.map"
     ],
     "path---how-to-create-adaptive-pie-charts-with-transitions-in-d-3": [
       "path---how-to-create-adaptive-pie-charts-with-transitions-in-d-3-7bcb6afac163e5c215e6.js",
@@ -93,10 +117,14 @@
       "path---how-to-write-data-to-the-beginning-of-a-file-with-node-javascript-tutorial-and-example-22aefb564e6e2e44d059.js.map"
     ],
     "app": [
-      "app-65ed1dfee9553e022a19.js",
+      "app-6ebf03875e0f1bc56b17.js",
       "build-js-styles.css",
-      "app-65ed1dfee9553e022a19.js.map",
+      "app-6ebf03875e0f1bc56b17.js.map",
       "build-js-styles.css.map"
+    ],
+    "path---tags-j-query": [
+      "path---tags-j-query-9fc4ad235e2dc285a51b.js",
+      "path---tags-j-query-9fc4ad235e2dc285a51b.js.map"
     ],
     "path---how-to-use-the-uber-api-to-get-pricing-data": [
       "path---how-to-use-the-uber-api-to-get-pricing-data-82f59817e4c43edc61a8.js",
