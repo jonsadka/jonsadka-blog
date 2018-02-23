@@ -1,5 +1,5 @@
 ---
-path: "/how-to-modify-filter-and-save-json-files-locally-using-jquery"
+path: "/blog/how-to-modify-filter-and-save-json-files-locally-using-jquery"
 date: "1412665200000"
 published: true
 tags: ["jQuery", "JavaScript"]

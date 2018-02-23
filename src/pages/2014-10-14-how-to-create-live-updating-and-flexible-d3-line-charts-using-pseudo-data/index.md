@@ -1,5 +1,5 @@
 ---
-path: "/how-to-create-live-updating-and-flexible-d3-line-charts-using-pseudo-data"
+path: "/blog/how-to-create-live-updating-and-flexible-d3-line-charts-using-pseudo-data"
 date: "1413270000000"
 published: true
 tags: ["D3.js", "JavaScript"]

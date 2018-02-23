@@ -1,5 +1,5 @@
 ---
-path: "/how-to-use-the-uber-api-to-get-pricing-data"
+path: "/blog/how-to-use-the-uber-api-to-get-pricing-data"
 date: "1409295600000"
 published: true
 tags: ["API", "JavaScript"]

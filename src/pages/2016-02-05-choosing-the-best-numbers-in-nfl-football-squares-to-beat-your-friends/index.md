@@ -1,5 +1,5 @@
 ---
-path: "/choosing-the-best-numbers-in-nfl-football-squares-to-beat-your-friends"
+path: "/blog/choosing-the-best-numbers-in-nfl-football-squares-to-beat-your-friends"
 date: "1454659200000"
 published: true
 tags: ["D3.js", "JavaScript"]

@@ -1,5 +1,5 @@
 ---
-path: "/how-apple-can-catch-up-to-google-ratings-and-yelp-reviews-overnight"
+path: "/blog/how-apple-can-catch-up-to-google-ratings-and-yelp-reviews-overnight"
 date: "1421740800000"
 published: true
 tags: ["UX / UI"]

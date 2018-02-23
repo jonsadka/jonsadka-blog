@@ -1,5 +1,5 @@
 ---
-path: "/how-to-generate-time-series-week-over-week-year-over-year-aggregations-in-mongodb-using-unix-epoch-timestamps-tutorial-and-example"
+path: "/blog/how-to-generate-time-series-week-over-week-year-over-year-aggregations-in-mongodb-using-unix-epoch-timestamps-tutorial-and-example"
 date: "1444806000000"
 published: true
 tags: ["JavaScript", "MongoDB"]

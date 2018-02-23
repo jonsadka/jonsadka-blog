@@ -1,5 +1,5 @@
 ---
-path: "/using-reduce-to-create-arrays-and-objects-in-javascript"
+path: "/blog/using-reduce-to-create-arrays-and-objects-in-javascript"
 date: "1411110000000"
 published: true
 tags: ["JavaScript"]

@@ -1,5 +1,5 @@
 ---
-path: "/type-coercion-in-d3js"
+path: "/blog/type-coercion-in-d3js"
 date: "1407135600000"
 published: true
 tags: ["D3.js", "JavaScript"]

@@ -1,5 +1,5 @@
 ---
-path: "/best-and-worst-times-to-take-an-uber"
+path: "/blog/best-and-worst-times-to-take-an-uber"
 date: "1417507200000"
 published: true
 tags: ["API", "D3.js", "JavaScript"]

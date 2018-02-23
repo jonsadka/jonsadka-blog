@@ -1,5 +1,5 @@
 ---
-path: "/fight-on-the-power-of-javascript-closures"
+path: "/blog/fight-on-the-power-of-javascript-closures"
 date: "1408172400000"
 published: true
 tags: ["JavaScript"]

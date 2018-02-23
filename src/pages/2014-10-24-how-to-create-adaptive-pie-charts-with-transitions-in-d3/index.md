@@ -1,5 +1,5 @@
 ---
-path: "/how-to-create-adaptive-pie-charts-with-transitions-in-d3"
+path: "/blog/how-to-create-adaptive-pie-charts-with-transitions-in-d3"
 date: "1414134000000"
 published: true
 tags: ["D3.js", "JavaScript"]

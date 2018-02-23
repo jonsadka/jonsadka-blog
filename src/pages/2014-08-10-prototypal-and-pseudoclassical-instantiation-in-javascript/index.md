@@ -1,5 +1,5 @@
 ---
-path: "/prototypal-and-pseudoclassical-instantiation-in-javascript"
+path: "/blog/prototypal-and-pseudoclassical-instantiation-in-javascript"
 date: "1407654000000"
 published: true
 tags: ["JavaScript"]

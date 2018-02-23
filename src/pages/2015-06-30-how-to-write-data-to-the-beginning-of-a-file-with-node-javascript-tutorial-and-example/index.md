@@ -1,5 +1,5 @@
 ---
-path: "/how-to-write-data-to-the-beginning-of-a-file-with-node-javascript-tutorial-and-example"
+path: "/blog/how-to-write-data-to-the-beginning-of-a-file-with-node-javascript-tutorial-and-example"
 date: "1435647600000"
 published: true
 tags: ["JavaScript"]

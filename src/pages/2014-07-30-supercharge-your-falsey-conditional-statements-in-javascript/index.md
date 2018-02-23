@@ -1,5 +1,5 @@
 ---
-path: "/supercharge-your-falsey-conditional-statements-in-javascript"
+path: "/blog/supercharge-your-falsey-conditional-statements-in-javascript"
 date: "1406703600000"
 published: true
 tags: ["JavaScript"]

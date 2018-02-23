@@ -1,5 +1,5 @@
 ---
-path: "/how-to-quickly-create-randomly-generated-datasets-in-javascript-with-d3"
+path: "/blog/how-to-quickly-create-randomly-generated-datasets-in-javascript-with-d3"
 date: "1411974000000"
 published: true
 tags: ["D3.js", "JavaScript"]
