@@ -17,7 +17,6 @@ const BlogPreview = styled.div`
 const BlogMetadata = styled.div`
   color: #a3a3a3;
   display: inline-block;
-  font-family: 'Questrial';
   font-size: 12px;
   margin-bottom: 5px;
 `
@@ -25,10 +24,8 @@ const BlogMetadata = styled.div`
 const BlogTag = styled(Link)`
   color: #a3a3a3;
   display: inline-block;
-  font-family: 'Questrial';
   font-size: 12px;
   padding-right: 10px;
-  text-decoration: none;
   transition: color 0.2s;
   &:hover {
     color: black;
@@ -37,39 +34,21 @@ const BlogTag = styled(Link)`
 
 const MiddleDot = styled.span`
   font-size: 12px;
-  font-family: 'Questrial';
   padding: 0 10px;
 `
 
-const BlogExcerpt = styled.div`
-  color: #a3a3a3;
-  margin-top: ${DEFAULT_MARGIN}px;
-  font-size: 14px;
-  font-family: 'Questrial';
-`
-
 const ReadLink = styled(Link)`
-  color: #1644ce;
   display: block;
-  font-family: 'Questrial';
   font-size: 12px;
   letter-spacing: 0.05rem;
   margin-bottom: 60px;
   margin-top: ${DEFAULT_MARGIN}px;
-  text-decoration: none;
 `
 
 const WorksSection = styled.div`
-  font-family: 'Questrial';
   margin: ${DEFAULT_MARGIN}px 0 60px 0;
 `
 
-const WorksTitle = styled.div`
-  font-family: 'Questrial';
-  font-size: 28px;
-  letter-spacing: 0.05rem;
-  margin-bottom: ${DEFAULT_MARGIN}px;
-`
 const LargerWorksCarousel = styled.div`
   overflow: scroll;
   white-space: nowrap;
@@ -110,14 +89,12 @@ const Thumbnail = styled.div`
 
 const WorkDetails = styled.div`
   padding: ${DEFAULT_MARGIN}px;
-  font-family: 'Questrial';
 `
 
 const WorkTitle = styled(Link)`
   color: black;
   display: block;
   margin-bottom: ${DEFAULT_MARGIN}px;
-  text-decoration: none;
 `
 
 const WorkDescription = styled.div`
@@ -184,10 +161,10 @@ export default class Index extends React.Component {
       <div>
         {false && (
           <WorksSection>
-            <WorksTitle>Larger Works</WorksTitle>
+            <h2>Larger Works</h2>
             <LargerWorksCarousel>
               {new Array(10).fill('').map((d, i) => (
-                <LargerWorks>
+                <LargerWorks key={i}>
                   <Thumbnail size={'larger'} />
                   <WorkDetails>
                     <WorkTitle>
@@ -206,7 +183,7 @@ export default class Index extends React.Component {
 
         {false && (
           <WorksSection>
-            <WorksTitle>Smaller Works</WorksTitle>
+            <h2>Smaller Works</h2>
             <Tabs>
               <Tab onClick={console.log} selected={true}>
                 All Sources
@@ -216,7 +193,7 @@ export default class Index extends React.Component {
             </Tabs>
             <SmallerWorksCarousel>
               {new Array(30).fill('').map((d, i) => (
-                <SmallerWorks>
+                <SmallerWorks key={i}>
                   <Thumbnail size={'smaller'} />
                 </SmallerWorks>
               ))}
@@ -225,7 +202,7 @@ export default class Index extends React.Component {
         )}
 
         <WorksSection>
-          <WorksTitle>Written Works</WorksTitle>
+          <h2>Written Works</h2>
           <Tabs>
             {[
               { id: 'all', text: 'All Tags' },
@@ -237,6 +214,7 @@ export default class Index extends React.Component {
               { id: 'UX / UI', text: 'UX / UI' },
             ].map(tab => (
               <Tab
+                key={tab.id}
                 selected={tab.id === writtenWorkTag}
                 onClick={() => this._filterWrittenWork(tab.id)}
               >
@@ -259,13 +237,15 @@ export default class Index extends React.Component {
                       {formatData(post.frontmatter.date)}
                       <MiddleDot>/</MiddleDot>
                       {post.frontmatter.tags.map(tag => (
-                        <BlogTag to={`/tags/${kebabCase(tag)}`}>{tag}</BlogTag>
+                        <BlogTag to={`/tags/${kebabCase(tag)}`} key={tag}>
+                          {tag}
+                        </BlogTag>
                       ))}
                     </BlogMetadata>
                     <WorkTitle to={post.frontmatter.path}>
                       {post.frontmatter.title}
                     </WorkTitle>
-                    <BlogExcerpt>{post.excerpt}</BlogExcerpt>
+                    <p>{post.excerpt}</p>
                     <ReadLink to={post.frontmatter.path}>Read</ReadLink>
                   </BlogPreview>
                 )

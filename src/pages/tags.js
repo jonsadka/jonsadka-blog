@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 // Utilities
 import kebabCase from 'lodash/kebabcase'
@@ -8,24 +9,39 @@ import kebabCase from 'lodash/kebabcase'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 
+const PageContainer = styled.div`
+  margin: 30px 0 60px 0;
+`
+
+const Tag = styled.li`
+  list-style-type: none;
+  margin-left: 0;
+`
+
+const ForwardSlash = styled.span`
+  margin: 0 10px;
+`
+
 const TagsPage = ({
   data: { allMarkdownRemark: { group }, site: { siteMetadata: { title } } },
 }) => (
-  <div>
+  <PageContainer>
     <Helmet title={title} />
     <div>
-      <h1>Tags</h1>
+      <h2>Tags</h2>
       <ul>
-        {group.map(tag => (
-          <li key={tag.fieldValue}>
+        {group.sort((a, b) => b.totalCount - a.totalCount).map(tag => (
+          <Tag key={tag.fieldValue}>
             <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-              {tag.fieldValue} ({tag.totalCount})
+              {tag.totalCount < 10 ? `0${tag.totalCount}` : tag.totalCount}
+              <ForwardSlash>/</ForwardSlash>
+              {tag.fieldValue}
             </Link>
-          </li>
+          </Tag>
         ))}
       </ul>
     </div>
-  </div>
+  </PageContainer>
 )
 
 // TagsPage.propTypes = {

@@ -1,8 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 // Components
 import Link from 'gatsby-link'
+
+const PageContainer = styled.div`
+  margin: 30px 0 60px 0;
+`
 
 const Tags = ({ pathContext, data }) => {
   const { tag } = pathContext
@@ -12,8 +17,8 @@ const Tags = ({ pathContext, data }) => {
   } tagged with "${tag}"`
 
   return (
-    <div>
-      <h1>{tagHeader}</h1>
+    <PageContainer>
+      <h2>{tagHeader}</h2>
       <ul>
         {edges.map(({ node }) => {
           const { path, title } = node.frontmatter
@@ -28,8 +33,8 @@ const Tags = ({ pathContext, data }) => {
         This links to a page that does not yet exist.
         We'll come back to it!
       */}
-      <Link to="/tags">All tags</Link>
-    </div>
+      <Link to="/tags">See all tags</Link>
+    </PageContainer>
   )
 }
 

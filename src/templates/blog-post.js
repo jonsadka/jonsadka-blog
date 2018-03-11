@@ -11,7 +11,6 @@ const BlogTitle = styled.div`
   font-size: 36px;
   line-height: 44px;
   margin-bottom: 1.45rem;
-  text-decoration: none;
 `
 
 const BlogContent = styled.div`
