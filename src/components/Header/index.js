@@ -1,10 +1,15 @@
 import React from 'react'
 import Link from 'gatsby-link'
+import styled from 'styled-components';
+
+const Name = styled.div`
+  font-size: 14px;
+  font-weight: 700;
+`;
 
 const Header = () => (
   <div
     style={{
-      background: '#394047',
       marginBottom: '1.45rem',
     }}
   >
@@ -15,18 +20,18 @@ const Header = () => (
         padding: '1.45rem 1.0875rem',
       }}
     >
-      <h1 style={{ margin: 0 }}>
+      <Name style={{ margin: 0 }}>
         <Link
           to="/"
           style={{
-            color: 'white',
+            color: 'black',
             fontFamily: 'Libre Franklin',
             textDecoration: 'none',
           }}
         >
-          Jon Sadka
+          Jon Sadka.
         </Link>
-      </h1>
+      </Name>
     </div>
   </div>
 )

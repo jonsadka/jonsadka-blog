@@ -7,7 +7,7 @@ import styled from 'styled-components';
 
 const BlogTitle = styled.div`
   color: #394047;
-  font-family: 'Libre Franklin';
+  font-family: 'Questrial';
   font-size: 36px;
   line-height: 44px;
   margin-bottom: 1.45rem;
@@ -15,10 +15,10 @@ const BlogTitle = styled.div`
 `;
 
 const BlogContent = styled.div`
-  color: gray;
+  color: #A3A3A3;
   line-height: 20px;
   font-size: 14px;
-  font-family: 'Libre Franklin';
+  font-family: 'Questrial';
 `
 
 export default function Template({ data }) {
