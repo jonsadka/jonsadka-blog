@@ -5,25 +5,25 @@ import kebabCase from 'lodash/kebabcase'
 
 // import '../css/index.css';
 
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-const DEFAULT_MARGIN = 30;
-const SMALL_THUMBNAIL_HEIGHT = 100;
+const DEFAULT_MARGIN = 30
+const SMALL_THUMBNAIL_HEIGHT = 100
 
 const BlogPreview = styled.div`
   margin-bottom: ${DEFAULT_MARGIN}px;
-`;
+`
 
 const BlogMetadata = styled.div`
-  color: #A3A3A3;
+  color: #a3a3a3;
   display: inline-block;
   font-family: 'Questrial';
   font-size: 12px;
   margin-bottom: 5px;
-`;
+`
 
 const BlogTag = styled(Link)`
-  color: #A3A3A3;
+  color: #a3a3a3;
   display: inline-block;
   font-family: 'Questrial';
   font-size: 12px;
@@ -33,7 +33,7 @@ const BlogTag = styled(Link)`
   &:hover {
     color: black;
   }
-`;
+`
 
 const MiddleDot = styled.span`
   font-size: 12px;
@@ -42,14 +42,14 @@ const MiddleDot = styled.span`
 `
 
 const BlogExcerpt = styled.div`
-  color: #A3A3A3;
+  color: #a3a3a3;
   margin-top: ${DEFAULT_MARGIN}px;
   font-size: 14px;
   font-family: 'Questrial';
 `
 
 const ReadLink = styled(Link)`
-  color: #1644CE;
+  color: #1644ce;
   display: block;
   font-family: 'Questrial';
   font-size: 12px;
@@ -80,8 +80,9 @@ const SmallerWorksCarousel = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  height: ${SMALL_THUMBNAIL_HEIGHT + 2 * (SMALL_THUMBNAIL_HEIGHT + DEFAULT_MARGIN)}px;
-  white-space: nowrap
+  height: ${SMALL_THUMBNAIL_HEIGHT +
+    2 * (SMALL_THUMBNAIL_HEIGHT + DEFAULT_MARGIN)}px;
+  white-space: nowrap;
 `
 
 const LargerWorks = styled.div`
@@ -100,10 +101,11 @@ const SmallerWorks = styled.div`
 `
 
 const Thumbnail = styled.div`
-  background-color: #B2C5D4;
+  background-color: #b2c5d4;
   border-radius: 4px;
-  height: ${props => props.size === 'larger' ? '200px' : `${SMALL_THUMBNAIL_HEIGHT}px`};
-  width: ${props => props.size === 'larger' ? '367px' : '184px'};
+  height: ${props =>
+    props.size === 'larger' ? '200px' : `${SMALL_THUMBNAIL_HEIGHT}px`};
+  width: ${props => (props.size === 'larger' ? '367px' : '184px')};
 `
 
 const WorkDetails = styled.div`
@@ -119,7 +121,7 @@ const WorkTitle = styled(Link)`
 `
 
 const WorkDescription = styled.div`
-  color: #A3A3A3;
+  color: #a3a3a3;
   font-size: 12px;
   white-space: normal;
 `
@@ -130,7 +132,7 @@ const Tabs = styled.ul`
 `
 
 const Tab = styled.li`
-  color: ${props => props.selected ? 'black' : '#A3A3A3'};
+  color: ${props => (props.selected ? 'black' : '#A3A3A3')};
   cursor: pointer;
   display: inline-block;
   font-size: 14px;
@@ -144,99 +146,121 @@ const Tab = styled.li`
 
 function formatData(ts) {
   const date = new Date(Number(ts))
-  const month = date.getMonth();
-  const monthIndexToMonthText = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-  return monthIndexToMonthText[month] + ' ' +  date.getFullYear()
+  const month = date.getMonth()
+  const monthIndexToMonthText = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ]
+  return monthIndexToMonthText[month] + ' ' + date.getFullYear()
 }
 
 export default class Index extends React.Component {
-
   constructor(props) {
     super(props)
     this.state = {
-      writtenWorkTag: 'all'
+      writtenWorkTag: 'all',
     }
   }
 
   _filterWrittenWork(tag) {
-    this.setState({writtenWorkTag: tag || 'JavaScript'})
+    this.setState({ writtenWorkTag: tag || 'JavaScript' })
   }
 
   render() {
-    const {writtenWorkTag} = this.state
-    const {data} = this.props;
+    const { writtenWorkTag } = this.state
+    const { data } = this.props
     const { edges: posts } = data.allMarkdownRemark
     return (
       <div>
-        {false && <WorksSection>
-          <WorksTitle>Larger Works</WorksTitle>
-          <LargerWorksCarousel>
-            {new Array(10).fill('').map((d, i) =>
-              <LargerWorks>
-                <Thumbnail size={'larger'} />
-                <WorkDetails>
-                  <WorkTitle>Larger Work No. {Math.round(Math.random() * 1000)}</WorkTitle>
-                  <WorkDescription>
-                    This is a once sentence description of what this project is because I want this word wrap to show me how its done
-                  </WorkDescription>
-                </WorkDetails>
-              </LargerWorks>
-            )}
-          </LargerWorksCarousel>
-        </WorksSection>}
+        {false && (
+          <WorksSection>
+            <WorksTitle>Larger Works</WorksTitle>
+            <LargerWorksCarousel>
+              {new Array(10).fill('').map((d, i) => (
+                <LargerWorks>
+                  <Thumbnail size={'larger'} />
+                  <WorkDetails>
+                    <WorkTitle>
+                      Larger Work No. {Math.round(Math.random() * 1000)}
+                    </WorkTitle>
+                    <WorkDescription>
+                      This is a once sentence description of what this project
+                      is because I want this word wrap to show me how its done
+                    </WorkDescription>
+                  </WorkDetails>
+                </LargerWorks>
+              ))}
+            </LargerWorksCarousel>
+          </WorksSection>
+        )}
 
-        {false && <WorksSection>
-          <WorksTitle>Smaller Works</WorksTitle>
-          <Tabs>
-            <Tab onClick={console.log} selected={true}>All Sources</Tab>
-            <Tab onClick={console.log}>Bl.ocks</Tab>
-            <Tab onClick={console.log}>Observable</Tab>
-          </Tabs>
-          <SmallerWorksCarousel>
-            {new Array(30).fill('').map((d, i) =>
-              <SmallerWorks>
-                <Thumbnail size={'smaller'} />
-              </SmallerWorks>
-            )}
-          </SmallerWorksCarousel>
-        </WorksSection>}
+        {false && (
+          <WorksSection>
+            <WorksTitle>Smaller Works</WorksTitle>
+            <Tabs>
+              <Tab onClick={console.log} selected={true}>
+                All Sources
+              </Tab>
+              <Tab onClick={console.log}>Bl.ocks</Tab>
+              <Tab onClick={console.log}>Observable</Tab>
+            </Tabs>
+            <SmallerWorksCarousel>
+              {new Array(30).fill('').map((d, i) => (
+                <SmallerWorks>
+                  <Thumbnail size={'smaller'} />
+                </SmallerWorks>
+              ))}
+            </SmallerWorksCarousel>
+          </WorksSection>
+        )}
 
         <WorksSection>
           <WorksTitle>Written Works</WorksTitle>
           <Tabs>
-            {
-              [
-                {id: 'all', text: 'All Tags'},
-                {id: 'API', text: 'API'},
-                {id: 'D3.js', text: 'D3.js'},
-                {id: 'JavaScript', text: 'JavaScript'},
-                {id: 'jQuery', text: 'jQuery'},
-                {id: 'MongoDB', text: 'MongoDB'},
-                {id: 'UX / UI', text: 'UX / UI'}
-              ].map(tab =>
-                <Tab
-                  selected={tab.id === writtenWorkTag}
-                  onClick={() => this._filterWrittenWork(tab.id)}>
-                    {tab.text}
-                </Tab>
-              )
-            }
+            {[
+              { id: 'all', text: 'All Tags' },
+              { id: 'API', text: 'API' },
+              { id: 'D3.js', text: 'D3.js' },
+              { id: 'JavaScript', text: 'JavaScript' },
+              { id: 'jQuery', text: 'jQuery' },
+              { id: 'MongoDB', text: 'MongoDB' },
+              { id: 'UX / UI', text: 'UX / UI' },
+            ].map(tab => (
+              <Tab
+                selected={tab.id === writtenWorkTag}
+                onClick={() => this._filterWrittenWork(tab.id)}
+              >
+                {tab.text}
+              </Tab>
+            ))}
           </Tabs>
           <div className="blog-posts">
             {posts
               .filter(post => post.node.frontmatter.title.length > 0)
-              .filter(post => writtenWorkTag === 'all' || post.node.frontmatter.tags.includes(writtenWorkTag))
+              .filter(
+                post =>
+                  writtenWorkTag === 'all' ||
+                  post.node.frontmatter.tags.includes(writtenWorkTag)
+              )
               .map(({ node: post }) => {
                 return (
                   <BlogPreview key={post.id}>
                     <BlogMetadata>
                       {formatData(post.frontmatter.date)}
                       <MiddleDot>/</MiddleDot>
-                      {post.frontmatter.tags.map(tag =>
-                        <BlogTag to={`/tags/${kebabCase(tag)}`}>
-                          {tag}
-                        </BlogTag>
-                      )}
+                      {post.frontmatter.tags.map(tag => (
+                        <BlogTag to={`/tags/${kebabCase(tag)}`}>{tag}</BlogTag>
+                      ))}
                     </BlogMetadata>
                     <WorkTitle to={post.frontmatter.path}>
                       {post.frontmatter.title}

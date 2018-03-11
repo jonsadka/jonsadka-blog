@@ -3,7 +3,7 @@ import Helmet from 'react-helmet'
 
 // import '../css/blog-post.css';
 
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const BlogTitle = styled.div`
   color: #394047;
@@ -12,10 +12,10 @@ const BlogTitle = styled.div`
   line-height: 44px;
   margin-bottom: 1.45rem;
   text-decoration: none;
-`;
+`
 
 const BlogContent = styled.div`
-  color: #A3A3A3;
+  color: #a3a3a3;
   line-height: 20px;
   font-size: 14px;
   font-family: 'Questrial';

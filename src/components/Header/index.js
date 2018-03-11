@@ -1,11 +1,11 @@
 import React from 'react'
 import Link from 'gatsby-link'
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const Name = styled.div`
   font-size: 14px;
   font-weight: 700;
-`;
+`
 
 const Header = () => (
   <div
