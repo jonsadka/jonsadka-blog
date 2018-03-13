@@ -1,14 +1,15 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import Link, {withPrefix} from 'gatsby-link'
 import Helmet from 'react-helmet'
 import kebabCase from 'lodash/kebabcase'
+import styled from 'styled-components'
 
 // import '../css/index.css';
 
-import styled from 'styled-components'
-
 const DEFAULT_MARGIN = 30
 const SMALL_THUMBNAIL_HEIGHT = 100
+
+import {LARGER_WORKS} from '../works/larger-works'
 
 const BlogPreview = styled.div`
   margin-bottom: ${DEFAULT_MARGIN}px;
@@ -84,6 +85,7 @@ const Thumbnail = styled.div`
   border-radius: 4px;
   height: ${props =>
     props.size === 'larger' ? '200px' : `${SMALL_THUMBNAIL_HEIGHT}px`};
+  overflow: hidden;
   width: ${props => (props.size === 'larger' ? '367px' : '184px')};
 `
 
@@ -91,7 +93,13 @@ const WorkDetails = styled.div`
   padding: ${DEFAULT_MARGIN}px;
 `
 
-const WorkTitle = styled(Link)`
+const WorkTitle = styled.a`
+  color: black;
+  display: block;
+  margin-bottom: ${DEFAULT_MARGIN}px;
+`
+
+const WorkTitleLink = styled(Link)`
   color: black;
   display: block;
   margin-bottom: ${DEFAULT_MARGIN}px;
@@ -157,29 +165,36 @@ export default class Index extends React.Component {
     const { writtenWorkTag } = this.state
     const { data } = this.props
     const { edges: posts } = data.allMarkdownRemark
+    console.log(LARGER_WORKS)
     return (
       <div>
-        {false && (
-          <WorksSection>
-            <h2>Larger Works</h2>
-            <LargerWorksCarousel>
-              {new Array(10).fill('').map((d, i) => (
-                <LargerWorks key={i}>
-                  <Thumbnail size={'larger'} />
-                  <WorkDetails>
-                    <WorkTitle>
-                      Larger Work No. {Math.round(Math.random() * 1000)}
-                    </WorkTitle>
-                    <WorkDescription>
-                      This is a once sentence description of what this project
-                      is because I want this word wrap to show me how its done
-                    </WorkDescription>
-                  </WorkDetails>
-                </LargerWorks>
-              ))}
-            </LargerWorksCarousel>
-          </WorksSection>
-        )}
+        <WorksSection>
+          <h2>Larger Works</h2>
+          <LargerWorksCarousel>
+            {LARGER_WORKS
+              .sort((a, b) => b.createdAt - a.createdAt)
+              .map(work => (
+              <LargerWorks key={work.url}>
+                <Thumbnail size={'larger'} >
+                  <a href={work.url} target="_blank">
+                    <img alt={work.title} src={withPrefix(work.thumbnail)} />
+                  </a>
+                </Thumbnail>
+                <WorkDetails>
+                  <BlogMetadata>
+                    {formatData(work.createdAt)}
+                  </BlogMetadata>
+                  <WorkTitle href={work.url} target="_blank">
+                    {work.title}
+                  </WorkTitle>
+                  <WorkDescription>
+                    {work.description}
+                  </WorkDescription>
+                </WorkDetails>
+              </LargerWorks>
+            ))}
+          </LargerWorksCarousel>
+        </WorksSection>
 
         {false && (
           <WorksSection>
@@ -242,9 +257,9 @@ export default class Index extends React.Component {
                         </BlogTag>
                       ))}
                     </BlogMetadata>
-                    <WorkTitle to={post.frontmatter.path}>
+                    <WorkTitleLink to={post.frontmatter.path}>
                       {post.frontmatter.title}
-                    </WorkTitle>
+                    </WorkTitleLink>
                     <p>{post.excerpt}</p>
                     <ReadLink to={post.frontmatter.path}>Read</ReadLink>
                   </BlogPreview>
