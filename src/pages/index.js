@@ -1,5 +1,5 @@
 import React from 'react'
-import Link, {withPrefix} from 'gatsby-link'
+import Link, { withPrefix } from 'gatsby-link'
 import Helmet from 'react-helmet'
 import kebabCase from 'lodash/kebabcase'
 import styled from 'styled-components'
@@ -9,7 +9,7 @@ import styled from 'styled-components'
 const DEFAULT_MARGIN = 30
 const SMALL_THUMBNAIL_HEIGHT = 100
 
-import {LARGER_WORKS} from '../works/larger-works'
+import { LARGER_WORKS } from '../works/larger-works'
 
 const BlogPreview = styled.div`
   margin-bottom: ${DEFAULT_MARGIN}px;
@@ -165,56 +165,49 @@ export default class Index extends React.Component {
     const { writtenWorkTag } = this.state
     const { data } = this.props
     const { edges: posts } = data.allMarkdownRemark
-    console.log(LARGER_WORKS)
     return (
       <div>
         <WorksSection>
           <h2>Larger Works</h2>
           <LargerWorksCarousel>
-            {LARGER_WORKS
-              .sort((a, b) => b.createdAt - a.createdAt)
-              .map(work => (
-              <LargerWorks key={work.url}>
-                <Thumbnail size={'larger'} >
-                  <a href={work.url} target="_blank">
-                    <img alt={work.title} src={withPrefix(work.thumbnail)} />
-                  </a>
-                </Thumbnail>
-                <WorkDetails>
-                  <BlogMetadata>
-                    {formatData(work.createdAt)}
-                  </BlogMetadata>
-                  <WorkTitle href={work.url} target="_blank">
-                    {work.title}
-                  </WorkTitle>
-                  <WorkDescription>
-                    {work.description}
-                  </WorkDescription>
-                </WorkDetails>
-              </LargerWorks>
-            ))}
+            {LARGER_WORKS.sort((a, b) => b.createdAt - a.createdAt).map(
+              work => (
+                <LargerWorks key={work.url}>
+                  <Thumbnail size={'larger'}>
+                    <a href={work.url} target="_blank">
+                      <img alt={work.title} src={withPrefix(work.thumbnail)} />
+                    </a>
+                  </Thumbnail>
+                  <WorkDetails>
+                    <BlogMetadata>{formatData(work.createdAt)}</BlogMetadata>
+                    <WorkTitle href={work.url} target="_blank">
+                      {work.title}
+                    </WorkTitle>
+                    <WorkDescription>{work.description}</WorkDescription>
+                  </WorkDetails>
+                </LargerWorks>
+              )
+            )}
           </LargerWorksCarousel>
         </WorksSection>
 
-        {false && (
-          <WorksSection>
-            <h2>Smaller Works</h2>
-            <Tabs>
-              <Tab onClick={console.log} selected={true}>
-                All Sources
-              </Tab>
-              <Tab onClick={console.log}>Bl.ocks</Tab>
-              <Tab onClick={console.log}>Observable</Tab>
-            </Tabs>
-            <SmallerWorksCarousel>
-              {new Array(30).fill('').map((d, i) => (
-                <SmallerWorks key={i}>
-                  <Thumbnail size={'smaller'} />
-                </SmallerWorks>
-              ))}
-            </SmallerWorksCarousel>
-          </WorksSection>
-        )}
+        <WorksSection>
+          <h2>Smaller Works</h2>
+          <Tabs>
+            <Tab onClick={console.log} selected={true}>
+              All Sources
+            </Tab>
+            <Tab onClick={console.log}>Bl.ocks</Tab>
+            <Tab onClick={console.log}>Observable</Tab>
+          </Tabs>
+          <SmallerWorksCarousel>
+            {new Array(30).fill('').map((d, i) => (
+              <SmallerWorks key={i}>
+                <Thumbnail size={'smaller'} />
+              </SmallerWorks>
+            ))}
+          </SmallerWorksCarousel>
+        </WorksSection>
 
         <WorksSection>
           <h2>Written Works</h2>
