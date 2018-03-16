@@ -8,13 +8,16 @@ import './index.css'
 const TemplateWrapper = ({ children }) => (
   <div>
     <Helmet
-      title="Jon Sadka Blog"
+      title="Jon Sadka Personal Website and Blog"
       meta={[
-        { name: 'description', content: "Jon Sadka's Blog and Portfolio" },
+        {
+          name: 'description',
+          content: "Jon Sadka's Personal Website and Blog",
+        },
         {
           name: 'keywords',
           content:
-            'blog, sadka, jon, jon sadka, visualization, front end, software engineer, portfolio',
+            'personal website, blog, sadka, jon, jon sadka, visualization, front end, software engineer, portfolio, visualization, D3.js, JavaScript',
         },
       ]}
     />
