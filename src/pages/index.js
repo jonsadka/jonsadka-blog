@@ -52,11 +52,13 @@ const WorksSection = styled.div`
 
 const LargerWorksCarousel = styled.div`
   overflow: scroll;
+  -webkit-overflow-scrolling: touch;
   white-space: nowrap;
 `
 
 const SmallerWorksCarousel = styled.div`
-  overflow-x: scroll;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
