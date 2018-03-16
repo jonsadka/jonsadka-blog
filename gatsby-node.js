@@ -7,6 +7,8 @@
 const path = require('path');
 const _ = require('lodash');
 
+const request = require('request');
+
 exports.createPages = ({ boundActionCreators, graphql }) => {
   const { createPage } = boundActionCreators;
 
@@ -70,4 +72,35 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
         });
       });
     });
+}
+
+exports.onCreatePage = ({boundActionCreators, page}) => {
+  if (page.path === '/') {
+    const requestOptions = {
+      url: 'https://api.github.com/users/jonsadka/gists?per_page=100',
+      headers: {
+        'User-Agent': 'my-blog'
+      },
+      json: true
+    }
+    return new Promise(resolve => {
+      request(requestOptions, (err, res, gistsList) => {
+        // Replace new page with old page
+        const { createPage, deletePage } = boundActionCreators;
+        const oldPage = {...page};
+        deletePage(oldPage);
+        createPage({
+          ...page,
+          context: {
+            err,
+            gistsList: gistsList.filter(gist =>
+              gist.files['thumbnail.png'] && gist.files['thumbnail.png'].raw_url
+            ).sort((a, b) => +new Date(b.created_at) - +new Date(a.created_at))
+          }
+        });
+        resolve();
+      });
+    })
+
+  }
 }

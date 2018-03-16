@@ -163,8 +163,9 @@ export default class Index extends React.Component {
 
   render() {
     const { writtenWorkTag } = this.state
-    const { data } = this.props
+    const { data, pathContext } = this.props
     const { edges: posts } = data.allMarkdownRemark
+    const { gistsList } = pathContext
     return (
       <div>
         <WorksSection>
@@ -193,17 +194,31 @@ export default class Index extends React.Component {
 
         <WorksSection>
           <h2>Smaller Works</h2>
-          <Tabs>
-            <Tab onClick={console.log} selected={true}>
-              All Sources
-            </Tab>
-            <Tab onClick={console.log}>Bl.ocks</Tab>
-            <Tab onClick={console.log}>Observable</Tab>
-          </Tabs>
+          {false && (
+            <Tabs>
+              <Tab onClick={console.log} selected={true}>
+                All Sources
+              </Tab>
+              <Tab onClick={console.log}>Bl.ocks</Tab>
+              <Tab onClick={console.log}>Observable</Tab>
+            </Tabs>
+          )}
           <SmallerWorksCarousel>
-            {new Array(30).fill('').map((d, i) => (
+            {gistsList.map((gist, i) => (
               <SmallerWorks key={i}>
-                <Thumbnail size={'smaller'} />
+                <Thumbnail size={'smaller'}>
+                  <a
+                    href={`https://bl.ocks.org/jonsadka/${gist.id}`}
+                    target="_blank"
+                  >
+                    <img
+                      style={{ marginLeft: '-5px' }}
+                      height={'100px'}
+                      alt={gist.description}
+                      src={gist.files['thumbnail.png'].raw_url}
+                    />
+                  </a>
+                </Thumbnail>
               </SmallerWorks>
             ))}
           </SmallerWorksCarousel>
