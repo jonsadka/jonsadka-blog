@@ -17,8 +17,8 @@
       "path---tags-mongo-db-8a3f7a07e6a3de92fa33.js.map"
     ],
     "component---src-pages-index-js": [
-      "component---src-pages-index-js-18ab5914c8209efd0dc7.js",
-      "component---src-pages-index-js-18ab5914c8209efd0dc7.js.map"
+      "component---src-pages-index-js-1fac52846323a6cefd3a.js",
+      "component---src-pages-index-js-1fac52846323a6cefd3a.js.map"
     ],
     "path---blog-how-to-quickly-create-randomly-generated-datasets-in-javascript-with-d-3": [
       "path---blog-how-to-quickly-create-randomly-generated-datasets-in-javascript-with-d-3-09c67ab103fff0efc702.js",
@@ -49,12 +49,12 @@
       "path---blog-prototypal-and-pseudoclassical-instantiation-in-javascript-4059287abb9f36399610.js.map"
     ],
     "component---src-templates-blog-post-js": [
-      "component---src-templates-blog-post-js-c324d7012f35fe91c68a.js",
-      "component---src-templates-blog-post-js-c324d7012f35fe91c68a.js.map"
+      "component---src-templates-blog-post-js-c3ba391e20c80ad9a1ba.js",
+      "component---src-templates-blog-post-js-c3ba391e20c80ad9a1ba.js.map"
     ],
     "component---src-layouts-index-js": [
-      "component---src-layouts-index-js-69dcde0acbe9d54a1ebc.js",
-      "component---src-layouts-index-js-69dcde0acbe9d54a1ebc.js.map"
+      "component---src-layouts-index-js-ec86495695bce7e635aa.js",
+      "component---src-layouts-index-js-ec86495695bce7e635aa.js.map"
     ],
     "path---tags-d-3-js": [
       "path---tags-d-3-js-cbfb5fcd8081e1a85b95.js",
@@ -73,8 +73,8 @@
       "path---blog-supercharge-your-falsey-conditional-statements-in-javascript-39da70760aea44b9ed25.js.map"
     ],
     "path---index": [
-      "path---index-fcec57d2e47974b6d8e7.js",
-      "path---index-fcec57d2e47974b6d8e7.js.map"
+      "path---index-0f1d1722755d0a9863da.js",
+      "path---index-0f1d1722755d0a9863da.js.map"
     ],
     "path---blog-choosing-the-best-numbers-in-nfl-football-squares-to-beat-your-friends": [
       "path---blog-choosing-the-best-numbers-in-nfl-football-squares-to-beat-your-friends-2e5a07eb7b74a64c8a53.js",
@@ -89,8 +89,8 @@
       "component---src-pages-404-js-b3e7ca0012663ba8421b.js.map"
     ],
     "commons": [
-      "commons-4cb32e608b8de57ad14a.js",
-      "commons-4cb32e608b8de57ad14a.js.map"
+      "commons-c2581d4db2de391d0041.js",
+      "commons-c2581d4db2de391d0041.js.map"
     ],
     "path---404-html": [
       "path---404-html-a0e39f21c11f6a62c5ab.js",
@@ -105,8 +105,8 @@
       "path---blog-best-and-worst-times-to-take-an-uber-93d0c72ae150a640b82a.js.map"
     ],
     "component---src-pages-tags-js": [
-      "component---src-pages-tags-js-8423b121977ff6e758b9.js",
-      "component---src-pages-tags-js-8423b121977ff6e758b9.js.map"
+      "component---src-pages-tags-js-dcbec2a3fa59b458d04b.js",
+      "component---src-pages-tags-js-dcbec2a3fa59b458d04b.js.map"
     ],
     "path---blog-how-apple-can-catch-up-to-google-ratings-and-yelp-reviews-overnight": [
       "path---blog-how-apple-can-catch-up-to-google-ratings-and-yelp-reviews-overnight-27d83a8616a94e7f0faf.js",
@@ -117,9 +117,9 @@
       "path---tags-java-script-4050b767b423a22c13dc.js.map"
     ],
     "app": [
-      "app-870a56c8479fd0771536.js",
+      "app-a39e0d395c4c3d8e9232.js",
       "build-js-styles.css",
-      "app-870a56c8479fd0771536.js.map",
+      "app-a39e0d395c4c3d8e9232.js.map",
       "build-js-styles.css.map"
     ],
     "path---tags-j-query": [
