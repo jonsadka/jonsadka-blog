@@ -9,6 +9,11 @@ const PageContainer = styled.div`
   margin: 30px 0 60px 0;
 `
 
+const Tag = styled.li`
+  margin-bottom: 15px;
+  list-style-type: none;
+`;
+
 const Tags = ({ pathContext, data }) => {
   const { tag } = pathContext
   const { edges, totalCount } = data.allMarkdownRemark
@@ -23,9 +28,9 @@ const Tags = ({ pathContext, data }) => {
         {edges.map(({ node }) => {
           const { path, title } = node.frontmatter
           return (
-            <li key={path}>
+            <Tag key={path}>
               <Link to={path}>{title}</Link>
-            </li>
+            </Tag>
           )
         })}
       </ul>

@@ -336,7 +336,6 @@ ul {
   margin-bottom: 1.45rem;
   list-style-position: outside;
   list-style-image: none;
-  list-style-type: none;
 }
 ol {
   margin-left: 1.45rem;
@@ -380,7 +379,7 @@ p {
   padding-top: 0;
   color: #a3a3a3;
   margin-top: 30px;
-  font-size: 14px;
+  font-size: 15px;
 }
 figure {
   margin-left: 0;
@@ -511,7 +510,7 @@ th {
 }
 li {
   color: #a3a3a3;
-  margin-bottom: 30px;
+  margin-bottom: calc(1.45rem / 2);
 }
 ol li {
   padding-left: 0;

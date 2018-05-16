@@ -16,8 +16,15 @@ const BlogTitle = styled.div`
 const BlogContent = styled.div`
   color: #a3a3a3;
   line-height: 20px;
-  font-size: 14px;
+  font-size: 15px;
   font-family: 'Questrial';
+  img {
+    border-radius: 4px;
+    display: block;
+    margin: 10px auto;
+    max-width: 734px;
+    width: 100%;
+  }
 `
 
 export default function Template({ data }) {

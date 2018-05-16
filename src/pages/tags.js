@@ -16,6 +16,7 @@ const PageContainer = styled.div`
 const Tag = styled.li`
   list-style-type: none;
   margin-left: 0;
+  margin-bottom: 30px;
 `
 
 const ForwardSlash = styled.span`
