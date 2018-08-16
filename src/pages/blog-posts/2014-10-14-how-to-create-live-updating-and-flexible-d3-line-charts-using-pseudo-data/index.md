@@ -6,7 +6,7 @@ tags: ["D3.js", "JavaScript"]
 title: "How to create live updating and flexible D3.js line charts using D3.js v3 and pseudo-data (interactive tutorial and example)"
 ---
 
-NOTE: Looking for the newest version of this tutorial using the latest version of D3.js (v5)? See it here [link](http://jonsadka.com/blog/how-to-create-live-updating-and-flexible-d3-line-charts-using-pseudo-data/)
+NOTE: Looking for the newest version of this tutorial using the latest version of D3.js (v5)? See it [here](http://jonsadka.com/blog/how-to-create-live-updating-and-flexible-d3-line-charts-using-d3-js-v5-and-pseudo-data)
 
 One of the bigger challenges in visualizing data is making your charts responsive so that they can resize no matter what range of data is thrown at it. Things get even more complicated when the dataset is actually a collection of many individual sets of data. One obvious example of this is a dataset containing (x,y) coordinates for multiple lines. The goal is to create a chart similar to the one below, which adapts to any new data thrown at it.
 

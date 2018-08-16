@@ -209,4 +209,4 @@ lines.transition().duration(1500)
 That’s it! If you’re interested in seeing the complete code, go ahead and check out my bl.ocks: [https://bl.ocks.org/jonsadka/19f1366db3ff25195e650ec90d404092](https://bl.ocks.org/jonsadka/19f1366db3ff25195e650ec90d404092)
 
 
-NOTE: Looking for the D3.js v3 tutorial? See it here [link](http://jonsadka.com/blog/how-to-create-live-updating-and-flexible-d3-line-charts-using-pseudo-data/)
+NOTE: Looking for the D3.js v3 tutorial? See it [here](http://jonsadka.com/blog/how-to-create-live-updating-and-flexible-d3-line-charts-using-pseudo-data/)
