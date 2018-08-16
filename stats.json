@@ -1,8 +1,8 @@
 {
   "assetsByChunkName": {
     "path---blog-how-to-create-adaptive-pie-charts-with-transitions-in-d-3": [
-      "path---blog-how-to-create-adaptive-pie-charts-with-transitions-in-d-3-f1f92b7f7560aac8be35.js",
-      "path---blog-how-to-create-adaptive-pie-charts-with-transitions-in-d-3-f1f92b7f7560aac8be35.js.map"
+      "path---blog-how-to-create-adaptive-pie-charts-with-transitions-in-d-3-fa14a5a9d91d7087cde2.js",
+      "path---blog-how-to-create-adaptive-pie-charts-with-transitions-in-d-3-fa14a5a9d91d7087cde2.js.map"
     ],
     "path---tags-ux-ui": [
       "path---tags-ux-ui-a32ac5042b2af955d093.js",
@@ -21,8 +21,8 @@
       "component---src-pages-index-js-268c01eccdea00eb2c93.js.map"
     ],
     "path---blog-how-to-quickly-create-randomly-generated-datasets-in-javascript-with-d-3": [
-      "path---blog-how-to-quickly-create-randomly-generated-datasets-in-javascript-with-d-3-09c67ab103fff0efc702.js",
-      "path---blog-how-to-quickly-create-randomly-generated-datasets-in-javascript-with-d-3-09c67ab103fff0efc702.js.map"
+      "path---blog-how-to-quickly-create-randomly-generated-datasets-in-javascript-with-d-3-2098e6849f3252e8ee4b.js",
+      "path---blog-how-to-quickly-create-randomly-generated-datasets-in-javascript-with-d-3-2098e6849f3252e8ee4b.js.map"
     ],
     "component---src-templates-tags-js": [
       "component---src-templates-tags-js-c0356a12f1f284ded8a8.js",
@@ -93,8 +93,8 @@
       "component---src-pages-404-js-b3e7ca0012663ba8421b.js.map"
     ],
     "commons": [
-      "commons-7f5d0cb9e47525e92386.js",
-      "commons-7f5d0cb9e47525e92386.js.map"
+      "commons-01d3fe9eba5b227b52aa.js",
+      "commons-01d3fe9eba5b227b52aa.js.map"
     ],
     "path---404-html": [
       "path---404-html-a0e39f21c11f6a62c5ab.js",
