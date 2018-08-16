@@ -6,7 +6,7 @@ tags: ["D3.js", "JavaScript"]
 title: "How to create adaptive pie donut charts with transitions in D3.js (interactive tutorial and example)"
 ---
 
-Following up with my last blog post about adaptive line chart graphs ([link](http://jonsadka.com/blog/how-to-create-live-updating-and-flexible-d3-line-charts-using-pseudo-data/)), I decided to apply this same concept of adaptive charts to a pie / donut chart. The goal is to create a chart similar to the one below, which updates to any new data thrown at it.
+Following up with my last blog post about adaptive line chart graphs ([link](/blog/how-to-create-live-updating-and-flexible-d3-line-charts-using-pseudo-data/)), I decided to apply this same concept of adaptive charts to a pie / donut chart. The goal is to create a chart similar to the one below, which updates to any new data thrown at it.
 
 NOTE: for mobile devices, view the visual here: [link](http://bl.ocks.org/jonsadka/fa05f8d53d4e8b5f262e).
 
@@ -14,7 +14,7 @@ NOTE: for mobile devices, view the visual here: [link](http://bl.ocks.org/jonsad
 
 ### Generate data
 
-The best way to test the functionality of your graph is to generate new pseudo-data at a set interval and update the graph at that interval. For those unfamiliar with quick data generation in D3, I recommend you take a look at my previous blog ([link](http://jonsadka.com/blog/how-to-quickly-create-randomly-generated-datasets-in-javascript-with-d3/)). For this example, we need to create a single dimensional dataset. Typically pie / donut chart data would be multi-dimensional, at the very least, because it would contain a description of each data point however I will ignore it for this example. The data generation function below takes in one argument, the desired number of data points, and returns an array with that number of data elements. Data is multiplied by 100 to better exaggerate the visuals.
+The best way to test the functionality of your graph is to generate new pseudo-data at a set interval and update the graph at that interval. For those unfamiliar with quick data generation in D3, I recommend you take a look at my previous blog ([link](/blog/how-to-quickly-create-randomly-generated-datasets-in-javascript-with-d3/)). For this example, we need to create a single dimensional dataset. Typically pie / donut chart data would be multi-dimensional, at the very least, because it would contain a description of each data point however I will ignore it for this example. The data generation function below takes in one argument, the desired number of data points, and returns an array with that number of data elements. Data is multiplied by 100 to better exaggerate the visuals.
 
 ```javascript
 function newData(lineNumber, points){

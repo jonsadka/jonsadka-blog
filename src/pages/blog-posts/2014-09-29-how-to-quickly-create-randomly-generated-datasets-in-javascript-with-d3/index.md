@@ -26,7 +26,7 @@ console.log(familyMembers); // logs ["Jon Sadka", "James Sadka", "Robert Sadka",
 
 ### D3.js d3.range() explained
 
-D3 has availed a d3.range() function, which creates a numerical array given a specified range (start value and end value) and step size (similar to the blog post I wrote about here http://jonsadka.com/blog/using-reduce-to-create-arrays-and-objects-in-javascript/)
+D3 has availed a d3.range() function, which creates a numerical array given a specified range (start value and end value) and step size (similar to the blog post I wrote about [here](/blog/using-reduce-to-create-arrays-and-objects-in-javascript/))
 
 ```javascript
 d3.range(10); // returns [0,1,2,3,4,5,6,7,8,9,10]
