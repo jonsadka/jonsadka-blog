@@ -1,2 +1,0 @@
-webpackJsonp([0x940548584fc],{344:function(t,n){t.exports={pathContext:{}}}});
-//# sourceMappingURL=path---choosing-the-best-numbers-in-nfl-football-squares-to-beat-your-friends-a0e39f21c11f6a62c5ab.js.map
