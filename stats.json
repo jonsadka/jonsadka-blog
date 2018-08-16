@@ -17,8 +17,8 @@
       "path---tags-mongo-db-8a3f7a07e6a3de92fa33.js.map"
     ],
     "component---src-pages-index-js": [
-      "component---src-pages-index-js-d99447f71bdfc973d4cd.js",
-      "component---src-pages-index-js-d99447f71bdfc973d4cd.js.map"
+      "component---src-pages-index-js-268c01eccdea00eb2c93.js",
+      "component---src-pages-index-js-268c01eccdea00eb2c93.js.map"
     ],
     "path---blog-how-to-quickly-create-randomly-generated-datasets-in-javascript-with-d-3": [
       "path---blog-how-to-quickly-create-randomly-generated-datasets-in-javascript-with-d-3-09c67ab103fff0efc702.js",
@@ -53,20 +53,20 @@
       "path---blog-prototypal-and-pseudoclassical-instantiation-in-javascript-4059287abb9f36399610.js.map"
     ],
     "component---src-templates-blog-post-js": [
-      "component---src-templates-blog-post-js-499b6d0c36dadac59430.js",
-      "component---src-templates-blog-post-js-499b6d0c36dadac59430.js.map"
+      "component---src-templates-blog-post-js-28438df4d80dd5e13d89.js",
+      "component---src-templates-blog-post-js-28438df4d80dd5e13d89.js.map"
     ],
     "component---src-layouts-index-js": [
-      "component---src-layouts-index-js-44e899365407b676b1fe.js",
-      "component---src-layouts-index-js-44e899365407b676b1fe.js.map"
+      "component---src-layouts-index-js-a101fa021bdb3648afa7.js",
+      "component---src-layouts-index-js-a101fa021bdb3648afa7.js.map"
     ],
     "path---tags-d-3-js": [
       "path---tags-d-3-js-b69dde57f7061ba58040.js",
       "path---tags-d-3-js-b69dde57f7061ba58040.js.map"
     ],
     "path---blog-how-to-create-live-updating-and-flexible-d-3-line-charts-using-pseudo-data": [
-      "path---blog-how-to-create-live-updating-and-flexible-d-3-line-charts-using-pseudo-data-c26f5d56e07004bbd319.js",
-      "path---blog-how-to-create-live-updating-and-flexible-d-3-line-charts-using-pseudo-data-c26f5d56e07004bbd319.js.map"
+      "path---blog-how-to-create-live-updating-and-flexible-d-3-line-charts-using-pseudo-data-7ac340dff1689aa85411.js",
+      "path---blog-how-to-create-live-updating-and-flexible-d-3-line-charts-using-pseudo-data-7ac340dff1689aa85411.js.map"
     ],
     "path---blog-how-to-generate-time-series-week-over-week-year-over-year-aggregations-in-mongodb-using-unix-epoch-timestamps-tutorial-and-example": [
       "path---blog-how-to-generate-time-series-week-over-week-year-over-year-aggregations-in-mongodb-using-unix-epoch-timestamps-tutorial-and-example-ed016f43e0a4d2c38733.js",
@@ -93,8 +93,8 @@
       "component---src-pages-404-js-b3e7ca0012663ba8421b.js.map"
     ],
     "commons": [
-      "commons-c2581d4db2de391d0041.js",
-      "commons-c2581d4db2de391d0041.js.map"
+      "commons-7f5d0cb9e47525e92386.js",
+      "commons-7f5d0cb9e47525e92386.js.map"
     ],
     "path---404-html": [
       "path---404-html-a0e39f21c11f6a62c5ab.js",
@@ -109,8 +109,8 @@
       "path---blog-best-and-worst-times-to-take-an-uber-93d0c72ae150a640b82a.js.map"
     ],
     "component---src-pages-tags-js": [
-      "component---src-pages-tags-js-4285c58c045335fbdd1c.js",
-      "component---src-pages-tags-js-4285c58c045335fbdd1c.js.map"
+      "component---src-pages-tags-js-74c6a6040eb0865ab482.js",
+      "component---src-pages-tags-js-74c6a6040eb0865ab482.js.map"
     ],
     "path---blog-how-apple-can-catch-up-to-google-ratings-and-yelp-reviews-overnight": [
       "path---blog-how-apple-can-catch-up-to-google-ratings-and-yelp-reviews-overnight-27d83a8616a94e7f0faf.js",
@@ -121,9 +121,9 @@
       "path---tags-java-script-d0dfd378010137636fe7.js.map"
     ],
     "app": [
-      "app-ed8d7db08bc46ff990c4.js",
+      "app-5f2bf4e859928e27303f.js",
       "build-js-styles.css",
-      "app-ed8d7db08bc46ff990c4.js.map",
+      "app-5f2bf4e859928e27303f.js.map",
       "build-js-styles.css.map"
     ],
     "path---tags-j-query": [
@@ -143,8 +143,8 @@
       "path---blog-using-reduce-to-create-arrays-and-objects-in-javascript-45d0856eb9f74d3b96c0.js.map"
     ],
     "path---blog-how-to-create-live-updating-and-flexible-d-3-line-charts-using-d-3-js-v-5-and-pseudo-data": [
-      "path---blog-how-to-create-live-updating-and-flexible-d-3-line-charts-using-d-3-js-v-5-and-pseudo-data-4e99ce5aeb5030447dca.js",
-      "path---blog-how-to-create-live-updating-and-flexible-d-3-line-charts-using-d-3-js-v-5-and-pseudo-data-4e99ce5aeb5030447dca.js.map"
+      "path---blog-how-to-create-live-updating-and-flexible-d-3-line-charts-using-d-3-js-v-5-and-pseudo-data-ce106858f9a36725872a.js",
+      "path---blog-how-to-create-live-updating-and-flexible-d-3-line-charts-using-d-3-js-v-5-and-pseudo-data-ce106858f9a36725872a.js.map"
     ]
   }
 }
