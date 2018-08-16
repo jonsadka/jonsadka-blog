@@ -12,7 +12,7 @@ One of the bigger challenges in visualizing data is making your charts responsiv
 
 ### Generate data
 
-The best way to test the functionality of your graph is to generate new pseudo-data at a set interval and update the graph at the same interval. I had previously blogged about how to generate large datasets using D3.js and JavaScript; if you are not familiar with this process, I strongly recommend that you take a quick read through that ([link](http://jonsadka.com/blog/how-to-quickly-create-randomly-generated-datasets-in-javascript-with-d3/)). For this example, we need to start by creating a function that returns a dataset comprised of (x,y) coordinates for any specified number of lines. The function below takes two arguments, the desired number of lines and the desired number of points, and returns a 2D array where each nested array is a series of (x,y) coordinates pertaining to that line. The y coordinate is multiplied by 100 to better exaggerate this example.
+The best way to test the functionality of your graph is to generate new pseudo-data at a set interval and update the graph at the same interval. I had previously blogged about how to generate large datasets using D3.js and JavaScript; if you are not familiar with this process, I strongly recommend that you take a quick read through that ([link](/blog/how-to-quickly-create-randomly-generated-datasets-in-javascript-with-d3/)). For this example, we need to start by creating a function that returns a dataset comprised of (x,y) coordinates for any specified number of lines. The function below takes two arguments, the desired number of lines and the desired number of points, and returns a 2D array where each nested array is a series of (x,y) coordinates pertaining to that line. The y coordinate is multiplied by 100 to better exaggerate this example.
 
 ```javascript
 function newData(lineNumber, numPoints) {
@@ -209,4 +209,4 @@ lines.transition().duration(1500)
 That’s it! If you’re interested in seeing the complete code, go ahead and check out my bl.ocks: [https://bl.ocks.org/jonsadka/19f1366db3ff25195e650ec90d404092](https://bl.ocks.org/jonsadka/19f1366db3ff25195e650ec90d404092)
 
 
-NOTE: Looking for the D3.js v3 tutorial? See it [here](http://jonsadka.com/blog/how-to-create-live-updating-and-flexible-d3-line-charts-using-pseudo-data/)
+NOTE: Looking for the D3.js v3 tutorial? See it [here](/blog/how-to-create-live-updating-and-flexible-d3-line-charts-using-pseudo-data/)
