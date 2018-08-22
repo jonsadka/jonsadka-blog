@@ -23,6 +23,10 @@ const TemplateWrapper = ({ children }) => (
           name: 'theme-color',
           content: '#333333',
         },
+        {
+          name: 'google-site-verification',
+          content: 'aGnf4yqfnIPW-BYUolkaPSjtVzXYAsQKR3pZAuxH7-E',
+        },
       ]}
     />
     <Header />
