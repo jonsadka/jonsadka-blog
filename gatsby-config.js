@@ -37,8 +37,12 @@ module.exports = {
         display: 'fullscreen'
       },
     },
+    {
+      resolve: `gatsby-plugin-sitemap`
+    }
   ],
   siteMetadata: {
+    siteUrl: 'https://jonsadka.com',
     title: 'Jon Sadka\'s work',
     author: 'Jon Sadka'
   }
