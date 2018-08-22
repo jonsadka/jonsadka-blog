@@ -24,7 +24,12 @@ const ForwardSlash = styled.span`
 `
 
 const TagsPage = ({
-  data: { allMarkdownRemark: { group }, site: { siteMetadata: { title } } },
+  data: {
+    allMarkdownRemark: { group },
+    site: {
+      siteMetadata: { title },
+    },
+  },
 }) => (
   <PageContainer>
     <Helmet title={title} />

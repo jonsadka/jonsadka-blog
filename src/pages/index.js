@@ -8,7 +8,7 @@ import styled from 'styled-components'
 
 const DEFAULT_MARGIN = 30
 const SMALL_THUMBNAIL_HEIGHT = 100
-const SCROLL_BAR_HEIGHT = 20;
+const SCROLL_BAR_HEIGHT = 20
 
 import { LARGER_WORKS } from '../works/larger-works'
 
@@ -64,7 +64,8 @@ const SmallerWorksCarousel = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   height: ${SMALL_THUMBNAIL_HEIGHT +
-    2 * (SMALL_THUMBNAIL_HEIGHT + DEFAULT_MARGIN) + SCROLL_BAR_HEIGHT}px;
+    2 * (SMALL_THUMBNAIL_HEIGHT + DEFAULT_MARGIN) +
+    SCROLL_BAR_HEIGHT}px;
   white-space: nowrap;
 `
 

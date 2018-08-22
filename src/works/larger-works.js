@@ -1,7 +1,8 @@
 export const LARGER_WORKS = [
   {
     createdAt: 1525590000000,
-    description: 'A realtime visualization using client-side audio / video stream APIs and rendered to canvas at 64fps',
+    description:
+      'A realtime visualization using client-side audio / video stream APIs and rendered to canvas at 64fps',
     title: 'Live Light Concert Visualizer',
     thumbnail: '/img/thumbnails/live-light.gif',
     url: 'https://jonsadka.github.io/livelight/',

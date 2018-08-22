@@ -19,6 +19,10 @@ const TemplateWrapper = ({ children }) => (
           content:
             'personal website, blog, sadka, jon, jon sadka, visualization, front end, software engineer, portfolio, visualization, D3.js, JavaScript',
         },
+        {
+          name: 'theme-color',
+          content: '#333333',
+        },
       ]}
     />
     <Header />

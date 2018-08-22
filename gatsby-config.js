@@ -25,7 +25,18 @@ module.exports = {
         // Setting this parameter is optional
         anonymize: true,
       },
-    }
+    },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: 'Jon Sadka Website and Blog',
+        short_name: 'Jon Sadka',
+        start_url: '/',
+        background_color: '#ffffff',
+        theme_color: '#333333',
+        display: 'fullscreen'
+      },
+    },
   ],
   siteMetadata: {
     title: 'Jon Sadka\'s work',

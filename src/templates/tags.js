@@ -12,7 +12,7 @@ const PageContainer = styled.div`
 const Tag = styled.li`
   margin-bottom: 15px;
   list-style-type: none;
-`;
+`
 
 const Tags = ({ pathContext, data }) => {
   const { tag } = pathContext
