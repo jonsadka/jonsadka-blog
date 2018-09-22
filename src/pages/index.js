@@ -93,6 +93,10 @@ const Thumbnail = styled.div`
   width: ${props => (props.size === 'larger' ? '367px' : '184px')};
 `
 
+const ThumbnailImage = styled.img`
+  width: ${props => (props.size === 'larger' ? '367px' : '184px')};
+`
+
 const WorkDetails = styled.div`
   padding: ${DEFAULT_MARGIN}px;
 `
@@ -180,7 +184,7 @@ export default class Index extends React.Component {
                 <LargerWorks key={work.url}>
                   <Thumbnail size={'larger'}>
                     <a href={work.url} target="_blank">
-                      <img alt={work.title} src={withPrefix(work.thumbnail)} />
+                      <ThumbnailImage alt={work.title} size={'larger'} src={withPrefix(work.thumbnail)} />
                     </a>
                   </Thumbnail>
                   <WorkDetails>

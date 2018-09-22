@@ -14,10 +14,10 @@
     "gatsby-plugin-styled-components": "^2.0.11",
     "gatsby-source-filesystem": "^1.5.39",
     "gatsby-transformer-remark": "^1.7.40",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.11",
     "react-helmet": "^5.2.0",
     "request": "^2.88.0",
-    "styled-components": "^3.4.4"
+    "styled-components": "^3.4.9"
   },
   "keywords": [
     "gatsby"
@@ -34,6 +34,6 @@
   },
   "devDependencies": {
     "gh-pages": "^1.1.0",
-    "prettier": "^1.12.1"
+    "prettier": "^1.14.3"
   }
 }
