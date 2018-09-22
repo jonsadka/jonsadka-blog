@@ -12,6 +12,10 @@
       "path---blog-fight-on-the-power-of-javascript-closures-4e105a17992e60540dc9.js",
       "path---blog-fight-on-the-power-of-javascript-closures-4e105a17992e60540dc9.js.map"
     ],
+    "path---blog-designing-a-visualization-tool-for-structural-engineers": [
+      "path---blog-designing-a-visualization-tool-for-structural-engineers-1a56098c3a7c27889f93.js",
+      "path---blog-designing-a-visualization-tool-for-structural-engineers-1a56098c3a7c27889f93.js.map"
+    ],
     "path---tags-mongo-db": [
       "path---tags-mongo-db-8a3f7a07e6a3de92fa33.js",
       "path---tags-mongo-db-8a3f7a07e6a3de92fa33.js.map"
@@ -39,6 +43,10 @@
     "path---": [
       "path----557518bd178906f8d58a.js",
       "path----557518bd178906f8d58a.js.map"
+    ],
+    "path---tags-design": [
+      "path---tags-design-d7ed832f0816db033adb.js",
+      "path---tags-design-d7ed832f0816db033adb.js.map"
     ],
     "path---blog-how-to-debug-a-chrome-specific-bug-on-ios-using-remote-debugging": [
       "path---blog-how-to-debug-a-chrome-specific-bug-on-ios-using-remote-debugging-223b9b707a1af79ed633.js",
@@ -121,9 +129,9 @@
       "path---tags-java-script-d0dfd378010137636fe7.js.map"
     ],
     "app": [
-      "app-29bf3ae6c747aef8726e.js",
+      "app-e159e09d975b8907b692.js",
       "build-js-styles.css",
-      "app-29bf3ae6c747aef8726e.js.map",
+      "app-e159e09d975b8907b692.js.map",
       "build-js-styles.css.map"
     ],
     "path---tags-j-query": [
