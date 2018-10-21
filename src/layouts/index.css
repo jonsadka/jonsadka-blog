@@ -621,3 +621,7 @@ pre tt:after {
     font-size: 100%;
   }
 }
+img + em {
+  display: block;
+  text-align: center;
+}
