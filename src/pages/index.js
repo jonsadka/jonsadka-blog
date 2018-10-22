@@ -12,6 +12,9 @@ const SCROLL_BAR_HEIGHT = 20
 
 import { LARGER_WORKS } from '../works/larger-works'
 
+const BLOCKS_ID = 'blocks'
+const OBSERVABLE_ID = 'observable'
+
 const BlogPreview = styled.div`
   margin-bottom: ${DEFAULT_MARGIN}px;
 `
@@ -82,6 +85,12 @@ const SmallerWorks = styled.div`
   }
   margin-right: ${DEFAULT_MARGIN}px;
   display: inline-block;
+`
+
+const SmallerWorkImage = styled.img`
+  margin-left: -5px;
+  margin-top: ${props => props.workType === OBSERVABLE_ID ? '-8px' : '0'};
+  height: ${props => props.workType === OBSERVABLE_ID ? '120px' : '100px'};
 `
 
 const Thumbnail = styled.div`
@@ -161,19 +170,24 @@ export default class Index extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      writtenWorkTag: 'all',
+      selectedSmallerWorkType: 'all',
+      selectedWrittenWorkTag: 'all',
     }
   }
 
+  _filterSmallerWork(workType) {
+    this.setState({ selectedSmallerWorkType: workType})
+  }
+
   _filterWrittenWork(tag) {
-    this.setState({ writtenWorkTag: tag || 'JavaScript' })
+    this.setState({ selectedWrittenWorkTag: tag})
   }
 
   render() {
-    const { writtenWorkTag } = this.state
+    const { selectedSmallerWorkType, selectedWrittenWorkTag } = this.state
     const { data, pathContext } = this.props
     const { edges: posts } = data.allMarkdownRemark
-    const { gistsList } = pathContext
+    const { smallerWorks } = pathContext
     return (
       <div>
         <WorksSection>
@@ -202,28 +216,36 @@ export default class Index extends React.Component {
 
         <WorksSection>
           <h2>Smaller Works</h2>
-          {false && (
-            <Tabs>
-              <Tab onClick={console.log} selected={true}>
-                All Sources
+          <Tabs>
+            {[
+              { id: 'all', text: 'All Sources' },
+              { id: BLOCKS_ID, text: 'Bl.ocks' },
+              { id: OBSERVABLE_ID, text: 'Observable' },
+            ].map(tab => (
+              <Tab
+                key={tab.id}
+                selected={tab.id === selectedSmallerWorkType}
+                onClick={() => this._filterSmallerWork(tab.id)}
+              >
+                {tab.text}
               </Tab>
-              <Tab onClick={console.log}>Bl.ocks</Tab>
-              <Tab onClick={console.log}>Observable</Tab>
-            </Tabs>
-          )}
+            ))}
+          </Tabs>
           <SmallerWorksCarousel>
-            {gistsList.map((gist, i) => (
+            {smallerWorks
+            .filter(
+              smallerWork =>
+                selectedSmallerWorkType === 'all' ||
+                smallerWork.workType === selectedSmallerWorkType
+            )
+            .map((smallerWork, i) => (
               <SmallerWorks key={i}>
                 <Thumbnail size={'smaller'}>
-                  <a
-                    href={`https://bl.ocks.org/jonsadka/${gist.id}`}
-                    target="_blank"
-                  >
-                    <img
-                      style={{ marginLeft: '-5px' }}
-                      height={'100px'}
-                      alt={gist.description}
-                      src={gist.files['thumbnail.png'].raw_url}
+                  <a href={smallerWork.href} target="_blank">
+                    <SmallerWorkImage
+                      alt={smallerWork.alt}
+                      src={smallerWork.imgUrl}
+                      workType={smallerWork.workType}
                     />
                   </a>
                 </Thumbnail>
@@ -235,6 +257,9 @@ export default class Index extends React.Component {
         <WorksSection>
           <h2>Written Works</h2>
           <Tabs>
+            {/*
+              TODO: Make this generative so that adding a new tag updates this list automatically
+            */}
             {[
               { id: 'all', text: 'All Tags' },
               { id: 'API', text: 'API' },
@@ -246,7 +271,7 @@ export default class Index extends React.Component {
             ].map(tab => (
               <Tab
                 key={tab.id}
-                selected={tab.id === writtenWorkTag}
+                selected={tab.id === selectedWrittenWorkTag}
                 onClick={() => this._filterWrittenWork(tab.id)}
               >
                 {tab.text}
@@ -258,8 +283,8 @@ export default class Index extends React.Component {
               .filter(post => post.node.frontmatter.title.length > 0)
               .filter(
                 post =>
-                  writtenWorkTag === 'all' ||
-                  post.node.frontmatter.tags.includes(writtenWorkTag)
+                  selectedWrittenWorkTag === 'all' ||
+                  post.node.frontmatter.tags.includes(selectedWrittenWorkTag)
               )
               .map(({ node: post }) => {
                 return (
