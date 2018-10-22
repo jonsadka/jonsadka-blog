@@ -12,17 +12,13 @@
       "path---blog-fight-on-the-power-of-javascript-closures-4e105a17992e60540dc9.js",
       "path---blog-fight-on-the-power-of-javascript-closures-4e105a17992e60540dc9.js.map"
     ],
-    "path---blog-designing-a-visualization-tool-for-structural-engineers": [
-      "path---blog-designing-a-visualization-tool-for-structural-engineers-1a56098c3a7c27889f93.js",
-      "path---blog-designing-a-visualization-tool-for-structural-engineers-1a56098c3a7c27889f93.js.map"
-    ],
     "path---tags-mongo-db": [
       "path---tags-mongo-db-8a3f7a07e6a3de92fa33.js",
       "path---tags-mongo-db-8a3f7a07e6a3de92fa33.js.map"
     ],
     "component---src-pages-index-js": [
-      "component---src-pages-index-js-3befe3cb57c127df87ee.js",
-      "component---src-pages-index-js-3befe3cb57c127df87ee.js.map"
+      "component---src-pages-index-js-2a4ffb40634de0eb7c44.js",
+      "component---src-pages-index-js-2a4ffb40634de0eb7c44.js.map"
     ],
     "path---blog-how-to-quickly-create-randomly-generated-datasets-in-javascript-with-d-3": [
       "path---blog-how-to-quickly-create-randomly-generated-datasets-in-javascript-with-d-3-2098e6849f3252e8ee4b.js",
@@ -45,8 +41,12 @@
       "path----557518bd178906f8d58a.js.map"
     ],
     "path---tags-design": [
-      "path---tags-design-d7ed832f0816db033adb.js",
-      "path---tags-design-d7ed832f0816db033adb.js.map"
+      "path---tags-design-e19067ccc70c4a4ad7ee.js",
+      "path---tags-design-e19067ccc70c4a4ad7ee.js.map"
+    ],
+    "path---blog-overview-and-usage-of-the-steel-explorer": [
+      "path---blog-overview-and-usage-of-the-steel-explorer-1a56098c3a7c27889f93.js",
+      "path---blog-overview-and-usage-of-the-steel-explorer-1a56098c3a7c27889f93.js.map"
     ],
     "path---blog-how-to-debug-a-chrome-specific-bug-on-ios-using-remote-debugging": [
       "path---blog-how-to-debug-a-chrome-specific-bug-on-ios-using-remote-debugging-223b9b707a1af79ed633.js",
@@ -85,8 +85,8 @@
       "path---blog-supercharge-your-falsey-conditional-statements-in-javascript-39da70760aea44b9ed25.js.map"
     ],
     "path---index": [
-      "path---index-7ecc05f3a9957675d6d7.js",
-      "path---index-7ecc05f3a9957675d6d7.js.map"
+      "path---index-2b88f01693bccca9362c.js",
+      "path---index-2b88f01693bccca9362c.js.map"
     ],
     "path---blog-choosing-the-best-numbers-in-nfl-football-squares-to-beat-your-friends": [
       "path---blog-choosing-the-best-numbers-in-nfl-football-squares-to-beat-your-friends-2e5a07eb7b74a64c8a53.js",
@@ -125,18 +125,22 @@
       "path---blog-how-apple-can-catch-up-to-google-ratings-and-yelp-reviews-overnight-27d83a8616a94e7f0faf.js.map"
     ],
     "path---tags-java-script": [
-      "path---tags-java-script-d0dfd378010137636fe7.js",
-      "path---tags-java-script-d0dfd378010137636fe7.js.map"
+      "path---tags-java-script-28e4fbaac00307f8dead.js",
+      "path---tags-java-script-28e4fbaac00307f8dead.js.map"
     ],
     "app": [
-      "app-e159e09d975b8907b692.js",
+      "app-e0b42d821498939d31dc.js",
       "build-js-styles.css",
-      "app-e159e09d975b8907b692.js.map",
+      "app-e0b42d821498939d31dc.js.map",
       "build-js-styles.css.map"
     ],
     "path---tags-j-query": [
       "path---tags-j-query-269370f4792876ec252c.js",
       "path---tags-j-query-269370f4792876ec252c.js.map"
+    ],
+    "path---blog-designing-and-engineering-a-visualization-tool-for-structural-engineers": [
+      "path---blog-designing-and-engineering-a-visualization-tool-for-structural-engineers-1a56098c3a7c27889f93.js",
+      "path---blog-designing-and-engineering-a-visualization-tool-for-structural-engineers-1a56098c3a7c27889f93.js.map"
     ],
     "path---404": [
       "path---404-a0e39f21c11f6a62c5ab.js",
