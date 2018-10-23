@@ -27,7 +27,9 @@ const TemplateWrapper = ({ children }) => (
           content: 'aGnf4yqfnIPW-BYUolkaPSjtVzXYAsQKR3pZAuxH7-E',
         },
       ]}
-    />
+    >
+      <html lang="en" />
+    </Helmet>
     <Header />
     <div
       style={{
