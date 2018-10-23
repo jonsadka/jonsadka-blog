@@ -1,9 +1,11 @@
 import React from 'react'
 import Helmet from 'react-helmet'
+import { graphql } from 'gatsby'
+import styled from 'styled-components'
+
+import Layout from '../components/layout'
 
 // import '../css/blog-post.css';
-
-import styled from 'styled-components'
 
 const BlogTitle = styled.div`
   color: #394047;
@@ -30,26 +32,30 @@ const BlogContent = styled.div`
 export default function Template({ data }) {
   const { markdownRemark: post } = data
   return post ? (
-    <div className="blog-post-container">
-      <Helmet title={`Jon Sadka - ${post.frontmatter.title}`} />
-      <div className="blog-post">
-        <BlogTitle>{post.frontmatter.title}</BlogTitle>
-        <BlogContent
-          className="blog-post-content"
-          dangerouslySetInnerHTML={{ __html: post.html }}
-        />
-      </div>
-    </div>
-  ) : (
-    <div className="blog-post-container">
-      <Helmet title={`Jon Sadka`} />
-      <div className="blog-post">
-        <h1>Oh No!</h1>
-        <div className="blog-post-content">
-          We could not find the page you are looking for
+    <Layout>
+      <div className="blog-post-container">
+        <Helmet title={`Jon Sadka - ${post.frontmatter.title}`} />
+        <div className="blog-post">
+          <BlogTitle>{post.frontmatter.title}</BlogTitle>
+          <BlogContent
+            className="blog-post-content"
+            dangerouslySetInnerHTML={{ __html: post.html }}
+          />
         </div>
       </div>
-    </div>
+    </Layout>
+  ) : (
+    <Layout>
+      <div className="blog-post-container">
+        <Helmet title={`Jon Sadka`} />
+        <div className="blog-post">
+          <h1>Oh No!</h1>
+          <div className="blog-post-content">
+            We could not find the page you are looking for
+          </div>
+        </div>
+      </div>
+    </Layout>
   )
 }
 

@@ -12,8 +12,8 @@ const request = require('request');
 const BLOCKS_ID = 'blocks'
 const OBSERVABLE_ID = 'observable'
 
-exports.createPages = ({ boundActionCreators, graphql }) => {
-  const { createPage } = boundActionCreators;
+exports.createPages = ({ actions, graphql }) => {
+  const { createPage } = actions;
 
   const blogPostTemplate = path.resolve(`src/templates/blog-post.js`);
   const tagTemplate = path.resolve('src/templates/tags.js')
@@ -77,7 +77,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
     });
 }
 
-exports.onCreatePage = ({boundActionCreators, page}) => {
+exports.onCreatePage = ({actions, page}) => {
   if (page.path === '/') {
     return new Promise(resolve => {
       Promise.all([
@@ -86,7 +86,7 @@ exports.onCreatePage = ({boundActionCreators, page}) => {
         const {observablesList, observablesErr} = observablesPayload
         const {gistsList, gistsErr} = gistsPayload
         // Replace new page with old page
-        const { createPage, deletePage } = boundActionCreators;
+        const { createPage, deletePage } = actions;
         const oldPage = { ...page };
         deletePage(oldPage);
         createPage({

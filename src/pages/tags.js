@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 // Utilities
@@ -7,7 +7,9 @@ import kebabCase from 'lodash/kebabcase'
 
 // Components
 import Helmet from 'react-helmet'
-import Link from 'gatsby-link'
+import { graphql, Link } from 'gatsby'
+
+import Layout from '../components/layout'
 
 const PageContainer = styled.div`
   margin: 30px 0 60px 0;
@@ -31,23 +33,25 @@ const TagsPage = ({
     },
   },
 }) => (
-  <PageContainer>
-    <Helmet title={title} />
-    <div>
-      <h2>Tags</h2>
-      <ul>
-        {group.sort((a, b) => b.totalCount - a.totalCount).map(tag => (
-          <Tag key={tag.fieldValue}>
-            <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-              {tag.totalCount < 10 ? `0${tag.totalCount}` : tag.totalCount}
-              <ForwardSlash>/</ForwardSlash>
-              {tag.fieldValue}
-            </Link>
-          </Tag>
-        ))}
-      </ul>
-    </div>
-  </PageContainer>
+  <Layout>
+    <PageContainer>
+      <Helmet title={title} />
+      <div>
+        <h2>Tags</h2>
+        <ul>
+          {group.sort((a, b) => b.totalCount - a.totalCount).map(tag => (
+            <Tag key={tag.fieldValue}>
+              <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
+                {tag.totalCount < 10 ? `0${tag.totalCount}` : tag.totalCount}
+                <ForwardSlash>/</ForwardSlash>
+                {tag.fieldValue}
+              </Link>
+            </Tag>
+          ))}
+        </ul>
+      </div>
+    </PageContainer>
+  </Layout>
 )
 
 // TagsPage.propTypes = {

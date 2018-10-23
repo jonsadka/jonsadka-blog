@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import styled from 'styled-components'
 
 const Name = styled.div`
@@ -22,7 +22,7 @@ const Header = () => (
     >
       <Name style={{ margin: 0 }}>
         <Link
-          to="/"
+          to={'/'}
           style={{
             color: 'black',
             fontFamily: 'Libre Franklin',

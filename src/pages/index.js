@@ -1,16 +1,16 @@
 import React from 'react'
-import Link, { withPrefix } from 'gatsby-link'
-import Helmet from 'react-helmet'
+import { graphql, Link, withPrefix } from 'gatsby'
 import kebabCase from 'lodash/kebabcase'
 import styled from 'styled-components'
+
+import Layout from '../components/layout'
+import { LARGER_WORKS } from '../works/larger-works'
 
 // import '../css/index.css';
 
 const DEFAULT_MARGIN = 30
 const SMALL_THUMBNAIL_HEIGHT = 100
 const SCROLL_BAR_HEIGHT = 20
-
-import { LARGER_WORKS } from '../works/larger-works'
 
 const BLOCKS_ID = 'blocks'
 const OBSERVABLE_ID = 'observable'
@@ -185,11 +185,11 @@ export default class Index extends React.Component {
 
   render() {
     const { selectedSmallerWorkType, selectedWrittenWorkTag } = this.state
-    const { data, pathContext } = this.props
+    const { data, pageContext } = this.props
     const { edges: posts } = data.allMarkdownRemark
-    const { smallerWorks } = pathContext
+    const { smallerWorks } = pageContext
     return (
-      <div>
+      <Layout>
         <WorksSection>
           <h2>Larger Works</h2>
           <LargerWorksCarousel>
@@ -197,7 +197,7 @@ export default class Index extends React.Component {
               work => (
                 <LargerWorks key={work.url}>
                   <Thumbnail size={'larger'}>
-                    <a href={work.url} target="_blank">
+                    <a href={work.url} target="_blank" rel="noopener noreferrer">
                       <ThumbnailImage
                         alt={work.title}
                         size={'larger'}
@@ -207,7 +207,7 @@ export default class Index extends React.Component {
                   </Thumbnail>
                   <WorkDetails>
                     <BlogMetadata>{formatData(work.createdAt)}</BlogMetadata>
-                    <WorkTitle href={work.url} target="_blank">
+                    <WorkTitle href={work.url} target="_blank" rel="noopener noreferrer">
                       {work.title}
                     </WorkTitle>
                     <WorkDescription>{work.description}</WorkDescription>
@@ -245,7 +245,7 @@ export default class Index extends React.Component {
               .map((smallerWork, i) => (
                 <SmallerWorks key={i}>
                   <Thumbnail size={'smaller'}>
-                    <a href={smallerWork.href} target="_blank">
+                    <a href={smallerWork.href} target="_blank" rel="noopener noreferrer">
                       <SmallerWorkImage
                         alt={smallerWork.alt}
                         src={smallerWork.imgUrl}
@@ -313,7 +313,7 @@ export default class Index extends React.Component {
             <BlogTag to="/tags/">See all tags</BlogTag>
           </div>
         </WorksSection>
-      </div>
+      </Layout>
     )
   }
 }
