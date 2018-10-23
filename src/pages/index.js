@@ -89,8 +89,8 @@ const SmallerWorks = styled.div`
 
 const SmallerWorkImage = styled.img`
   margin-left: -5px;
-  margin-top: ${props => props.workType === OBSERVABLE_ID ? '-8px' : '0'};
-  height: ${props => props.workType === OBSERVABLE_ID ? '120px' : '100px'};
+  margin-top: ${props => (props.workType === OBSERVABLE_ID ? '-8px' : '0')};
+  height: ${props => (props.workType === OBSERVABLE_ID ? '120px' : '100px')};
 `
 
 const Thumbnail = styled.div`
@@ -176,11 +176,11 @@ export default class Index extends React.Component {
   }
 
   _filterSmallerWork(workType) {
-    this.setState({ selectedSmallerWorkType: workType})
+    this.setState({ selectedSmallerWorkType: workType })
   }
 
   _filterWrittenWork(tag) {
-    this.setState({ selectedWrittenWorkTag: tag})
+    this.setState({ selectedWrittenWorkTag: tag })
   }
 
   render() {
@@ -198,7 +198,11 @@ export default class Index extends React.Component {
                 <LargerWorks key={work.url}>
                   <Thumbnail size={'larger'}>
                     <a href={work.url} target="_blank">
-                      <ThumbnailImage alt={work.title} size={'larger'} src={withPrefix(work.thumbnail)} />
+                      <ThumbnailImage
+                        alt={work.title}
+                        size={'larger'}
+                        src={withPrefix(work.thumbnail)}
+                      />
                     </a>
                   </Thumbnail>
                   <WorkDetails>
@@ -233,24 +237,24 @@ export default class Index extends React.Component {
           </Tabs>
           <SmallerWorksCarousel>
             {smallerWorks
-            .filter(
-              smallerWork =>
-                selectedSmallerWorkType === 'all' ||
-                smallerWork.workType === selectedSmallerWorkType
-            )
-            .map((smallerWork, i) => (
-              <SmallerWorks key={i}>
-                <Thumbnail size={'smaller'}>
-                  <a href={smallerWork.href} target="_blank">
-                    <SmallerWorkImage
-                      alt={smallerWork.alt}
-                      src={smallerWork.imgUrl}
-                      workType={smallerWork.workType}
-                    />
-                  </a>
-                </Thumbnail>
-              </SmallerWorks>
-            ))}
+              .filter(
+                smallerWork =>
+                  selectedSmallerWorkType === 'all' ||
+                  smallerWork.workType === selectedSmallerWorkType
+              )
+              .map((smallerWork, i) => (
+                <SmallerWorks key={i}>
+                  <Thumbnail size={'smaller'}>
+                    <a href={smallerWork.href} target="_blank">
+                      <SmallerWorkImage
+                        alt={smallerWork.alt}
+                        src={smallerWork.imgUrl}
+                        workType={smallerWork.workType}
+                      />
+                    </a>
+                  </Thumbnail>
+                </SmallerWorks>
+              ))}
           </SmallerWorksCarousel>
         </WorksSection>
 
