@@ -31,7 +31,7 @@ const BlogTag = styled(Link)`
   display: inline-block;
   font-size: 12px;
   padding-right: 10px;
-  transition: color 0.2s;
+  transition: color 0.2s ease;
   &:hover {
     color: black;
   }
@@ -140,7 +140,7 @@ const Tab = styled.li`
   font-size: 14px;
   margin-right: ${DEFAULT_MARGIN}px;
   min-width: ${DEFAULT_MARGIN}px;
-  transition: color 0.2s;
+  transition: color 0.2s ease;
   &:hover {
     color: black;
   }
@@ -197,7 +197,11 @@ export default class Index extends React.Component {
               work => (
                 <LargerWorks key={work.url}>
                   <Thumbnail size={'larger'}>
-                    <a href={work.url} target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={work.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <ThumbnailImage
                         alt={work.title}
                         size={'larger'}
@@ -207,7 +211,11 @@ export default class Index extends React.Component {
                   </Thumbnail>
                   <WorkDetails>
                     <BlogMetadata>{formatData(work.createdAt)}</BlogMetadata>
-                    <WorkTitle href={work.url} target="_blank" rel="noopener noreferrer">
+                    <WorkTitle
+                      href={work.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       {work.title}
                     </WorkTitle>
                     <WorkDescription>{work.description}</WorkDescription>
@@ -245,7 +253,11 @@ export default class Index extends React.Component {
               .map((smallerWork, i) => (
                 <SmallerWorks key={i}>
                   <Thumbnail size={'smaller'}>
-                    <a href={smallerWork.href} target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={smallerWork.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <SmallerWorkImage
                         alt={smallerWork.alt}
                         src={smallerWork.imgUrl}
