@@ -41,7 +41,8 @@ module.exports = {
     },
     {
       resolve: `gatsby-plugin-sitemap`
-    }
+    },
+    'gatsby-plugin-offline'
   ],
   siteMetadata: {
     siteUrl: 'https://jonsadka.com',
