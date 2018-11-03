@@ -2,7 +2,7 @@
   "name": "jonsadka-blog",
   "description": "Jon Sadka's personal website and blog",
   "version": "1.0.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Jon Sadka <jonsadka@gmail.com>",
   "dependencies": {
     "babel-plugin-styled-components": "^1.8.0",
     "gatsby": "^2.0.31",
