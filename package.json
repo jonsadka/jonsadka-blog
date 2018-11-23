@@ -5,19 +5,19 @@
   "author": "Jon Sadka <jonsadka@gmail.com>",
   "dependencies": {
     "babel-plugin-styled-components": "^1.8.0",
-    "gatsby": "^2.0.31",
-    "gatsby-plugin-catch-links": "^2.0.5",
+    "gatsby": "^2.0.55",
+    "gatsby-plugin-catch-links": "^2.0.8",
     "gatsby-plugin-google-analytics": "^2.0.6",
-    "gatsby-plugin-manifest": "^2.0.6",
-    "gatsby-plugin-offline": "^2.0.9",
-    "gatsby-plugin-react-helmet": "^3.0.0",
+    "gatsby-plugin-manifest": "^2.0.10",
+    "gatsby-plugin-offline": "^2.0.17",
+    "gatsby-plugin-react-helmet": "^3.0.2",
     "gatsby-plugin-sitemap": "^2.0.1",
-    "gatsby-plugin-styled-components": "^3.0.0",
-    "gatsby-source-filesystem": "^2.0.5",
-    "gatsby-transformer-remark": "^2.1.9",
+    "gatsby-plugin-styled-components": "^3.0.3",
+    "gatsby-source-filesystem": "^2.0.8",
+    "gatsby-transformer-remark": "^2.1.12",
     "lodash": "^4.17.11",
-    "react": "^16.6.0",
-    "react-dom": "^16.6.0",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
     "react-helmet": "^5.2.0",
     "request": "^2.88.0",
     "styled-components": "^3.4.10"
@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "gh-pages": "^2.0.1",
-    "prettier": "^1.14.3"
+    "prettier": "^1.15.2"
   },
   "peerDependencies": {
     "gatsby": ">=1"
