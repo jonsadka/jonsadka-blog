@@ -13,8 +13,8 @@ module.exports = {
     {
       resolve: 'gatsby-transformer-remark',
       options: {
-        plugins: []
-      }
+        plugins: [],
+      },
     },
     {
       resolve: 'gatsby-plugin-google-analytics',
@@ -36,17 +36,17 @@ module.exports = {
         start_url: '/',
         background_color: '#ffffff',
         theme_color: '#333333',
-        display: 'fullscreen'
+        display: 'fullscreen',
       },
     },
     {
-      resolve: `gatsby-plugin-sitemap`
+      resolve: `gatsby-plugin-sitemap`,
     },
-    'gatsby-plugin-offline'
+    'gatsby-plugin-offline',
   ],
   siteMetadata: {
     siteUrl: 'https://jonsadka.com',
-    title: 'Jon Sadka\'s work',
-    author: 'Jon Sadka'
-  }
-};
+    title: "Jon Sadka's work",
+    author: 'Jon Sadka',
+  },
+}
