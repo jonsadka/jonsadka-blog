@@ -7,7 +7,7 @@ import kebabCase from 'lodash/kebabcase'
 
 // Components
 import Helmet from 'react-helmet'
-import { graphql, Link } from 'gatsby'
+import {graphql, Link} from 'gatsby'
 
 import Layout from '../components/layout'
 
@@ -27,9 +27,9 @@ const ForwardSlash = styled.span`
 
 const TagsPage = ({
   data: {
-    allMarkdownRemark: { group },
+    allMarkdownRemark: {group},
     site: {
-      siteMetadata: { title },
+      siteMetadata: {title},
     },
   },
 }) => (
@@ -39,15 +39,17 @@ const TagsPage = ({
       <div>
         <h2>Tags</h2>
         <ul>
-          {group.sort((a, b) => b.totalCount - a.totalCount).map(tag => (
-            <Tag key={tag.fieldValue}>
-              <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-                {tag.totalCount < 10 ? `0${tag.totalCount}` : tag.totalCount}
-                <ForwardSlash>/</ForwardSlash>
-                {tag.fieldValue}
-              </Link>
-            </Tag>
-          ))}
+          {group
+            .sort((a, b) => b.totalCount - a.totalCount)
+            .map(tag => (
+              <Tag key={tag.fieldValue}>
+                <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
+                  {tag.totalCount < 10 ? `0${tag.totalCount}` : tag.totalCount}
+                  <ForwardSlash>/</ForwardSlash>
+                  {tag.fieldValue}
+                </Link>
+              </Tag>
+            ))}
         </ul>
       </div>
     </PageContainer>
@@ -83,7 +85,7 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       limit: 2000
-      filter: { frontmatter: { published: { ne: false } } }
+      filter: {frontmatter: {published: {ne: false}}}
     ) {
       group(field: frontmatter___tags) {
         fieldValue

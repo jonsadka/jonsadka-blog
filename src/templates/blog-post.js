@@ -1,6 +1,6 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { graphql } from 'gatsby'
+import {graphql} from 'gatsby'
 import styled from 'styled-components'
 
 import Layout from '../components/layout'
@@ -29,8 +29,8 @@ const BlogContent = styled.div`
   }
 `
 
-export default function Template({ data }) {
-  const { markdownRemark: post } = data
+export default function Template({data}) {
+  const {markdownRemark: post} = data
   return post ? (
     <Layout>
       <div className="blog-post-container">
@@ -39,7 +39,7 @@ export default function Template({ data }) {
           <BlogTitle>{post.frontmatter.title}</BlogTitle>
           <BlogContent
             className="blog-post-content"
-            dangerouslySetInnerHTML={{ __html: post.html }}
+            dangerouslySetInnerHTML={{__html: post.html}}
           />
         </div>
       </div>
@@ -61,9 +61,7 @@ export default function Template({ data }) {
 
 export const pageQuery = graphql`
   query BlogPostByPath($path: String!) {
-    markdownRemark(
-      frontmatter: { path: { eq: $path }, published: { ne: false } }
-    ) {
+    markdownRemark(frontmatter: {path: {eq: $path}, published: {ne: false}}) {
       html
       frontmatter {
         date

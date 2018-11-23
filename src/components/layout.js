@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 import Header from '../components/Header'
 import '../layouts/index.css'
 
-const TemplateWrapper = ({ children }) => (
+const TemplateWrapper = ({children}) => (
   <div>
     <Helmet
       title="Jon Sadka Personal Website and Blog"

@@ -166,7 +166,6 @@ function gistsListFromPayload(gistsListPayload) {
 function observablesListFromObservableSiteHTML(siteHTML) {
   const payloadData = payloadDataFromHTML(siteHTML);
   const preloadData = JSON.parse(unescape(payloadData)) || { notebooks: [] };
-  console.log("~~preloadData", preloadData);
   return preloadData.notebooks
     .filter(notebook => notebook.slug && notebook.thumbnail)
     .filter(

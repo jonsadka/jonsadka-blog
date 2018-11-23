@@ -1,30 +1,30 @@
-import React from "react";
-import { graphql, Link, withPrefix } from "gatsby";
-import kebabCase from "lodash/kebabcase";
-import styled from "styled-components";
+import React from 'react'
+import {graphql, Link, withPrefix} from 'gatsby'
+import kebabCase from 'lodash/kebabcase'
+import styled from 'styled-components'
 
-import Layout from "../components/layout";
-import { LARGER_WORKS } from "../works/larger-works";
+import Layout from '../components/layout'
+import {LARGER_WORKS} from '../works/larger-works'
 
 // import '../css/index.css';
 
-const DEFAULT_MARGIN = 30;
-const SMALL_THUMBNAIL_HEIGHT = 100;
-const SCROLL_BAR_HEIGHT = 20;
+const DEFAULT_MARGIN = 30
+const SMALL_THUMBNAIL_HEIGHT = 100
+const SCROLL_BAR_HEIGHT = 20
 
-const BLOCKS_ID = "blocks";
-const OBSERVABLE_ID = "observable";
+const BLOCKS_ID = 'blocks'
+const OBSERVABLE_ID = 'observable'
 
 const BlogPreview = styled.div`
   margin-bottom: ${DEFAULT_MARGIN}px;
-`;
+`
 
 const BlogMetadata = styled.div`
   color: #a3a3a3;
   display: inline-block;
   font-size: 12px;
   margin-bottom: 5px;
-`;
+`
 
 const BlogTag = styled(Link)`
   color: #a3a3a3;
@@ -35,12 +35,12 @@ const BlogTag = styled(Link)`
   &:hover {
     color: black;
   }
-`;
+`
 
 const MiddleDot = styled.span`
   font-size: 12px;
   padding: 0 10px;
-`;
+`
 
 const ReadLink = styled(Link)`
   display: block;
@@ -48,17 +48,17 @@ const ReadLink = styled(Link)`
   letter-spacing: 0.05rem;
   margin-bottom: 60px;
   margin-top: ${DEFAULT_MARGIN}px;
-`;
+`
 
 const WorksSection = styled.div`
   margin: ${DEFAULT_MARGIN}px 0 60px 0;
-`;
+`
 
 const LargerWorksCarousel = styled.div`
   overflow-x: scroll;
   -webkit-overflow-scrolling: touch;
   white-space: nowrap;
-`;
+`
 
 const SmallerWorksCarousel = styled.div`
   overflow-x: scroll;
@@ -70,14 +70,14 @@ const SmallerWorksCarousel = styled.div`
     2 * (SMALL_THUMBNAIL_HEIGHT + DEFAULT_MARGIN) +
     SCROLL_BAR_HEIGHT}px;
   white-space: nowrap;
-`;
+`
 
 const LargerWorks = styled.div`
   display: inline-block;
   margin-right: ${DEFAULT_MARGIN}px;
   vertical-align: top;
   width: 367px;
-`;
+`
 
 const SmallerWorks = styled.div`
   &:not(:nth-child(3n)) {
@@ -85,56 +85,56 @@ const SmallerWorks = styled.div`
   }
   margin-right: ${DEFAULT_MARGIN}px;
   display: inline-block;
-`;
+`
 
 const SmallerWorkImage = styled.img`
   margin-left: -5px;
-  margin-top: ${props => (props.workType === OBSERVABLE_ID ? "-8px" : "0")};
-  height: ${props => (props.workType === OBSERVABLE_ID ? "120px" : "100px")};
-`;
+  margin-top: ${props => (props.workType === OBSERVABLE_ID ? '-8px' : '0')};
+  height: ${props => (props.workType === OBSERVABLE_ID ? '120px' : '100px')};
+`
 
 const Thumbnail = styled.div`
   background-color: #b2c5d4;
   border-radius: 4px;
   height: ${props =>
-    props.size === "larger" ? "200px" : `${SMALL_THUMBNAIL_HEIGHT}px`};
+    props.size === 'larger' ? '200px' : `${SMALL_THUMBNAIL_HEIGHT}px`};
   overflow: hidden;
-  width: ${props => (props.size === "larger" ? "367px" : "184px")};
-`;
+  width: ${props => (props.size === 'larger' ? '367px' : '184px')};
+`
 
 const ThumbnailImage = styled.img`
-  width: ${props => (props.size === "larger" ? "367px" : "184px")};
-`;
+  width: ${props => (props.size === 'larger' ? '367px' : '184px')};
+`
 
 const WorkDetails = styled.div`
   padding: ${DEFAULT_MARGIN}px;
-`;
+`
 
 const WorkTitle = styled.a`
   color: black;
   display: block;
   margin-bottom: ${DEFAULT_MARGIN}px;
-`;
+`
 
 const WorkTitleLink = styled(Link)`
   color: black;
   display: block;
   margin-bottom: ${DEFAULT_MARGIN}px;
-`;
+`
 
 const WorkDescription = styled.div`
   color: #a3a3a3;
   font-size: 12px;
   white-space: normal;
-`;
+`
 
 const Tabs = styled.ul`
   margin-left: 0;
   margin-bottom: ${DEFAULT_MARGIN}px;
-`;
+`
 
 const Tab = styled.li`
-  color: ${props => (props.selected ? "black" : "#A3A3A3")};
+  color: ${props => (props.selected ? 'black' : '#A3A3A3')};
   cursor: pointer;
   display: inline-block;
   font-size: 14px;
@@ -144,50 +144,50 @@ const Tab = styled.li`
   &:hover {
     color: black;
   }
-`;
+`
 
 function formatData(ts) {
-  const date = new Date(Number(ts));
-  const month = date.getMonth();
+  const date = new Date(Number(ts))
+  const month = date.getMonth()
   const monthIndexToMonthText = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ];
-  return monthIndexToMonthText[month] + " " + date.getFullYear();
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ]
+  return monthIndexToMonthText[month] + ' ' + date.getFullYear()
 }
 
 export default class Index extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      selectedSmallerWorkType: "all",
-      selectedWrittenWorkTag: "all"
-    };
+      selectedSmallerWorkType: 'all',
+      selectedWrittenWorkTag: 'all',
+    }
   }
 
   _filterSmallerWork(workType) {
-    this.setState({ selectedSmallerWorkType: workType });
+    this.setState({selectedSmallerWorkType: workType})
   }
 
   _filterWrittenWork(tag) {
-    this.setState({ selectedWrittenWorkTag: tag });
+    this.setState({selectedWrittenWorkTag: tag})
   }
 
   render() {
-    const { selectedSmallerWorkType, selectedWrittenWorkTag } = this.state;
-    const { data, pageContext } = this.props;
-    const { edges: posts } = data.allMarkdownRemark;
-    const { smallerWorks } = pageContext;
+    const {selectedSmallerWorkType, selectedWrittenWorkTag} = this.state
+    const {data, pageContext} = this.props
+    const {edges: posts} = data.allMarkdownRemark
+    const {smallerWorks} = pageContext
     return (
       <Layout>
         <WorksSection>
@@ -196,7 +196,7 @@ export default class Index extends React.Component {
             {LARGER_WORKS.sort((a, b) => b.createdAt - a.createdAt).map(
               work => (
                 <LargerWorks key={work.url}>
-                  <Thumbnail size={"larger"}>
+                  <Thumbnail size={'larger'}>
                     <a
                       href={work.url}
                       target="_blank"
@@ -204,7 +204,7 @@ export default class Index extends React.Component {
                     >
                       <ThumbnailImage
                         alt={work.title}
-                        size={"larger"}
+                        size={'larger'}
                         src={withPrefix(work.thumbnail)}
                       />
                     </a>
@@ -230,9 +230,9 @@ export default class Index extends React.Component {
           <h2>Smaller Works</h2>
           <Tabs>
             {[
-              { id: "all", text: "All Sources" },
-              { id: BLOCKS_ID, text: "Bl.ocks" },
-              { id: OBSERVABLE_ID, text: "Observable" }
+              {id: 'all', text: 'All Sources'},
+              {id: BLOCKS_ID, text: 'Bl.ocks'},
+              {id: OBSERVABLE_ID, text: 'Observable'},
             ].map(tab => (
               <Tab
                 key={tab.id}
@@ -247,12 +247,12 @@ export default class Index extends React.Component {
             {smallerWorks
               .filter(
                 smallerWork =>
-                  selectedSmallerWorkType === "all" ||
+                  selectedSmallerWorkType === 'all' ||
                   smallerWork.workType === selectedSmallerWorkType
               )
               .map((smallerWork, i) => (
                 <SmallerWorks key={i}>
-                  <Thumbnail size={"smaller"}>
+                  <Thumbnail size={'smaller'}>
                     <a
                       href={smallerWork.href}
                       target="_blank"
@@ -277,13 +277,13 @@ export default class Index extends React.Component {
               TODO: Make this generative so that adding a new tag updates this list automatically
             */}
             {[
-              { id: "all", text: "All Tags" },
-              { id: "API", text: "API" },
-              { id: "D3.js", text: "D3.js" },
-              { id: "JavaScript", text: "JavaScript" },
-              { id: "jQuery", text: "jQuery" },
-              { id: "MongoDB", text: "MongoDB" },
-              { id: "UX / UI", text: "UX / UI" }
+              {id: 'all', text: 'All Tags'},
+              {id: 'API', text: 'API'},
+              {id: 'D3.js', text: 'D3.js'},
+              {id: 'JavaScript', text: 'JavaScript'},
+              {id: 'jQuery', text: 'jQuery'},
+              {id: 'MongoDB', text: 'MongoDB'},
+              {id: 'UX / UI', text: 'UX / UI'},
             ].map(tab => (
               <Tab
                 key={tab.id}
@@ -299,10 +299,10 @@ export default class Index extends React.Component {
               .filter(post => post.node.frontmatter.title.length > 0)
               .filter(
                 post =>
-                  selectedWrittenWorkTag === "all" ||
+                  selectedWrittenWorkTag === 'all' ||
                   post.node.frontmatter.tags.includes(selectedWrittenWorkTag)
               )
-              .map(({ node: post }) => {
+              .map(({node: post}) => {
                 return (
                   <BlogPreview key={post.id}>
                     <BlogMetadata>
@@ -320,21 +320,21 @@ export default class Index extends React.Component {
                     <p>{post.excerpt}</p>
                     <ReadLink to={post.frontmatter.path}>Read</ReadLink>
                   </BlogPreview>
-                );
+                )
               })}
             <BlogTag to="/tags/">See all tags</BlogTag>
           </div>
         </WorksSection>
       </Layout>
-    );
+    )
   }
 }
 
 export const pageQuery = graphql`
   query IndexQuery {
     allMarkdownRemark(
-      filter: { frontmatter: { published: { ne: false } } }
-      sort: { order: DESC, fields: [frontmatter___date] }
+      filter: {frontmatter: {published: {ne: false}}}
+      sort: {order: DESC, fields: [frontmatter___date]}
     ) {
       edges {
         node {
@@ -350,4 +350,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`

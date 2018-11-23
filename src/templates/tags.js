@@ -1,7 +1,7 @@
 import React from 'react'
 // import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { graphql, Link } from 'gatsby'
+import {graphql, Link} from 'gatsby'
 
 // Components
 import Layout from '../components/layout'
@@ -15,9 +15,9 @@ const Tag = styled.li`
   list-style-type: none;
 `
 
-const Tags = ({ pageContext, data }) => {
-  const { tag } = pageContext
-  const { edges, totalCount } = data.allMarkdownRemark
+const Tags = ({pageContext, data}) => {
+  const {tag} = pageContext
+  const {edges, totalCount} = data.allMarkdownRemark
   const tagHeader = `${totalCount} post${
     totalCount === 1 ? '' : 's'
   } tagged with "${tag}"`
@@ -27,8 +27,8 @@ const Tags = ({ pageContext, data }) => {
       <PageContainer>
         <h2>{tagHeader}</h2>
         <ul>
-          {edges.map(({ node }) => {
-            const { path, title } = node.frontmatter
+          {edges.map(({node}) => {
+            const {path, title} = node.frontmatter
             return (
               <Tag key={path}>
                 <Link to={path}>{title}</Link>
@@ -73,8 +73,8 @@ export const pageQuery = graphql`
   query TagPage($tag: String) {
     allMarkdownRemark(
       limit: 2000
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { tags: { in: [$tag] } } }
+      sort: {fields: [frontmatter___date], order: DESC}
+      filter: {frontmatter: {tags: {in: [$tag]}}}
     ) {
       totalCount
       edges {
