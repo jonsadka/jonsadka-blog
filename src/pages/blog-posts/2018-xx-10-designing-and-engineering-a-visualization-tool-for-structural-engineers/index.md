@@ -1,9 +1,9 @@
 ---
-path: "/blog/designing-and-engineering-a-visualization-tool-for-structural-engineers"
-date: "1539586800000"
+path: '/blog/designing-and-engineering-a-visualization-tool-for-structural-engineers'
+date: '1539586800000'
 published: false
-tags: ["Design", "JavaScript", "UX/UI"]
-title: "Designing and engineering the Steel Explorer, a visualization tool for structural engineers to select the most efficient beam"
+tags: ['Design', 'JavaScript', 'UX/UI']
+title: 'Designing and engineering the Steel Explorer, a visualization tool for structural engineers to select the most efficient beam'
 ---
 
 NOTE: New to the Steel Explorer? Get an overview [here](/blog/overview-and-usage-of-the-steel-explorer)
@@ -31,6 +31,7 @@ I decided early on not to support mobile because it didnt fit the use case of th
 Les is more. Remove elements you dont need (axis, etc)
 
 # Design evolution
+
 ### TODO: ADD A CAROUSEL OF THE IMAGES
 
 # ??Unseen benefits?? (weak section)
@@ -38,13 +39,14 @@ Les is more. Remove elements you dont need (axis, etc)
 You can see there is a beam made which overindexes on flexural strength (Ix)
 
 # Engineering challenges (Learning lessons)
+
 ## since nobody every talks about where they fucked up, figured I would ;)
 
 Should have rendered in canvas instead of svg. Was fun pushing the limits of svg though and seeing which things bog it down. (i.e. on update, I first transition the lines, then delay the calcualtion / tranition of the voronoi. or waiting to calculate the voronoi until after the chart has rendered)
 
 Rendered voronoi for each graph and use mousenter effects (instead of voronoi.find)
 
-The line chart had to be rendered at 1ft intervals because there are 284 beams (284 beams * 40 ft = 11,360 points). The performance hit really happens when rendering the voronoi (assume 4 segments per point, thats 45,000 elements for just the top right chart)
+The line chart had to be rendered at 1ft intervals because there are 284 beams (284 beams \* 40 ft = 11,360 points). The performance hit really happens when rendering the voronoi (assume 4 segments per point, thats 45,000 elements for just the top right chart)
 
 Cleaning the csv for only the data I needed improved load time by several thenths of a second (2k lines, 707kb -> 284 lines 111kb)
 
@@ -52,16 +54,16 @@ Did this without a framework because initially didnt expect the scope to creep a
 
 I initially kicked this project off 2 years ago and wrote it in d3v3. Upgrading to d3v5 was relativley painless.
 
-![v1](/img/blog-posts/2018-xx-10-steel-explorer/v1.png "v1")
+![v1](/img/blog-posts/2018-xx-10-designing-steel-explorer/v1.png 'v1')
 
-![v2](/img/blog-posts/2018-xx-10-steel-explorer/v2.png "v2")
+![v2](/img/blog-posts/2018-xx-10-designing-steel-explorer/v2.png 'v2')
 
-![v3](/img/blog-posts/2018-xx-10-steel-explorer/v3.png "v3")
+![v3](/img/blog-posts/2018-xx-10-designing-steel-explorer/v3.png 'v3')
 
-![v4](/img/blog-posts/2018-xx-10-steel-explorer/v4.png "v4")
+![v4](/img/blog-posts/2018-xx-10-designing-steel-explorer/v4.png 'v4')
 
-![v5](/img/blog-posts/2018-xx-10-steel-explorer/v5.png "v5")
+![v5](/img/blog-posts/2018-xx-10-designing-steel-explorer/v5.png 'v5')
 
-![v6](/img/blog-posts/2018-xx-10-steel-explorer/v6.png "v6")
+![v6](/img/blog-posts/2018-xx-10-designing-steel-explorer/v6.png 'v6')
 
-![v7](/img/blog-posts/2018-xx-10-steel-explorer/v7.png "v7")
+![v7](/img/blog-posts/2018-xx-10-designing-steel-explorer/v7.png 'v7')
