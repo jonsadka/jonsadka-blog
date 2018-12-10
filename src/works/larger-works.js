@@ -1,12 +1,12 @@
 export const LARGER_WORKS = [
-  {
-    createdAt: 1543219200000,
-    description:
-      'Interactictivley explore strength profiles of AISC steel beams used in construction',
-    title: 'Steel Explorer',
-    thumbnail: '/img/thumbnails/steel-explorer.png',
-    url: 'http://jonsadka.github.io/steel-explorer/',
-  },
+  // {
+  //   createdAt: 1543219200000,
+  //   description:
+  //     'Interactictivley explore strength profiles of AISC steel beams used in construction',
+  //   title: 'Steel Explorer',
+  //   thumbnail: '/img/thumbnails/steel-explorer.png',
+  //   url: 'http://jonsadka.github.io/steel-explorer/',
+  // },
   {
     createdAt: 1525590000000,
     description:

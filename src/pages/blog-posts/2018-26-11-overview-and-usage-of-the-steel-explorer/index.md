@@ -1,7 +1,7 @@
 ---
 path: '/blog/overview-and-usage-of-the-steel-explorer'
 date: '1543219200000'
-published: true
+published: false
 tags: ['Design', 'UX/UI']
 title: 'Overview and usage of the Steel Explorer, a visualization tool for sturcutural engineers to select the most efficient beam'
 ---
