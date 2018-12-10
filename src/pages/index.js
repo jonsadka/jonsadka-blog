@@ -2,6 +2,7 @@ import React from 'react'
 import {graphql, Link, withPrefix} from 'gatsby'
 import kebabCase from 'lodash/kebabcase'
 import styled from 'styled-components'
+import {OutboundLink} from 'gatsby-plugin-google-analytics'
 
 import Layout from '../components/layout'
 import {LARGER_WORKS} from '../works/larger-works'
@@ -110,7 +111,7 @@ const WorkDetails = styled.div`
   padding: ${DEFAULT_MARGIN}px;
 `
 
-const WorkTitle = styled.a`
+const WorkTitle = styled(OutboundLink)`
   color: black;
   display: block;
   margin-bottom: ${DEFAULT_MARGIN}px;
@@ -197,7 +198,7 @@ export default class Index extends React.Component {
               work => (
                 <LargerWorks key={work.url}>
                   <Thumbnail size={'larger'}>
-                    <a
+                    <OutboundLink
                       href={work.url}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -207,7 +208,7 @@ export default class Index extends React.Component {
                         size={'larger'}
                         src={withPrefix(work.thumbnail)}
                       />
-                    </a>
+                    </OutboundLink>
                   </Thumbnail>
                   <WorkDetails>
                     <BlogMetadata>{formatData(work.createdAt)}</BlogMetadata>
@@ -253,7 +254,7 @@ export default class Index extends React.Component {
               .map((smallerWork, i) => (
                 <SmallerWorks key={i}>
                   <Thumbnail size={'smaller'}>
-                    <a
+                    <OutboundLink
                       href={smallerWork.href}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -263,7 +264,7 @@ export default class Index extends React.Component {
                         src={smallerWork.imgUrl}
                         workType={smallerWork.workType}
                       />
-                    </a>
+                    </OutboundLink>
                   </Thumbnail>
                 </SmallerWorks>
               ))}

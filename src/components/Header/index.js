@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'gatsby'
 import styled from 'styled-components'
+import {OutboundLink} from 'gatsby-plugin-google-analytics'
 
 const MAX_WIDTH = 960
 
@@ -26,7 +27,7 @@ const SocialIcons = styled.div`
   justify-content: flex-end;
 `
 
-const SocialIcon = styled.a`
+const SocialIcon = styled(OutboundLink)`
   display: inline-block;
   align-self: flex-end;
   margin-left: 15px;
