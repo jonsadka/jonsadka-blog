@@ -1,2 +1,0 @@
-webpackJsonp([65951750749414],{406:function(t,e){t.exports={data:{allMarkdownRemark:{totalCount:1,edges:[{node:{frontmatter:{title:"Designing a visualization tool for structural engineers to select the most efficient beam",path:"/blog/designing-a-visualization-tool-for-structural-engineers"}}}]}},pathContext:{tag:"Design"}}}});
-//# sourceMappingURL=path---tags-design-d7ed832f0816db033adb.js.map

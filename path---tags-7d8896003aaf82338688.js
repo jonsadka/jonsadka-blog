@@ -1,2 +1,0 @@
-webpackJsonp([55702396619907],{402:function(t,a){t.exports={data:{site:{siteMetadata:{title:"Jon Sadka's work"}},allMarkdownRemark:{group:[{fieldValue:"API",totalCount:2},{fieldValue:"D3.js",totalCount:6},{fieldValue:"JavaScript",totalCount:15},{fieldValue:"MongoDB",totalCount:1},{fieldValue:"UX / UI",totalCount:1},{fieldValue:"jQuery",totalCount:1}]}},pathContext:{}}}});
-//# sourceMappingURL=path---tags-7d8896003aaf82338688.js.map
