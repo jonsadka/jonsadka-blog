@@ -23,8 +23,8 @@ The purpose of this post is to highlight things that come to mind when reflectin
 
 </div>
 
-<img style="width: 49%; display: inline-block;" src="/img/blog-posts/2018-xx-10-designing-steel-explorer/filter-before.png" alt="filter-before" title="filter-before">
-<img style="width: 49%; display: inline-block;" src="/img/blog-posts/2018-xx-10-designing-steel-explorer/filter-after.png" alt="filter-after" title="filter-after">
+<img style="width: 49%; display: inline-block;" src="/img/blog-posts/2018-12-12-designing-steel-explorer/filter-before.png" alt="filter-before" title="filter-before">
+<img style="width: 49%; display: inline-block;" src="/img/blog-posts/2018-12-12-designing-steel-explorer/filter-after.png" alt="filter-after" title="filter-after">
 
 <div style="padding-left: calc(1.45rem / 2 + 1.0875rem);">
 
@@ -32,8 +32,8 @@ The purpose of this post is to highlight things that come to mind when reflectin
 
 </div>
 
-![distribution-filter-before](/img/blog-posts/2018-xx-10-designing-steel-explorer/distribution-filter-before.png 'distribution-filter-before')
-![distribution-filter-after](/img/blog-posts/2018-xx-10-designing-steel-explorer/distribution-filter-after.png 'distribution-filter-after')
+![distribution-filter-before](/img/blog-posts/2018-12-12-designing-steel-explorer/distribution-filter-before.png 'distribution-filter-before')
+![distribution-filter-after](/img/blog-posts/2018-12-12-designing-steel-explorer/distribution-filter-after.png 'distribution-filter-after')
 
 <div style="padding-left: calc(1.45rem / 2 + 1.0875rem);">
 
@@ -43,7 +43,7 @@ The purpose of this post is to highlight things that come to mind when reflectin
 
 </div>
 
-![cross-linking-on-hover](/img/blog-posts/2018-xx-10-designing-steel-explorer/cross-linking-on-hover.png 'cross-linking-on-hover')
+![cross-linking-on-hover](/img/blog-posts/2018-12-12-designing-steel-explorer/cross-linking-on-hover.png 'cross-linking-on-hover')
 
 <div style="padding-left: calc(1.45rem / 2 + 1.0875rem);">
 
@@ -57,15 +57,15 @@ The purpose of this post is to highlight things that come to mind when reflectin
 
 </div>
 
-<img style="width: 20%; display: inline-block;" src="/img/blog-posts/2018-xx-10-designing-steel-explorer/original-distribution-chart.png" alt="original-distribution-chart" title="original-distribution-chart">
-<img style="width: 70%; display: inline-block;" src="/img/blog-posts/2018-xx-10-designing-steel-explorer/flipped-distribution-chart.png" alt="flipped-distribution-chart" title="flipped-distribution-chart">
+<img style="width: 20%; display: inline-block;" src="/img/blog-posts/2018-12-12-designing-steel-explorer/original-distribution-chart.png" alt="original-distribution-chart" title="original-distribution-chart">
+<img style="width: 70%; display: inline-block;" src="/img/blog-posts/2018-12-12-designing-steel-explorer/flipped-distribution-chart.png" alt="flipped-distribution-chart" title="flipped-distribution-chart">
 
 <div style="padding-left: calc(1.45rem / 2 + 1.0875rem);">
 
 - Less is more. Remove elements, labels, legends, titles, etc. you dont need or can be easily inferred by the user. On personal computers, you can also leverage the hover animation to expose additional information. For example, my original designs had a dedicated chart showing the beam profile [left figure], but I soon realized that the beam profile was not relevant until the user hovered over a specific beam and de-prioritized this as a dedicated chart [right figure].
 
-<img style="width: 45%; display: inline-block;" src="/img/blog-posts/2018-xx-10-designing-steel-explorer/isolated-beam-profile.png" alt="isolated-beam-profile" title="isolated-beam-profile">
-<img style="width: 49%; display: inline-block; margin-left: 5%;" src="/img/blog-posts/2018-xx-10-designing-steel-explorer/joined-beam-profile.png" alt="joined-beam-profile" title="joined-beam-profile">
+<img style="width: 45%; display: inline-block;" src="/img/blog-posts/2018-12-12-designing-steel-explorer/isolated-beam-profile.png" alt="isolated-beam-profile" title="isolated-beam-profile">
+<img style="width: 49%; display: inline-block; margin-left: 5%;" src="/img/blog-posts/2018-12-12-designing-steel-explorer/joined-beam-profile.png" alt="joined-beam-profile" title="joined-beam-profile">
 
 - Take snapshots of your design iterations along the way. It's makes you realize how much progress you have made and is fun to reminisce on once the project is done. You can see mine [here](#design-evolution)
 
@@ -81,7 +81,7 @@ The purpose of this post is to highlight things that come to mind when reflectin
 
 - Voronois are an incredible way to add percise hover animations to charts with lots of elements. Essentially, instead of adding hover events to the elements in the chart, you render a layer of polygons and add a hover event to them. I applied a voronoi hover for all charts in the Steel Explorer. To learn more, I recommed reading Nadieh Bremer's [Using a d3 voronoi grid to improve a chart's interactive experience](https://www.visualcinnamon.com/2015/07/voronoi) and exploring Philippe Rivière's [collection of interactive Observables](https://beta.observablehq.com/collection/@fil/voronoi). It's important to point out that using the voronoi technique adds more svg elements to the DOM and can slow down the browser at a certain scale, which will lead me to my next point.
 
-![voronoi](/img/blog-posts/2018-xx-10-designing-steel-explorer/voronoi.png 'voronoi')
+![voronoi](/img/blog-posts/2018-12-12-designing-steel-explorer/voronoi.png 'voronoi')
 
 - Because I underestimated the number of elements being rendered, performance on the transitions is noticably impacted. In retrospect I should have rendred all the charts in canvas and only rendered the voronoi overlays in SVG. This would have dramatically improved the rendering performance, performance when transitioning, and allowed for smoother hover animations. This leads me to my next two points.
 

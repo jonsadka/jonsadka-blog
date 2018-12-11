@@ -29,14 +29,14 @@ The tool is made of the following components [Figure 1]:
 
 To find the optimal beam, enter your requirements in the Input Bar at the top and watch the Steel Explorer update the charts to show you which beams still satisfy your critera. The Best Beams section will show you the lightest or shallowest beams which match your criteria
 
-![steel-explorer-usage](/img/blog-posts/2018-26-11-overview-steel-explorer/steel-explorer-usage.png 'steel-explorer-usage')
+![steel-explorer-usage](/img/blog-posts/2018-11-12-overview-steel-explorer/steel-explorer-usage.png 'steel-explorer-usage')
 _Figure 1_
 
 ### Why build this?
 
 Currently, selecting a beam to satisfy a set of structural loads can be calculated by hand (exemplified below) or via computer software. Hand calculations are long and repetitive while existing computer software tools require expensive licenses and are stuck in UI design from the 1990's [Figure 2]. I thought it would be fun to rethink what a mondern-day version of these tools could look like and out came the Steel Explorer.
 
-![existing-software](/img/blog-posts/2018-26-11-overview-steel-explorer/existing-software.png 'existing-software')
+![existing-software](/img/blog-posts/2018-11-12-overview-steel-explorer/existing-software.png 'existing-software')
 _Figure 2_
 
 ### Manual selection of a steel beam
@@ -47,7 +47,7 @@ To understand the value of the Steel Explorer, it's important to provide you wit
 
 2. Traverese the charts in Chapter 3, Table 3-10 until you fnd the first solid line which crosses or exceedes a value of 1,000 k-ft (y axis) at the 12ft tick (x axis). In this example, it's a W30x99 beam because solid lines denote lighter beams per foot than dashed lines.
 
-![aisc-moment-chart](/img/blog-posts/2018-26-11-overview-steel-explorer/aisc-moment-chart.jpeg 'aisc-moment-chart')
+![aisc-moment-chart](/img/blog-posts/2018-11-12-overview-steel-explorer/aisc-moment-chart.png 'aisc-moment-chart')
 _Figure 3_
 
 Now that you've selected a beam, you need to perform a flexural check to make sure the beam does not deflect too much (this would cause saggy floors). To check this, you would:
@@ -58,7 +58,7 @@ Now that you've selected a beam, you need to perform a flexural check to make su
 
 If you succeed, congrats. If you dont, you need to choose a different beam and perform the same process all over again. Often this takes multiple iterations.
 
-![aisc-shape-chart](/img/blog-posts/2018-26-11-overview-steel-explorer/aisc-shape-chart.jpeg 'aisc-shape-chart')
+![aisc-shape-chart](/img/blog-posts/2018-11-12-overview-steel-explorer/aisc-shape-chart.png 'aisc-shape-chart')
 _Figure 4_
 
 ### The opportunity
