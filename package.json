@@ -4,23 +4,23 @@
   "version": "1.0.0",
   "author": "Jon Sadka <jonsadka@gmail.com>",
   "dependencies": {
-    "babel-plugin-styled-components": "^1.9.2",
-    "gatsby": "^2.0.64",
+    "babel-plugin-styled-components": "^1.10.0",
+    "gatsby": "^2.0.70",
     "gatsby-plugin-catch-links": "^2.0.9",
     "gatsby-plugin-google-analytics": "^2.0.8",
-    "gatsby-plugin-manifest": "^2.0.11",
-    "gatsby-plugin-offline": "^2.0.19",
+    "gatsby-plugin-manifest": "^2.0.12",
+    "gatsby-plugin-offline": "^2.0.20",
     "gatsby-plugin-react-helmet": "^3.0.4",
     "gatsby-plugin-sitemap": "^2.0.3",
     "gatsby-plugin-styled-components": "^3.0.4",
-    "gatsby-source-filesystem": "^2.0.11",
-    "gatsby-transformer-remark": "^2.1.15",
+    "gatsby-source-filesystem": "^2.0.12",
+    "gatsby-transformer-remark": "^2.1.17",
     "lodash": "^4.17.11",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-helmet": "^5.2.0",
     "request": "^2.88.0",
-    "styled-components": "^4.1.2"
+    "styled-components": "^4.1.3"
   },
   "keywords": [
     "gatsby"
