@@ -6,7 +6,7 @@ tags: ['Design', 'UX/UI']
 title: 'Overview and usage of the Steel Explorer, a visualization tool for sturcutural engineers to select the most efficient beam'
 ---
 
-<!-- NOTE: Curious about design and engineering decisions of the Steel Explorer? Read about them [here](/blog/designing-and-engineering-a-visualization-tool-for-structural-engineers) -->
+NOTE: Curious about design and engineering decisions of the Steel Explorer? Read about them [here](/blog/designing-and-engineering-a-visualization-tool-for-structural-engineers)
 
 ### What is it?
 
