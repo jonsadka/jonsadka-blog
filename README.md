@@ -27,7 +27,7 @@
 
     ```sh
     cd jonsadka-blog/
-    gatsby deploy
+    yarn deploy
     ```
 
 ## 🧐 What's inside?
