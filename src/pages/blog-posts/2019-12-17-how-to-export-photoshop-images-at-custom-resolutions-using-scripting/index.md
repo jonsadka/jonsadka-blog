@@ -177,7 +177,7 @@ function generateNewImage(layerRef, desiredSize) {
 
 
   // Save the image
-  saveJpeg(documentName, {quality: 9}, '-native -9');
+  saveJpeg(documentName, {quality: 9}, '-native-9');
 
   // Save the image for web
   saveJpegForWeb(documentName, {quality: 68}, '-web-68');
@@ -319,7 +319,7 @@ function generateNewImage(layerRef, desiredSize) {
   newLayer.resize(resizePercent, resizePercent, AnchorPosition.MIDDLECENTER);
 
   // Save the image
-  saveJpeg(documentName, {quality: 9}, '-native -9');
+  saveJpeg(documentName, {quality: 9}, '-native-9');
 
   // Save the image for web
   saveJpegForWeb(documentName, {quality: 68}, '-web-68');
