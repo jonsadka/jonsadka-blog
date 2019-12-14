@@ -6,8 +6,8 @@
 
 const path = require('path')
 const _ = require('lodash')
-
 const request = require('request')
+const xml2js = require('xml2js')
 
 const BLOCKS_ID = 'blocks'
 const OBSERVABLE_ID = 'observable'
@@ -111,7 +111,7 @@ exports.onCreatePage = ({actions, page}) => {
 
 function observablesPromise() {
   const observableRequestOptions = {
-    url: 'https://beta.observablehq.com/@jonsadka',
+    url: 'https://api.observablehq.com/documents/@jonsadka.rss',
     headers: {
       'User-Agent': 'jon-sadka-personal-website',
     },
@@ -119,13 +119,15 @@ function observablesPromise() {
 
   return new Promise(observableResolve => {
     request(observableRequestOptions, (err, res, observableWebpage) => {
-      const observablesList = observablesListFromObservableSiteHTML(
-        observableWebpage
+      observablesListFromObservableSiteRSS(
+        observableWebpage,
+        (err2, observablesList) => {
+          observableResolve({
+            observablesList,
+            observablesErr: err,
+          })
+        }
       )
-      observableResolve({
-        observablesList,
-        observablesErr: err,
-      })
     })
   })
 }
@@ -165,34 +167,43 @@ function gistsListFromPayload(gistsListPayload) {
     }))
 }
 
-function observablesListFromObservableSiteHTML(siteHTML) {
-  const payloadData = payloadDataFromHTML(siteHTML)
-  const preloadData = JSON.parse(unescape(payloadData)) || {notebooks: []}
-  return preloadData.notebooks
-    .filter(notebook => notebook.slug && notebook.thumbnail)
-    .filter(
-      notebook =>
-        !['c885708f62cae20a', 'c4292c80f2c249ac'].includes(notebook.id)
+function observablesListFromObservableSiteRSS(siteRSS, callback) {
+  const payloadData = payloadDataFromRSS(siteRSS, (err, payloadData) => {
+    const rawNotebooks = payloadData.rss.channel[0].item
+    const preloadData = {notebooks: rawNotebooks}
+
+    callback(
+      null,
+      preloadData.notebooks
+        .filter(
+          notebook =>
+            !['Inputs', 'Comparisons of various bar chart properties'].includes(
+              notebook.title[0]
+            )
+        )
+        .map(notebook => ({
+          alt: notebook.title[0],
+          createdAt: null,
+          href: notebook.guid[0],
+          imgUrl: getImageUrl(notebook.description[0]),
+          updatedAt: notebook.pubDate[0],
+          workType: OBSERVABLE_ID,
+        }))
     )
-    .map(notebook => ({
-      alt: notebook.title,
-      createdAt: null,
-      href: `https://beta.observablehq.com/@jonsadka/${notebook.slug}`,
-      imgUrl: `https://static.observableusercontent.com/thumbnail/${
-        notebook.thumbnail
-      }.jpg`,
-      updatedAt: notebook.update_time,
-      workType: OBSERVABLE_ID,
-    }))
+  })
 }
 
-function payloadDataFromHTML(siteHTML) {
-  const payloadPrefix = 'preloadData='
-  const payloadStartIndex = siteHTML.search(payloadPrefix)
-  const partialPayload = siteHTML.slice(
-    payloadStartIndex + payloadPrefix.length
-  )
-  const payloadEndIndex = partialPayload.search(/}<\/script>/g) + 1
-  const payload = partialPayload.slice(0, payloadEndIndex)
-  return payload
+function payloadDataFromRSS(siteRSS, callback) {
+  const parser = new xml2js.Parser({
+    trim: false,
+    normalize: true,
+    mergeAttrs: true,
+  })
+
+  parser.parseString(siteRSS, callback)
+}
+
+function getImageUrl(htmlString) {
+  const one = htmlString.split('<img src="')
+  return one[1].split('" width')[0]
 }
