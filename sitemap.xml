@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url> <loc>https://jonsadka.com/blog/how-to-export-photoshop-images-at-custom-resolutions-using-javacript-scripting</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jonsadka.com/blog/designing-and-engineering-a-visualization-tool-for-structural-engineers</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jonsadka.com/blog/overview-and-usage-of-the-steel-explorer</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jonsadka.com/blog/how-to-create-live-updating-and-flexible-d3-line-charts-using-d3-js-v5-and-pseudo-data</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -19,8 +20,10 @@
 <url> <loc>https://jonsadka.com/blog/prototypal-and-pseudoclassical-instantiation-in-javascript</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jonsadka.com/blog/type-coercion-in-d3js</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jonsadka.com/blog/supercharge-your-falsey-conditional-statements-in-javascript</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://jonsadka.com/tags/design/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jonsadka.com/tags/java-script/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://jonsadka.com/tags/photoshop/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://jonsadka.com/tags/scripting/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://jonsadka.com/tags/design/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jonsadka.com/tags/ux-ui/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jonsadka.com/tags/d-3-js/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://jonsadka.com/tags/mongo-db/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
