@@ -151,7 +151,7 @@ const resolutions = [320, 640, 1125, 1440, 1600, 1920, 2560];
 
 
   // Save the image
-  saveJpeg(documentName, {quality: 9}, '-native -9');
+  saveJpeg(documentName, {quality: 9}, '-native-9');
 
   // Save the image for web
   saveJpegForWeb(documentName, {quality: 68}, '-web-68');
@@ -278,7 +278,7 @@ function generateNewImage(layerRef, desiredSize) {
   newLayer.resize(resizePercent, resizePercent, AnchorPosition.MIDDLECENTER);
 
   // Save the image
-  saveJpeg(documentName, {quality: 9}, '-native -9');
+  saveJpeg(documentName, {quality: 9}, '-native-9');
 
   // Save the image for web
   saveJpegForWeb(documentName, {quality: 68}, '-web-68');
