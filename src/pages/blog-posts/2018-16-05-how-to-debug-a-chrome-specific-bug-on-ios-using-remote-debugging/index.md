@@ -14,8 +14,9 @@ I recently had the opportunity to implement some new visualizations for [Uber Ci
     - This requires you to first install two dependencies using `brew` ([libimobiledevice](https://github.com/libimobiledevice/libimobiledevice) and [iOS WebKit Debug Proxy](https://github.com/google/ios-webkit-debug-proxy))
       ```
       $ brew update
-      $ brew unlink libimobiledevice ios-webkit-debug-proxy
-      $ brew uninstall --force libimobiledevice ios-webkit-debug-proxy
+      $ brew unlink libimobiledevice ios-webkit-debug-proxy usbmuxd
+      $ brew uninstall --force libimobiledevice ios-webkit-debug-proxy usbmuxd
+      $ brew install --HEAD usbmuxd
       $ brew install --HEAD libimobiledevice
       $ brew install --HEAD ios-webkit-debug-proxy
       ```
