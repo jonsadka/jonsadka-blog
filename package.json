@@ -5,21 +5,21 @@
   "author": "Jon Sadka <jonsadka@gmail.com>",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.7",
-    "gatsby": "^2.19.12",
-    "gatsby-plugin-catch-links": "^2.1.25",
-    "gatsby-plugin-google-analytics": "^2.1.35",
-    "gatsby-plugin-manifest": "^2.2.41",
-    "gatsby-plugin-offline": "^3.0.34",
-    "gatsby-plugin-react-helmet": "^3.1.22",
-    "gatsby-plugin-sitemap": "^2.2.27",
-    "gatsby-plugin-styled-components": "^3.1.19",
-    "gatsby-source-filesystem": "^2.1.48",
-    "gatsby-transformer-remark": "^2.6.50",
+    "gatsby": "^2.20.14",
+    "gatsby-plugin-catch-links": "^2.2.1",
+    "gatsby-plugin-google-analytics": "^2.2.2",
+    "gatsby-plugin-manifest": "^2.3.3",
+    "gatsby-plugin-offline": "^3.1.2",
+    "gatsby-plugin-react-helmet": "^3.2.1",
+    "gatsby-plugin-sitemap": "^2.3.1",
+    "gatsby-plugin-styled-components": "^3.2.1",
+    "gatsby-source-filesystem": "^2.2.2",
+    "gatsby-transformer-remark": "^2.7.1",
     "lodash": "^4.17.15",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-helmet": "^5.2.1",
-    "request": "^2.88.0",
+    "request": "^2.88.2",
     "styled-components": "^4.4.0",
     "xml2js": "^0.4.23"
   },
@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "gh-pages": "^2.2.0",
-    "prettier": "^1.18.2"
+    "prettier": "^2.0.4"
   },
   "peerDependencies": {
     "gatsby": ">=2"
