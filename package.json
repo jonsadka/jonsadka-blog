@@ -4,21 +4,21 @@
   "version": "1.0.0",
   "author": "Jon Sadka <jonsadka@gmail.com>",
   "dependencies": {
-    "babel-plugin-styled-components": "^1.10.7",
-    "gatsby": "^2.20.14",
-    "gatsby-plugin-catch-links": "^2.2.1",
-    "gatsby-plugin-google-analytics": "^2.2.2",
-    "gatsby-plugin-manifest": "^2.3.3",
-    "gatsby-plugin-offline": "^3.1.2",
-    "gatsby-plugin-react-helmet": "^3.2.1",
-    "gatsby-plugin-sitemap": "^2.3.1",
-    "gatsby-plugin-styled-components": "^3.2.1",
-    "gatsby-source-filesystem": "^2.2.2",
-    "gatsby-transformer-remark": "^2.7.1",
-    "lodash": "^4.17.15",
+    "babel-plugin-styled-components": "^1.11.1",
+    "gatsby": "^2.24.37",
+    "gatsby-plugin-catch-links": "^2.3.11",
+    "gatsby-plugin-google-analytics": "^2.3.13",
+    "gatsby-plugin-manifest": "^2.4.22",
+    "gatsby-plugin-offline": "^3.2.22",
+    "gatsby-plugin-react-helmet": "^3.3.10",
+    "gatsby-plugin-sitemap": "^2.4.11",
+    "gatsby-plugin-styled-components": "^3.3.10",
+    "gatsby-source-filesystem": "^2.3.24",
+    "gatsby-transformer-remark": "^2.8.28",
+    "lodash": "^4.17.19",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-helmet": "^5.2.1",
+    "react-helmet": "^6.1.0",
     "request": "^2.88.2",
     "styled-components": "^4.4.0",
     "xml2js": "^0.4.23"
@@ -37,8 +37,8 @@
     "update": "yarn upgrade-interactive --latest"
   },
   "devDependencies": {
-    "gh-pages": "^2.2.0",
-    "prettier": "^2.0.4"
+    "gh-pages": "^3.1.0",
+    "prettier": "^2.0.5"
   },
   "peerDependencies": {
     "gatsby": ">=2"
