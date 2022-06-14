@@ -16,6 +16,11 @@ const SCROLL_BAR_HEIGHT = 20
 const BLOCKS_ID = 'blocks'
 const OBSERVABLE_ID = 'observable'
 
+const SIZE = {
+  SMALL: 'small',
+  LARGE: 'large',
+}
+
 const BlogPreview = styled.div`
   margin-bottom: ${DEFAULT_MARGIN}px;
 `
@@ -34,7 +39,7 @@ const BlogTag = styled(Link)`
   padding-right: 10px;
   transition: color 0.2s ease;
   &:hover {
-    color: black;
+    color: #060606;
   }
 `
 
@@ -95,16 +100,16 @@ const SmallerWorkImage = styled.img`
 `
 
 const Thumbnail = styled.div`
-  background-color: #b2c5d4;
+  background-color: #060606;
   border-radius: 4px;
   height: ${(props) =>
-    props.size === 'larger' ? '200px' : `${SMALL_THUMBNAIL_HEIGHT}px`};
+    props.size === SIZE.LARGE ? '200px' : `${SMALL_THUMBNAIL_HEIGHT}px`};
   overflow: hidden;
-  width: ${(props) => (props.size === 'larger' ? '367px' : '184px')};
+  width: ${(props) => (props.size === SIZE.LARGE ? '367px' : '184px')};
 `
 
 const ThumbnailImage = styled.img`
-  width: ${(props) => (props.size === 'larger' ? '367px' : '184px')};
+  width: ${(props) => (props.size === SIZE.LARGE ? '367px' : '184px')};
 `
 
 const WorkDetails = styled.div`
@@ -112,13 +117,13 @@ const WorkDetails = styled.div`
 `
 
 const WorkTitle = styled(OutboundLink)`
-  color: black;
+  color: #060606;
   display: block;
   margin-bottom: ${DEFAULT_MARGIN}px;
 `
 
 const WorkTitleLink = styled(Link)`
-  color: black;
+  color: #060606;
   display: block;
   margin-bottom: ${DEFAULT_MARGIN}px;
 `
@@ -135,7 +140,7 @@ const Tabs = styled.ul`
 `
 
 const Tab = styled.li`
-  color: ${(props) => (props.selected ? 'black' : '#A3A3A3')};
+  color: ${(props) => (props.selected ? '#060606' : '#A3A3A3')};
   cursor: pointer;
   display: inline-block;
   font-size: 14px;
@@ -143,7 +148,7 @@ const Tab = styled.li`
   min-width: ${DEFAULT_MARGIN}px;
   transition: color 0.2s ease;
   &:hover {
-    color: black;
+    color: #060606;
   }
 `
 
@@ -197,7 +202,7 @@ export default class Index extends React.Component {
             {LARGER_WORKS.sort((a, b) => b.createdAt - a.createdAt).map(
               (work) => (
                 <LargerWorks key={work.url}>
-                  <Thumbnail size={'larger'}>
+                  <Thumbnail size={SIZE.LARGE}>
                     <OutboundLink
                       href={work.url}
                       target="_blank"
@@ -205,7 +210,7 @@ export default class Index extends React.Component {
                     >
                       <ThumbnailImage
                         alt={work.title}
-                        size={'larger'}
+                        size={SIZE.LARGE}
                         src={withPrefix(work.thumbnail)}
                       />
                     </OutboundLink>
@@ -253,7 +258,7 @@ export default class Index extends React.Component {
               )
               .map((smallerWork, i) => (
                 <SmallerWorks key={i}>
-                  <Thumbnail size={'smaller'}>
+                  <Thumbnail size={SIZE.SMALL}>
                     <OutboundLink
                       href={smallerWork.href}
                       target="_blank"

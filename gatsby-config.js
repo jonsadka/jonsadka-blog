@@ -37,7 +37,7 @@ module.exports = {
         name: 'Jon Sadka Website and Blog',
         short_name: 'Jon Sadka',
         start_url: '/',
-        theme_color: '#333333',
+        theme_color: '#060606',
       },
     },
     {

@@ -34,7 +34,7 @@ const SocialIcon = styled(OutboundLink)`
   fill: #a3a3a3;
 
   :hover {
-    fill: black;
+    fill: #060606;
   }
 `
 
@@ -140,7 +140,7 @@ const Header = () => (
         <Link
           to={'/'}
           style={{
-            color: 'black',
+            color: '#060606',
             fontFamily: 'Libre Franklin',
             textDecoration: 'none',
           }}

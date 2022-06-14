@@ -1,5 +1,12 @@
 export const LARGER_WORKS = [
   {
+    createdAt: 1648882800000,
+    description: 'Custom sound wave jewlery',
+    title: 'Golani Jewelry',
+    thumbnail: '/img/thumbnails/golani.jpg',
+    url: 'https://www.mygolani.com/',
+  },
+  {
     createdAt: 1544515200000,
     description:
       'Interactictivley explore strength profiles of AISC steel beams used in construction',
