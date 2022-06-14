@@ -237,8 +237,8 @@ export default class Index extends React.Component {
           <Tabs>
             {[
               {id: 'all', text: 'All Sources'},
-              {id: BLOCKS_ID, text: 'Bl.ocks'},
               {id: OBSERVABLE_ID, text: 'Observable'},
+              {id: BLOCKS_ID, text: 'Bl.ocks'},
             ].map((tab) => (
               <Tab
                 key={tab.id}
