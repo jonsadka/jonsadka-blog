@@ -34,7 +34,6 @@ First, create your script file using the `.jsx` extension (i.e. `resize.jsx`) as
 
 ```
 const docRef = app.activeDocument;
-
 ```
 
 Set your desired unit and disable clipboard copying; all the work we are doing lives within Photoshop and does not need to be pasted elsewhere. This should help prevent your memory from blowing up.

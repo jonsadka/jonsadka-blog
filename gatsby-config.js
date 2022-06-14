@@ -31,12 +31,13 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
+        background_color: '#ffffff',
+        display: 'fullscreen',
+        icon: 'src/images/5921.png',
         name: 'Jon Sadka Website and Blog',
         short_name: 'Jon Sadka',
         start_url: '/',
-        background_color: '#ffffff',
         theme_color: '#333333',
-        display: 'fullscreen',
       },
     },
     {

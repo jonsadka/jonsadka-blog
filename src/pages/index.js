@@ -68,8 +68,8 @@ const SmallerWorksCarousel = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   height: ${SMALL_THUMBNAIL_HEIGHT +
-    2 * (SMALL_THUMBNAIL_HEIGHT + DEFAULT_MARGIN) +
-    SCROLL_BAR_HEIGHT}px;
+  2 * (SMALL_THUMBNAIL_HEIGHT + DEFAULT_MARGIN) +
+  SCROLL_BAR_HEIGHT}px;
   white-space: nowrap;
 `
 
@@ -90,21 +90,21 @@ const SmallerWorks = styled.div`
 
 const SmallerWorkImage = styled.img`
   margin-left: -5px;
-  margin-top: ${props => (props.workType === OBSERVABLE_ID ? '-8px' : '0')};
-  height: ${props => (props.workType === OBSERVABLE_ID ? '120px' : '100px')};
+  margin-top: ${(props) => (props.workType === OBSERVABLE_ID ? '-8px' : '0')};
+  height: ${(props) => (props.workType === OBSERVABLE_ID ? '120px' : '100px')};
 `
 
 const Thumbnail = styled.div`
   background-color: #b2c5d4;
   border-radius: 4px;
-  height: ${props =>
+  height: ${(props) =>
     props.size === 'larger' ? '200px' : `${SMALL_THUMBNAIL_HEIGHT}px`};
   overflow: hidden;
-  width: ${props => (props.size === 'larger' ? '367px' : '184px')};
+  width: ${(props) => (props.size === 'larger' ? '367px' : '184px')};
 `
 
 const ThumbnailImage = styled.img`
-  width: ${props => (props.size === 'larger' ? '367px' : '184px')};
+  width: ${(props) => (props.size === 'larger' ? '367px' : '184px')};
 `
 
 const WorkDetails = styled.div`
@@ -135,7 +135,7 @@ const Tabs = styled.ul`
 `
 
 const Tab = styled.li`
-  color: ${props => (props.selected ? 'black' : '#A3A3A3')};
+  color: ${(props) => (props.selected ? 'black' : '#A3A3A3')};
   cursor: pointer;
   display: inline-block;
   font-size: 14px;
@@ -195,7 +195,7 @@ export default class Index extends React.Component {
           <h2>Larger Works</h2>
           <LargerWorksCarousel>
             {LARGER_WORKS.sort((a, b) => b.createdAt - a.createdAt).map(
-              work => (
+              (work) => (
                 <LargerWorks key={work.url}>
                   <Thumbnail size={'larger'}>
                     <OutboundLink
@@ -234,7 +234,7 @@ export default class Index extends React.Component {
               {id: 'all', text: 'All Sources'},
               {id: BLOCKS_ID, text: 'Bl.ocks'},
               {id: OBSERVABLE_ID, text: 'Observable'},
-            ].map(tab => (
+            ].map((tab) => (
               <Tab
                 key={tab.id}
                 selected={tab.id === selectedSmallerWorkType}
@@ -247,7 +247,7 @@ export default class Index extends React.Component {
           <SmallerWorksCarousel>
             {smallerWorks
               .filter(
-                smallerWork =>
+                (smallerWork) =>
                   selectedSmallerWorkType === 'all' ||
                   smallerWork.workType === selectedSmallerWorkType
               )
@@ -285,7 +285,7 @@ export default class Index extends React.Component {
               {id: 'jQuery', text: 'jQuery'},
               {id: 'MongoDB', text: 'MongoDB'},
               {id: 'UX / UI', text: 'UX / UI'},
-            ].map(tab => (
+            ].map((tab) => (
               <Tab
                 key={tab.id}
                 selected={tab.id === selectedWrittenWorkTag}
@@ -297,9 +297,9 @@ export default class Index extends React.Component {
           </Tabs>
           <div className="blog-posts">
             {posts
-              .filter(post => post.node.frontmatter.title.length > 0)
+              .filter((post) => post.node.frontmatter.title.length > 0)
               .filter(
-                post =>
+                (post) =>
                   selectedWrittenWorkTag === 'all' ||
                   post.node.frontmatter.tags.includes(selectedWrittenWorkTag)
               )
@@ -309,7 +309,7 @@ export default class Index extends React.Component {
                     <BlogMetadata>
                       {formatData(post.frontmatter.date)}
                       <MiddleDot>/</MiddleDot>
-                      {post.frontmatter.tags.map(tag => (
+                      {post.frontmatter.tags.map((tag) => (
                         <BlogTag to={`/tags/${kebabCase(tag)}`} key={tag}>
                           {tag}
                         </BlogTag>

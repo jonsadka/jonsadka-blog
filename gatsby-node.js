@@ -39,7 +39,7 @@ exports.createPages = ({actions, graphql}) => {
         }
       }
     }
-  `).then(result => {
+  `).then((result) => {
     if (result.errors) {
       return Promise.reject(result.errors)
     }
@@ -57,7 +57,7 @@ exports.createPages = ({actions, graphql}) => {
     // Tag pages:
     let tags = []
     // Iterate through each post, putting all found tags into `tags`
-    _.each(posts, edge => {
+    _.each(posts, (edge) => {
       if (_.get(edge, 'node.frontmatter.tags')) {
         tags = tags.concat(edge.node.frontmatter.tags)
       }
@@ -66,7 +66,7 @@ exports.createPages = ({actions, graphql}) => {
     tags = _.uniq(tags)
 
     // Make tag pages
-    tags.forEach(tag => {
+    tags.forEach((tag) => {
       createPage({
         path: `/tags/${_.kebabCase(tag)}/`,
         component: tagTemplate,
@@ -80,7 +80,7 @@ exports.createPages = ({actions, graphql}) => {
 
 exports.onCreatePage = ({actions, page}) => {
   if (page.path === '/') {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       Promise.all([observablesPromise(), gistsPromise()]).then(
         ([observablesPayload, gistsPayload]) => {
           const {observablesList, observablesErr} = observablesPayload
@@ -117,7 +117,7 @@ function observablesPromise() {
     },
   }
 
-  return new Promise(observableResolve => {
+  return new Promise((observableResolve) => {
     request(observableRequestOptions, (err, res, observableWebpage) => {
       observablesListFromObservableSiteRSS(
         observableWebpage,
@@ -141,7 +141,7 @@ function gistsPromise() {
     json: true,
   }
 
-  return new Promise(gistsResolve => {
+  return new Promise((gistsResolve) => {
     request(gistsRequestOptions, (err, res, rawGistsList) => {
       const gistsList = gistsListFromPayload(rawGistsList)
       gistsResolve({
@@ -155,9 +155,10 @@ function gistsPromise() {
 function gistsListFromPayload(gistsListPayload) {
   return gistsListPayload
     .filter(
-      gist => gist.files['thumbnail.png'] && gist.files['thumbnail.png'].raw_url
+      (gist) =>
+        gist.files['thumbnail.png'] && gist.files['thumbnail.png'].raw_url
     )
-    .map(gist => ({
+    .map((gist) => ({
       alt: gist.description,
       createdAt: gist.created_at,
       href: `https://bl.ocks.org/jonsadka/${gist.id}`,
@@ -169,19 +170,19 @@ function gistsListFromPayload(gistsListPayload) {
 
 function observablesListFromObservableSiteRSS(siteRSS, callback) {
   const payloadData = payloadDataFromRSS(siteRSS, (err, payloadData) => {
-    const rawNotebooks = payloadData.rss.channel[0].item
+    const rawNotebooks = payloadData?.rss.channel[0].item || []
     const preloadData = {notebooks: rawNotebooks}
 
     callback(
       null,
       preloadData.notebooks
         .filter(
-          notebook =>
+          (notebook) =>
             !['Inputs', 'Comparisons of various bar chart properties'].includes(
               notebook.title[0]
             )
         )
-        .map(notebook => ({
+        .map((notebook) => ({
           alt: notebook.title[0],
           createdAt: null,
           href: notebook.guid[0],
