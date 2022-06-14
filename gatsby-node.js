@@ -170,7 +170,7 @@ function gistsListFromPayload(gistsListPayload) {
 
 function observablesListFromObservableSiteRSS(siteRSS, callback) {
   const payloadData = payloadDataFromRSS(siteRSS, (err, payloadData) => {
-    const rawNotebooks = payloadData?.rss.channel[0].item || []
+    const rawNotebooks = payloadData.rss.channel[0].item
     const preloadData = {notebooks: rawNotebooks}
 
     callback(
@@ -187,7 +187,7 @@ function observablesListFromObservableSiteRSS(siteRSS, callback) {
           createdAt: null,
           href: notebook.guid[0],
           imgUrl: getImageUrl(notebook.description[0]),
-          updatedAt: notebook.pubDate[0],
+          updatedAt: notebook.pubdate[0],
           workType: OBSERVABLE_ID,
         }))
     )
@@ -196,9 +196,11 @@ function observablesListFromObservableSiteRSS(siteRSS, callback) {
 
 function payloadDataFromRSS(siteRSS, callback) {
   const parser = new xml2js.Parser({
-    trim: false,
-    normalize: true,
     mergeAttrs: true,
+    normalize: true,
+    normalizeTags: true,
+    strict: false,
+    trim: false,
   })
 
   parser.parseString(siteRSS, callback)
