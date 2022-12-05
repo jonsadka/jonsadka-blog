@@ -41,7 +41,7 @@ const TagsPage = ({
         <ul>
           {group
             .sort((a, b) => b.totalCount - a.totalCount)
-            .map(tag => (
+            .map((tag) => (
               <Tag key={tag.fieldValue}>
                 <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
                   {tag.totalCount < 10 ? `0${tag.totalCount}` : tag.totalCount}
@@ -87,7 +87,7 @@ export const pageQuery = graphql`
       limit: 2000
       filter: {frontmatter: {published: {ne: false}}}
     ) {
-      group(field: frontmatter___tags) {
+      group(field: {frontmatter: {tags: SELECT}}) {
         fieldValue
         totalCount
       }

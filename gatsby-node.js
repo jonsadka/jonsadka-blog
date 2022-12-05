@@ -20,10 +20,7 @@ exports.createPages = ({actions, graphql}) => {
 
   return graphql(`
     {
-      allMarkdownRemark(
-        sort: {order: DESC, fields: [frontmatter___date]}
-        limit: 1000
-      ) {
+      allMarkdownRemark(sort: {frontmatter: {date: DESC}}, limit: 1000) {
         edges {
           node {
             excerpt(pruneLength: 250)
@@ -47,10 +44,11 @@ exports.createPages = ({actions, graphql}) => {
     const posts = result.data.allMarkdownRemark.edges
 
     posts.forEach(({node}) => {
+      const path = node.frontmatter.path
       createPage({
-        path: node.frontmatter.path,
         component: blogPostTemplate,
-        context: {}, // additional data can be passed via context
+        context: {pagePath: path},
+        path,
       })
     })
 
@@ -68,11 +66,9 @@ exports.createPages = ({actions, graphql}) => {
     // Make tag pages
     tags.forEach((tag) => {
       createPage({
-        path: `/tags/${_.kebabCase(tag)}/`,
         component: tagTemplate,
-        context: {
-          tag,
-        },
+        context: {tag},
+        path: `/tags/${_.kebabCase(tag)}/`,
       })
     })
   })

@@ -12,6 +12,13 @@ const BlogTitle = styled.div`
   font-family: 'Questrial';
   font-size: 36px;
   line-height: 44px;
+  margin-bottom: 0.5rem;
+`
+
+const BlogDate = styled.div`
+  color: #394047;
+  font-family: 'Questrial';
+  font-size: 28;
   margin-bottom: 1.45rem;
 `
 
@@ -31,12 +38,20 @@ const BlogContent = styled.div`
 
 export default function Template({data}) {
   const {markdownRemark: post} = data
+  const date = new Date(Number(post.frontmatter.date))
   return post ? (
     <Layout>
       <div className="blog-post-container">
         <Helmet title={`Jon Sadka - ${post.frontmatter.title}`} />
         <div className="blog-post">
           <BlogTitle>{post.frontmatter.title}</BlogTitle>
+          <BlogDate>
+            {date.toLocaleDateString(undefined, {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
+          </BlogDate>
           <BlogContent
             className="blog-post-content"
             dangerouslySetInnerHTML={{__html: post.html}}
@@ -60,8 +75,10 @@ export default function Template({data}) {
 }
 
 export const pageQuery = graphql`
-  query BlogPostByPath($path: String!) {
-    markdownRemark(frontmatter: {path: {eq: $path}, published: {ne: false}}) {
+  query BlogPostByPath($pagePath: String!) {
+    markdownRemark(
+      frontmatter: {path: {eq: $pagePath}, published: {eq: true}}
+    ) {
       html
       frontmatter {
         date
