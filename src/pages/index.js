@@ -1,13 +1,11 @@
 import React from 'react'
 import {graphql, Link, withPrefix} from 'gatsby'
 import kebabCase from 'lodash/kebabcase'
-import styled from 'styled-components'
+import {styled} from 'baseui'
 import {OutboundLink} from 'gatsby-plugin-google-analytics'
 
 import Layout from '../components/layout'
 import {LARGER_WORKS} from '../works/larger-works'
-
-// import '../css/index.css';
 
 const DEFAULT_MARGIN = 30
 const SMALL_THUMBNAIL_HEIGHT = 100
@@ -21,136 +19,140 @@ const SIZE = {
   LARGE: 'large',
 }
 
-const BlogPreview = styled.div`
-  margin-bottom: ${DEFAULT_MARGIN}px;
-`
+const BlogPreview = styled('div', {
+  marginBottom: `${DEFAULT_MARGIN}px`,
+})
 
-const BlogMetadata = styled.div`
-  color: #a3a3a3;
-  display: inline-block;
-  font-size: 12px;
-  margin-bottom: 5px;
-`
+const BlogMetadata = styled('div', {
+  color: '#a3a3a3',
+  display: 'inline-block',
+  fontSize: '12px',
+  marginBottom: '5px',
+})
 
-const BlogTag = styled(Link)`
-  color: #a3a3a3;
-  display: inline-block;
-  font-size: 12px;
-  padding-right: 10px;
-  transition: color 0.2s ease;
-  &:hover {
-    color: #060606;
-  }
-`
+const BlogTag = styled(Link, {
+  color: '#a3a3a3',
+  display: 'inline-block',
+  fontSize: '12px',
+  paddingRight: '10px',
+  transition: 'color 0.2s ease',
 
-const MiddleDot = styled.span`
-  font-size: 12px;
-  padding: 0 10px;
-`
+  ':hover': {
+    color: '#060606',
+  },
+})
 
-const ReadLink = styled(Link)`
-  display: block;
-  font-size: 12px;
-  letter-spacing: 0.05rem;
-  margin-bottom: 60px;
-  margin-top: ${DEFAULT_MARGIN}px;
-`
+const MiddleDot = styled('span', {
+  fontSize: '12px',
+  padding: '0 10px',
+})
 
-const WorksSection = styled.div`
-  margin: ${DEFAULT_MARGIN}px 0 60px 0;
-`
+const ReadLink = styled(Link, {
+  display: 'block',
+  fontSize: '12px',
+  letterSpacing: '0.05rem',
+  marginBottom: '60px',
+  marginTop: `${DEFAULT_MARGIN}px`,
+})
 
-const LargerWorksCarousel = styled.div`
-  overflow-x: scroll;
-  -webkit-overflow-scrolling: touch;
-  white-space: nowrap;
-`
+const WorksSection = styled('div', {
+  margin: `${DEFAULT_MARGIN}px 0 60px 0`,
+})
 
-const SmallerWorksCarousel = styled.div`
-  overflow-x: scroll;
-  -webkit-overflow-scrolling: touch;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  height: ${SMALL_THUMBNAIL_HEIGHT +
-  2 * (SMALL_THUMBNAIL_HEIGHT + DEFAULT_MARGIN) +
-  SCROLL_BAR_HEIGHT}px;
-  white-space: nowrap;
-`
+const LargerWorksCarousel = styled('div', {
+  overflowX: 'scroll',
+  webkitOverflowScrolling: 'touch',
+  whiteSpace: 'nowrap',
+})
 
-const LargerWorks = styled.div`
-  display: inline-block;
-  margin-right: ${DEFAULT_MARGIN}px;
-  vertical-align: top;
-  width: 367px;
-`
+const SmallerWorksCarousel = styled('div', {
+  overflowX: 'scroll',
+  webkitOverflowScrolling: 'touch',
+  display: 'flex',
+  flexDirection: 'column',
+  flexWrap: 'wrap',
+  height: `${
+    SMALL_THUMBNAIL_HEIGHT +
+    2 * (SMALL_THUMBNAIL_HEIGHT + DEFAULT_MARGIN) +
+    SCROLL_BAR_HEIGHT
+  }px`,
+  whiteSpace: 'nowrap',
+})
 
-const SmallerWorks = styled.div`
-  &:not(:nth-child(3n)) {
-    margin-bottom: ${DEFAULT_MARGIN}px;
-  }
-  margin-right: ${DEFAULT_MARGIN}px;
-  display: inline-block;
-`
+const LargerWorks = styled('div', {
+  display: 'inline-block',
+  marginRight: `${DEFAULT_MARGIN}px`,
+  verticalAlign: 'top',
+  width: '367px',
+})
 
-const SmallerWorkImage = styled.img`
-  margin-left: -5px;
-  margin-top: ${(props) => (props.workType === OBSERVABLE_ID ? '-8px' : '0')};
-  height: ${(props) => (props.workType === OBSERVABLE_ID ? '120px' : '100px')};
-`
+const SmallerWorks = styled('div', {
+  marginRight: `${DEFAULT_MARGIN}px`,
+  display: 'inline-block',
 
-const Thumbnail = styled.div`
-  background-color: #060606;
-  border-radius: 4px;
-  height: ${(props) =>
-    props.size === SIZE.LARGE ? '200px' : `${SMALL_THUMBNAIL_HEIGHT}px`};
-  overflow: hidden;
-  width: ${(props) => (props.size === SIZE.LARGE ? '367px' : '184px')};
-`
+  ':not(:nth-child(3n))': {
+    marginBottom: `${DEFAULT_MARGIN}px`,
+  },
+})
 
-const ThumbnailImage = styled.img`
-  width: ${(props) => (props.size === SIZE.LARGE ? '367px' : '184px')};
-`
+const SmallerWorkImage = styled('img', ({$workType}) => ({
+  marginLeft: '-5px',
+  marginTop: $workType === OBSERVABLE_ID ? '-8px' : '0',
+  height: $workType === OBSERVABLE_ID ? '120px' : '100px',
+}))
 
-const WorkDetails = styled.div`
-  padding: ${DEFAULT_MARGIN}px;
-`
+const Thumbnail = styled('div', ({$size}) => ({
+  backgroundColor: '#060606',
+  borderRadius: '4px',
+  height: $size === SIZE.LARGE ? '200px' : `${SMALL_THUMBNAIL_HEIGHT}px`,
+  overflow: 'hidden',
+  width: $size === SIZE.LARGE ? '367px' : '184px',
+}))
 
-const WorkTitle = styled(OutboundLink)`
-  color: #060606;
-  display: block;
-  margin-bottom: ${DEFAULT_MARGIN}px;
-`
+const ThumbnailImage = styled('img', ({$size}) => ({
+  width: $size === SIZE.LARGE ? '367px' : '184px',
+}))
 
-const WorkTitleLink = styled(Link)`
-  color: #060606;
-  display: block;
-  margin-bottom: ${DEFAULT_MARGIN}px;
-`
+const WorkDetails = styled('div', {
+  padding: `${DEFAULT_MARGIN}px`,
+})
 
-const WorkDescription = styled.div`
-  color: #a3a3a3;
-  font-size: 12px;
-  white-space: normal;
-`
+const WorkTitle = styled(OutboundLink, {
+  color: '#060606',
+  display: 'block',
+  marginBottom: `${DEFAULT_MARGIN}px`,
+})
 
-const Tabs = styled.ul`
-  margin-left: 0;
-  margin-bottom: ${DEFAULT_MARGIN}px;
-`
+const WorkTitleLink = styled(Link, {
+  color: '#060606',
+  display: 'block',
+  marginBottom: `${DEFAULT_MARGIN}px`,
+})
 
-const Tab = styled.li`
-  color: ${(props) => (props.selected ? '#060606' : '#A3A3A3')};
-  cursor: pointer;
-  display: inline-block;
-  font-size: 14px;
-  margin-right: ${DEFAULT_MARGIN}px;
-  min-width: ${DEFAULT_MARGIN}px;
-  transition: color 0.2s ease;
-  &:hover {
-    color: #060606;
-  }
-`
+const WorkDescription = styled('div', {
+  color: '#a3a3a3',
+  fontSize: '12px',
+  whiteSpace: 'normal',
+})
+
+const Tabs = styled('ul', {
+  marginLeft: 0,
+  marginBottom: `${DEFAULT_MARGIN}px`,
+})
+
+const Tab = styled('li', ({$selected}) => ({
+  color: $selected ? '#060606' : '#A3A3A3',
+  cursor: 'pointer',
+  display: 'inline-block',
+  fontSize: '14px',
+  marginRight: `${DEFAULT_MARGIN}px`,
+  minWidth: `${DEFAULT_MARGIN}px`,
+  transition: 'color 0.2s ease',
+
+  ':hover': {
+    color: '#060606',
+  },
+}))
 
 function formatData(ts) {
   const date = new Date(Number(ts))
@@ -202,15 +204,15 @@ export default class Index extends React.Component {
             {LARGER_WORKS.sort((a, b) => b.createdAt - a.createdAt).map(
               (work) => (
                 <LargerWorks key={work.url}>
-                  <Thumbnail size={SIZE.LARGE}>
+                  <Thumbnail $size={SIZE.LARGE}>
                     <OutboundLink
                       href={work.url}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <ThumbnailImage
+                        $size={SIZE.LARGE}
                         alt={work.title}
-                        size={SIZE.LARGE}
                         src={withPrefix(work.thumbnail)}
                       />
                     </OutboundLink>
@@ -241,8 +243,8 @@ export default class Index extends React.Component {
               {id: BLOCKS_ID, text: 'Bl.ocks'},
             ].map((tab) => (
               <Tab
+                $selected={tab.id === selectedSmallerWorkType}
                 key={tab.id}
-                selected={tab.id === selectedSmallerWorkType}
                 onClick={() => this._filterSmallerWork(tab.id)}
               >
                 {tab.text}
@@ -258,16 +260,16 @@ export default class Index extends React.Component {
               )
               .map((smallerWork, i) => (
                 <SmallerWorks key={i}>
-                  <Thumbnail size={SIZE.SMALL}>
+                  <Thumbnail $size={SIZE.SMALL}>
                     <OutboundLink
                       href={smallerWork.href}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <SmallerWorkImage
+                        $workType={smallerWork.workType}
                         alt={smallerWork.alt}
                         src={smallerWork.imgUrl}
-                        workType={smallerWork.workType}
                       />
                     </OutboundLink>
                   </Thumbnail>
@@ -292,15 +294,15 @@ export default class Index extends React.Component {
               {id: 'UX / UI', text: 'UX / UI'},
             ].map((tab) => (
               <Tab
+                $selected={tab.id === selectedWrittenWorkTag}
                 key={tab.id}
-                selected={tab.id === selectedWrittenWorkTag}
                 onClick={() => this._filterWrittenWork(tab.id)}
               >
                 {tab.text}
               </Tab>
             ))}
           </Tabs>
-          <div className="blog-posts">
+          <div>
             {posts
               .filter((post) => post.node.frontmatter.title.length > 0)
               .filter(

@@ -1,11 +1,11 @@
 import React from 'react'
-import styled from 'styled-components'
+import {styled} from 'baseui'
 
 import Layout from '../components/layout'
 
-const PageContainer = styled.div`
-  margin: 30px 0 60px 0;
-`
+const PageContainer = styled('div', {
+  margin: '30px 0 60px 0',
+})
 
 const NotFoundPage = () => (
   <Layout>

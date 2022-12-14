@@ -1,19 +1,18 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import {styled} from 'baseui'
 import {graphql, Link} from 'gatsby'
 
 // Components
 import Layout from '../components/layout'
 
-const PageContainer = styled.div`
-  margin: 30px 0 60px 0;
-`
+const PageContainer = styled('div', {
+  margin: '30px 0 60px 0',
+})
 
-const Tag = styled.li`
-  margin-bottom: 15px;
-  list-style-type: none;
-`
+const Tag = styled('li', {
+  marginBottom: '15px',
+  listStyleType: 'none',
+})
 
 const Tags = ({pageContext, data}) => {
   const {tag} = pageContext
@@ -45,27 +44,6 @@ const Tags = ({pageContext, data}) => {
     </Layout>
   )
 }
-
-// Tags.propTypes = {
-//   pageContext: PropTypes.shape({
-//     tag: PropTypes.string.isRequired,
-//   }),
-//   data: PropTypes.shape({
-//     allMarkdownRemark: PropTypes.shape({
-//       totalCount: PropTypes.number.isRequired,
-//       edges: PropTypes.arrayOf(
-//         PropTypes.shape({
-//           node: PropTypes.shape({
-//             frontmatter: PropTypes.shape({
-//               path: PropTypes.string.isRequired,
-//               title: PropTypes.string.isRequired,
-//             }),
-//           }),
-//         }).isRequired,
-//       ),
-//     }),
-//   }),
-// };
 
 export default Tags
 

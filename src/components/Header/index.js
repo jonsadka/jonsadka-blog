@@ -1,42 +1,42 @@
 import React from 'react'
 import {Link} from 'gatsby'
-import styled from 'styled-components'
+import {styled} from 'baseui'
 import {OutboundLink} from 'gatsby-plugin-google-analytics'
 
 const MAX_WIDTH = 960
 
-const HeaderContainer = styled.div`
-  background-color: white;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  max-width: ${MAX_WIDTH}px;
-  padding: 1.45rem 1.0875rem;
-  position: fixed;
-  top: 0;
-  width: 100%;
-`
+const HeaderContainer = styled('div', {
+  backgroundColor: 'white',
+  display: 'grid',
+  gridTemplateColumns: '1fr 1fr',
+  maxWidth: `${MAX_WIDTH}px`,
+  padding: '1.45rem 1.0875rem',
+  position: 'fixed',
+  top: '0',
+  width: '100%',
+})
 
-const Name = styled.div`
-  font-size: 14px;
-  font-weight: 700;
-`
+const Name = styled('div', {
+  fontSize: '14px',
+  fontWeight: '700',
+})
 
-const SocialIcons = styled.div`
-  display: flex;
-  align-items: end;
-  justify-content: flex-end;
-`
+const SocialIcons = styled('div', {
+  display: 'flex',
+  alignItems: 'end',
+  justifyContent: 'flex-end',
+})
 
-const SocialIcon = styled(OutboundLink)`
-  display: inline-block;
-  align-self: flex-end;
-  margin-left: 15px;
-  fill: #a3a3a3;
+const SocialIcon = styled(OutboundLink, {
+  display: 'inline-block',
+  alignSelf: 'flex-end',
+  marginLeft: '15px',
+  fill: '#a3a3a3',
 
-  :hover {
-    fill: #060606;
-  }
-`
+  ':hover': {
+    fill: '#060606',
+  },
+})
 
 function TwitterIcon() {
   return (

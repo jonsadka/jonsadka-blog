@@ -4,7 +4,7 @@
   "version": "2.0.0",
   "author": "Jon Sadka <jonsadka@gmail.com>",
   "dependencies": {
-    "babel-plugin-styled-components": "^2.0.7",
+    "baseui": "^12.2.0",
     "gatsby": "^5.2.0",
     "gatsby-plugin-catch-links": "^5.2.0",
     "gatsby-plugin-google-analytics": "^5.2.0",
@@ -12,7 +12,6 @@
     "gatsby-plugin-offline": "^6.2.0",
     "gatsby-plugin-react-helmet": "^6.2.0",
     "gatsby-plugin-sitemap": "^6.2.0",
-    "gatsby-plugin-styled-components": "^6.2.0",
     "gatsby-source-filesystem": "^5.2.0",
     "gatsby-transformer-remark": "^6.2.0",
     "lodash": "^4.17.21",
@@ -20,7 +19,8 @@
     "react-dom": "^18.1.0",
     "react-helmet": "^6.1.0",
     "request": "^2.88.2",
-    "styled-components": "^5.3.6",
+    "styletron-engine-atomic": "^1.5.0",
+    "styletron-react": "^6.1.0",
     "xml2js": "^0.4.23"
   },
   "keywords": [
@@ -37,6 +37,7 @@
     "update": "yarn upgrade-interactive --latest"
   },
   "devDependencies": {
+    "eslint-plugin-baseui": "^12.2.0",
     "gh-pages": "^4.0.0",
     "prettier": "^2.8.0"
   }

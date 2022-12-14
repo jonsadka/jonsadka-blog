@@ -1,6 +1,5 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import {styled} from 'baseui'
 
 // Utilities
 import kebabCase from 'lodash/kebabcase'
@@ -11,19 +10,19 @@ import {graphql, Link} from 'gatsby'
 
 import Layout from '../components/layout'
 
-const PageContainer = styled.div`
-  margin: 30px 0 60px 0;
-`
+const PageContainer = styled('div', {
+  margin: '30px 0 60px 0',
+})
 
-const Tag = styled.li`
-  list-style-type: none;
-  margin-left: 0;
-  margin-bottom: 30px;
-`
+const Tag = styled('li', {
+  listStyleType: 'none',
+  marginLeft: '0',
+  marginBottom: '30px',
+})
 
-const ForwardSlash = styled.span`
-  margin: 0 10px;
-`
+const ForwardSlash = styled('span', {
+  margin: '0 10px',
+})
 
 const TagsPage = ({
   data: {
@@ -55,24 +54,6 @@ const TagsPage = ({
     </PageContainer>
   </Layout>
 )
-
-// TagsPage.propTypes = {
-//   data: PropTypes.shape({
-//     allMarkdownRemark: PropTypes.shape({
-//       group: PropTypes.arrayOf(
-//         PropTypes.shape({
-//           fieldValue: PropTypes.string.isRequired,
-//           totalCount: PropTypes.number.isRequired,
-//         }).isRequired,
-//       ),
-//     }),
-//     site: PropTypes.shape({
-//       siteMetadata: PropTypes.shape({
-//         title: PropTypes.string.isRequired,
-//       }),
-//     }),
-//   }),
-// };
 
 export default TagsPage
 
