@@ -1,5 +1,13 @@
 export const LARGER_WORKS = [
   {
+    createdAt: 1671004800000,
+    description:
+      'A collection of 108 animated NFTs on the Ethereum blockchain.',
+    title: 'Formations',
+    thumbnail: '/img/thumbnails/formations.gif',
+    url: 'https://opensea.io/collection/formations-by-jon-sadka',
+  },
+  {
     createdAt: 1648882800000,
     description: 'Custom sound wave jewlery',
     title: 'Golani Jewelry',

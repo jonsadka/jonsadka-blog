@@ -27,7 +27,7 @@ const BlogMetadata = styled('div', {
   color: '#a3a3a3',
   display: 'inline-block',
   fontSize: '12px',
-  marginBottom: '5px',
+  marginBottom: '2px',
 })
 
 const BlogTag = styled(Link, {
@@ -114,13 +114,15 @@ const ThumbnailImage = styled('img', ({$size}) => ({
 }))
 
 const WorkDetails = styled('div', {
-  padding: `${DEFAULT_MARGIN}px`,
+  padding: `${
+    DEFAULT_MARGIN / 2
+  }px ${DEFAULT_MARGIN}px ${DEFAULT_MARGIN}px ${DEFAULT_MARGIN}px`,
 })
 
 const WorkTitle = styled(OutboundLink, {
   color: '#060606',
   display: 'block',
-  marginBottom: `${DEFAULT_MARGIN}px`,
+  marginBottom: `${DEFAULT_MARGIN / 2}px`,
 })
 
 const WorkTitleLink = styled(Link, {
@@ -132,6 +134,7 @@ const WorkTitleLink = styled(Link, {
 const WorkDescription = styled('div', {
   color: '#a3a3a3',
   fontSize: '12px',
+  lineHeight: '20px',
   whiteSpace: 'normal',
 })
 
