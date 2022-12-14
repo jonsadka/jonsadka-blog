@@ -43,6 +43,7 @@ module.exports = {
       resolve: `gatsby-plugin-sitemap`,
     },
     'gatsby-plugin-offline',
+    'gatsby-plugin-styletron',
   ],
   siteMetadata: {
     siteUrl: 'https://jonsadka.com',
