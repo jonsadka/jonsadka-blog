@@ -5672,6 +5672,13 @@ gatsby-plugin-sitemap@^6.2.0:
     minimatch "^3.1.2"
     sitemap "^7.0.0"
 
+gatsby-plugin-styletron@^8.3.0:
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-styletron/-/gatsby-plugin-styletron-8.3.0.tgz#edd008cd40593467367c0f9a8b39baae9af42446"
+  integrity sha512-MvjGC3nTOtJhCf3wJbLNS4jc9GYV71CzPgGCMIO/leRZbL1HM0+snoowtUf3im8eWOM7//JHdlCXYlTErWuWvA==
+  dependencies:
+    "@babel/runtime" "^7.15.4"
+
 gatsby-plugin-typescript@^5.2.0:
   version "5.2.0"
   resolved "https://registry.npmjs.org/gatsby-plugin-typescript/-/gatsby-plugin-typescript-5.2.0.tgz"
