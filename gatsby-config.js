@@ -1,5 +1,9 @@
 module.exports = {
+  flags: {
+    DEV_SSR: true,
+  },
   plugins: [
+    'gatsby-plugin-styletron',
     'gatsby-plugin-catch-links',
     'gatsby-plugin-react-helmet',
     {
@@ -43,7 +47,6 @@ module.exports = {
       resolve: `gatsby-plugin-sitemap`,
     },
     'gatsby-plugin-offline',
-    'gatsby-plugin-styletron',
   ],
   siteMetadata: {
     siteUrl: 'https://jonsadka.com',
