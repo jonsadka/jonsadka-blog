@@ -134,7 +134,7 @@ export default function NotFoundPage() {
 
         <MediaGallery />
 
-        <HeadingSmall marginBottom="scale600">Art Plot</HeadingSmall>
+        <HeadingSmall marginBottom="scale600">Art Print</HeadingSmall>
 
         <ArtPlotContainer>
           <ImagesContainer>
@@ -142,7 +142,7 @@ export default function NotFoundPage() {
               <ImageShadow>
                 <StaticImage
                   src="../images/formations/zoom.JPG"
-                  alt="Finalized art plot"
+                  alt="Finalized art print"
                   placeholder="blurred"
                   layout="fullWidth"
                 />
@@ -156,7 +156,7 @@ export default function NotFoundPage() {
               About
             </HeadingXSmall>
             <ParagraphSmall color="contentSecondary" maxWidth="400px">
-              Each art plot is indivudally plotted by Jon Sadka on his AxiDraw
+              Each print is individually plotted by Jon Sadka on his AxiDraw
               MiniKit, taking approximately 30 minutes to complete.
             </ParagraphSmall>
             <LabelMedium>Paper</LabelMedium>
@@ -171,10 +171,10 @@ export default function NotFoundPage() {
               marginBottom="scale1200"
             >
               Fine line marker of the 0.2mm Pilot Razor Point II pen in black,
-              blue, or red ink to match the color of the art plot.
+              blue, or red ink to match the color of the Formation.
             </ParagraphSmall>
 
-            <Button onClick={() => setIsOpen(true)}>Request Plots</Button>
+            <Button onClick={() => setIsOpen(true)}>Request Prints</Button>
           </div>
         </ArtPlotContainer>
 
@@ -221,7 +221,7 @@ export default function NotFoundPage() {
             },
           }}
         >
-          <ModalHeader>Art Plot Request</ModalHeader>
+          <ModalHeader>Art Print Request</ModalHeader>
           <ModalBody>
             <RequestForm />
           </ModalBody>

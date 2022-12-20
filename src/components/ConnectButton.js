@@ -59,7 +59,7 @@ export default function CustomConnectButton({nftsLoaded, ownerNFTs}) {
           <ButtonContainer $isReady={mounted}>
             <FormControl
               label="Wallet"
-              caption="Connect your wallet holidng a Formation to redeem your matching art plots."
+              caption="Connect your wallet holidng a Formation to redeem your matching art prints."
               error={
                 nftsLoaded && !ownerNFTs.length > 0 ? (
                   <>
