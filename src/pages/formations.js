@@ -38,7 +38,7 @@ const ImagesContainer = styled('div', ({$theme}) => ({
   },
 }))
 
-const ArtPrintContainer = styled('div', ({$theme}) => ({
+const ArtPlotContainer = styled('div', ({$theme}) => ({
   marginBottom: $theme.sizing.scale1600,
 
   [$theme.mediaQuery.medium]: {
@@ -134,15 +134,15 @@ export default function NotFoundPage() {
 
         <MediaGallery />
 
-        <HeadingSmall marginBottom="scale600">Art Print</HeadingSmall>
+        <HeadingSmall marginBottom="scale600">Art Plot</HeadingSmall>
 
-        <ArtPrintContainer>
+        <ArtPlotContainer>
           <ImagesContainer>
             <div>
               <ImageShadow>
                 <StaticImage
                   src="../images/formations/zoom.JPG"
-                  alt="Finalized art print"
+                  alt="Finalized art plot"
                   placeholder="blurred"
                   layout="fullWidth"
                 />
@@ -156,7 +156,7 @@ export default function NotFoundPage() {
               About
             </HeadingXSmall>
             <ParagraphSmall color="contentSecondary" maxWidth="400px">
-              Each art print is indivudally plotted by Jon Sadka on his AxiDraw
+              Each art plot is indivudally plotted by Jon Sadka on his AxiDraw
               MiniKit, taking approximately 30 minutes to complete.
             </ParagraphSmall>
             <LabelMedium>Paper</LabelMedium>
@@ -171,12 +171,12 @@ export default function NotFoundPage() {
               marginBottom="scale1200"
             >
               Fine line marker of the 0.2mm Pilot Razor Point II pen in black,
-              blue, or red ink to match the color of the art print.
+              blue, or red ink to match the color of the art plot.
             </ParagraphSmall>
 
-            <Button onClick={() => setIsOpen(true)}>Request Prints</Button>
+            <Button onClick={() => setIsOpen(true)}>Request Plots</Button>
           </div>
-        </ArtPrintContainer>
+        </ArtPlotContainer>
 
         <HeadingSmall marginBottom="scale300">Technologies</HeadingSmall>
         <LabelMedium>Art</LabelMedium>
@@ -221,7 +221,7 @@ export default function NotFoundPage() {
             },
           }}
         >
-          <ModalHeader>Art Print Request</ModalHeader>
+          <ModalHeader>Art Plot Request</ModalHeader>
           <ModalBody>
             <RequestForm />
           </ModalBody>
