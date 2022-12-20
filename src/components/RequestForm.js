@@ -9,7 +9,6 @@ import {StyledLink} from 'baseui/link'
 import {useFormspark} from '@formspark/use-formspark'
 import {Tag, KIND, VARIANT} from 'baseui/tag'
 import {Check} from 'baseui/icon'
-import Turnstile from 'react-turnstile'
 import {darkTheme, RainbowKitProvider} from '@rainbow-me/rainbowkit'
 import {useAccount, WagmiConfig} from 'wagmi'
 import {ethers, utils} from 'ethers'
@@ -21,7 +20,6 @@ import CustomConnectButton from './ConnectButton'
 import jsonInterface from './formations-abi.json'
 
 const FORMSPARK_FORM = 'WEvn2UzB'
-const TURNSTILE_KEY = '0x4AAAAAAABpcKT5nFUCdLdq'
 
 function NameLabel() {
   return (
@@ -83,9 +81,6 @@ function UnconnectedRequestForm() {
   const [ownerNFTs, setOwnerNFTs] = useState(null)
   const {address: wallet} = useAccount()
 
-  // TODO: Integrate this into form
-  const [turnstyleToken, setTurnstyleToken] = useState(null)
-
   const [submit, submitting] = useFormspark({formId: FORMSPARK_FORM})
   const [submitted, setSubmitted] = useState(false)
 
@@ -96,9 +91,7 @@ function UnconnectedRequestForm() {
     }
 
     async function getNFTs() {
-      // const resp = await getWalletNFTs(
-      //   '0x7ef61cacd0c785eacdfe17649d1c5bcba676a858'
-      // )
+      // '0x7ef61cacd0c785eacdfe17649d1c5bcba676a858'
       const resp = await getWalletNFTs(wallet)
       setOwnerNFTs(resp)
     }
@@ -109,19 +102,17 @@ function UnconnectedRequestForm() {
 
   const onSubmit = async (e) => {
     e.preventDefault()
-    await submit({wallet, name, address: JSON.stringify(address)})
+    await submit({
+      address: JSON.stringify(address),
+      ids: ownerNFTs,
+      name,
+      wallet,
+    })
     setSubmitted(true)
   }
 
-  console.log(turnstyleToken)
   return (
     <>
-      <Turnstile
-        autoResetOnExpire
-        sitekey={TURNSTILE_KEY}
-        onVerify={(token) => setTurnstyleToken(token)}
-      />
-
       {submitted ? (
         <div>
           <ConfirmLabel>
@@ -129,7 +120,7 @@ function UnconnectedRequestForm() {
               <Check color="positive" size="33px" />
             </CheckIcon>
             <div>
-              <HeadingXSmall margin={0}>Request recieved.</HeadingXSmall>
+              <HeadingXSmall margin={0}>Recieved</HeadingXSmall>
               <ParagraphMedium color="contentSecondary" margin={0}>
                 Print will be mailed out in 1-2 weeks.
               </ParagraphMedium>

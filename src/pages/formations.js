@@ -11,7 +11,6 @@ import {Modal, ModalHeader, ModalBody, SIZE, ROLE} from 'baseui/modal'
 import {Button} from 'baseui/button'
 import {StaticImage} from 'gatsby-plugin-image'
 import {Block} from 'baseui/block'
-import {Link} from 'gatsby'
 
 import Layout from '../components/layout'
 import RequestForm from '../components/RequestForm'
@@ -70,7 +69,7 @@ const MediaGrid = styled('div', ({$theme}) => ({
   },
 }))
 
-const UnstyledLink = styled(Link, {textDecoration: 'none'})
+const UnstyledLink = styled('a', {textDecoration: 'none'})
 
 const ImageShadow = styled('div', ({$theme}) => ({
   border: `12px solid ${$theme.colors.backgroundPrimary}`,
