@@ -103,8 +103,8 @@ function UnconnectedRequestForm() {
   const onSubmit = async (e) => {
     e.preventDefault()
     await submit({
-      address: JSON.stringify(address),
-      ids: ownerNFTs,
+      address: JSON.stringify(address.trim()),
+      ids: ownerNFTs.join(','),
       name,
       wallet,
     })
