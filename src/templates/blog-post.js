@@ -6,28 +6,12 @@ import {styled} from 'baseui'
 import Layout from '../components/layout'
 
 import '../css/blog-post.css'
-
-const BlogTitle = styled('div', {
-  color: '#394047',
-  fontFamily: 'Questrial',
-  fontSize: '36px',
-  lineHeight: '44px',
-  marginBottom: '0.5rem',
-})
-
-const BlogDate = styled('div', {
-  color: '#394047',
-  fontFamily: 'Questrial',
-  fontSize: '28',
-  marginBottom: '1.45rem',
-})
-
-const BlogContent = styled('div', {
-  color: '#a3a3a3',
-  lineHeight: '20px',
-  fontSize: '15px',
-  fontFamily: 'Questrial',
-})
+import {
+  HeadingXLarge,
+  HeadingXXLarge,
+  LabelMedium,
+  ParagraphSmall,
+} from 'baseui/typography'
 
 export default function Template({data}) {
   const {markdownRemark: post} = data
@@ -37,15 +21,15 @@ export default function Template({data}) {
       <div>
         <Helmet title={`Jon Sadka - ${post.frontmatter.title}`} />
         <div>
-          <BlogTitle>{post.frontmatter.title}</BlogTitle>
-          <BlogDate>
+          <HeadingXLarge>{post.frontmatter.title}</HeadingXLarge>
+          <LabelMedium>
             {date.toLocaleDateString(undefined, {
               year: 'numeric',
               month: 'long',
               day: 'numeric',
             })}
-          </BlogDate>
-          <BlogContent
+          </LabelMedium>
+          <ParagraphSmall
             className="blog-post-content"
             dangerouslySetInnerHTML={{__html: post.html}}
           />
@@ -57,7 +41,7 @@ export default function Template({data}) {
       <div>
         <Helmet title="Jon Sadka" />
         <div>
-          <h1>Oh No!</h1>
+          <HeadingXXLarge>Oh No!</HeadingXXLarge>
           <div>We could not find the page you are looking for</div>
         </div>
       </div>

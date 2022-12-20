@@ -3,6 +3,12 @@ import {graphql, Link, withPrefix} from 'gatsby'
 import kebabCase from 'lodash/kebabcase'
 import {styled} from 'baseui'
 import {OutboundLink} from 'gatsby-plugin-google-analytics'
+import {
+  HeadingMedium,
+  HeadingSmall,
+  ParagraphLarge,
+  ParagraphSmall,
+} from 'baseui/typography'
 
 import Layout from '../components/layout'
 import {LARGER_WORKS} from '../works/larger-works'
@@ -19,28 +25,28 @@ const SIZE = {
   LARGE: 'large',
 }
 
-const BlogPreview = styled('div', {
-  marginBottom: `${DEFAULT_MARGIN}px`,
-})
+const BlogPreview = styled('div', ({$theme}) => ({
+  marginBottom: $theme.sizing.scale1600,
+}))
 
-const BlogMetadata = styled('div', {
-  color: '#a3a3a3',
+const BlogMetadata = styled('div', ({$theme}) => ({
+  color: $theme.colors.contentInverseTertiary,
   display: 'inline-block',
   fontSize: '12px',
-  marginBottom: '2px',
-})
+  marginBottom: $theme.sizing.scale100,
+}))
 
-const BlogTag = styled(Link, {
-  color: '#a3a3a3',
+const BlogTag = styled(Link, ({$theme}) => ({
+  color: $theme.colors.contentInverseTertiary,
   display: 'inline-block',
   fontSize: '12px',
   paddingRight: '10px',
   transition: 'color 0.2s ease',
 
   ':hover': {
-    color: '#060606',
+    color: $theme.colors.contentPrimary,
   },
-})
+}))
 
 const MiddleDot = styled('span', {
   fontSize: '12px',
@@ -51,8 +57,6 @@ const ReadLink = styled(Link, {
   display: 'block',
   fontSize: '12px',
   letterSpacing: '0.05rem',
-  marginBottom: '60px',
-  marginTop: `${DEFAULT_MARGIN}px`,
 })
 
 const WorksSection = styled('div', {
@@ -101,8 +105,8 @@ const SmallerWorkImage = styled('img', ({$workType}) => ({
   height: $workType === OBSERVABLE_ID ? '120px' : '100px',
 }))
 
-const Thumbnail = styled('div', ({$size}) => ({
-  backgroundColor: '#060606',
+const Thumbnail = styled('div', ({$size, $theme}) => ({
+  backgroundColor: $theme.colors.contentPrimary,
   borderRadius: '4px',
   height: $size === SIZE.LARGE ? '200px' : `${SMALL_THUMBNAIL_HEIGHT}px`,
   overflow: 'hidden',
@@ -119,32 +123,32 @@ const WorkDetails = styled('div', {
   }px ${DEFAULT_MARGIN}px ${DEFAULT_MARGIN}px ${DEFAULT_MARGIN}px`,
 })
 
-const WorkTitle = styled(OutboundLink, {
-  color: '#060606',
+const WorkTitle = styled(OutboundLink, ({$theme}) => ({
+  color: $theme.colors.contentPrimary,
   display: 'block',
-  marginBottom: `${DEFAULT_MARGIN / 2}px`,
-})
+  marginBottom: $theme.sizing.scale600,
+}))
 
-const WorkTitleLink = styled(Link, {
-  color: '#060606',
-  display: 'block',
-  marginBottom: `${DEFAULT_MARGIN}px`,
-})
+const WorkTitleLink = styled(ParagraphLarge, ({$theme}) => ({
+  marginTop: 0,
+}))
 
-const WorkDescription = styled('div', {
-  color: '#a3a3a3',
+const WorkDescription = styled('div', ({$theme}) => ({
+  color: $theme.colors.contentTertiary,
   fontSize: '12px',
   lineHeight: '20px',
   whiteSpace: 'normal',
-})
+}))
 
 const Tabs = styled('ul', {
   marginLeft: 0,
   marginBottom: `${DEFAULT_MARGIN}px`,
 })
 
-const Tab = styled('li', ({$selected}) => ({
-  color: $selected ? '#060606' : '#A3A3A3',
+const Tab = styled('li', ({$selected, $theme}) => ({
+  color: $selected
+    ? $theme.colors.contentPrimary
+    : $theme.colors.contentTertiary,
   cursor: 'pointer',
   display: 'inline-block',
   fontSize: '14px',
@@ -153,7 +157,7 @@ const Tab = styled('li', ({$selected}) => ({
   transition: 'color 0.2s ease',
 
   ':hover': {
-    color: '#060606',
+    color: $theme.colors.contentPrimary,
   },
 }))
 
@@ -202,7 +206,7 @@ export default class Index extends React.Component {
     return (
       <Layout>
         <WorksSection>
-          <h2>Larger Works</h2>
+          <HeadingMedium>Larger Works</HeadingMedium>
           <LargerWorksCarousel>
             {LARGER_WORKS.sort((a, b) => b.createdAt - a.createdAt).map(
               (work) => (
@@ -238,7 +242,7 @@ export default class Index extends React.Component {
         </WorksSection>
 
         <WorksSection>
-          <h2>Smaller Works</h2>
+          <HeadingMedium>Smaller Works</HeadingMedium>
           <Tabs>
             {[
               {id: 'all', text: 'All Sources'},
@@ -282,7 +286,7 @@ export default class Index extends React.Component {
         </WorksSection>
 
         <WorksSection>
-          <h2>Written Works</h2>
+          <HeadingMedium>Written Works</HeadingMedium>
           <Tabs>
             {/*
               TODO: Make this generative so that adding a new tag updates this list automatically
@@ -325,10 +329,16 @@ export default class Index extends React.Component {
                         </BlogTag>
                       ))}
                     </BlogMetadata>
-                    <WorkTitleLink to={post.frontmatter.path}>
-                      {post.frontmatter.title}
-                    </WorkTitleLink>
-                    <p>{post.excerpt}</p>
+
+                    <Link to={post.frontmatter.path}>
+                      <WorkTitleLink>{post.frontmatter.title}</WorkTitleLink>
+                    </Link>
+                    <ParagraphSmall
+                      color="contentTertiary"
+                      marginBottom="scale800"
+                    >
+                      {post.excerpt}
+                    </ParagraphSmall>
                     <ReadLink to={post.frontmatter.path}>Read</ReadLink>
                   </BlogPreview>
                 )

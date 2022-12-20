@@ -1,5 +1,6 @@
 import React from 'react'
 import {styled} from 'baseui'
+import {HeadingXLarge, ParagraphSmall} from 'baseui/typography'
 
 import Layout from '../components/layout'
 
@@ -10,8 +11,10 @@ const PageContainer = styled('div', {
 const NotFoundPage = () => (
   <Layout>
     <PageContainer>
-      <h2>NOT FOUND</h2>
-      <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+      <HeadingXLarge>NOT FOUND</HeadingXLarge>
+      <ParagraphSmall>
+        You just hit a route that doesn&#39;t exist... the sadness.
+      </ParagraphSmall>
     </PageContainer>
   </Layout>
 )

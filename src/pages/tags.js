@@ -9,6 +9,7 @@ import Helmet from 'react-helmet'
 import {graphql, Link} from 'gatsby'
 
 import Layout from '../components/layout'
+import {HeadingXLarge} from 'baseui/typography'
 
 const PageContainer = styled('div', {
   margin: '30px 0 60px 0',
@@ -36,7 +37,7 @@ const TagsPage = ({
     <PageContainer>
       <Helmet title={title} />
       <div>
-        <h2>Tags</h2>
+        <HeadingXLarge>Tags</HeadingXLarge>
         <ul>
           {group
             .sort((a, b) => b.totalCount - a.totalCount)

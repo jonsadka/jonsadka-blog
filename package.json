@@ -4,24 +4,32 @@
   "version": "2.0.0",
   "author": "Jon Sadka <jonsadka@gmail.com>",
   "dependencies": {
+    "@formspark/use-formspark": "^0.1.39",
+    "@rainbow-me/rainbowkit": "^0.8.1",
     "baseui": "^12.2.0",
+    "ethers": "^5.7.2",
     "gatsby": "^5.2.0",
     "gatsby-plugin-catch-links": "^5.2.0",
     "gatsby-plugin-google-analytics": "^5.2.0",
+    "gatsby-plugin-image": "^3.3.2",
     "gatsby-plugin-manifest": "^5.2.0",
     "gatsby-plugin-offline": "^6.2.0",
     "gatsby-plugin-react-helmet": "^6.2.0",
+    "gatsby-plugin-sharp": "^5.3.2",
     "gatsby-plugin-sitemap": "^6.2.0",
     "gatsby-plugin-styletron": "^8.3.0",
-    "gatsby-source-filesystem": "^5.2.0",
+    "gatsby-source-filesystem": "^5.3.1",
     "gatsby-transformer-remark": "^6.2.0",
+    "gatsby-transformer-sharp": "^5.3.1",
     "lodash": "^4.17.21",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-helmet": "^6.1.0",
+    "react-turnstile": "^1.0.6",
     "request": "^2.88.2",
     "styletron-engine-atomic": "^1.5.0",
     "styletron-react": "^6.1.0",
+    "wagmi": "^0.9.4",
     "xml2js": "^0.4.23"
   },
   "keywords": [
@@ -38,7 +46,9 @@
     "update": "yarn upgrade-interactive --latest"
   },
   "devDependencies": {
+    "eslint": "^8.30.0",
     "eslint-plugin-baseui": "^12.2.0",
+    "eslint-plugin-react": "^7.31.11",
     "gh-pages": "^4.0.0",
     "prettier": "^2.8.0"
   }

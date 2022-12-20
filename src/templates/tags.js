@@ -4,6 +4,7 @@ import {graphql, Link} from 'gatsby'
 
 // Components
 import Layout from '../components/layout'
+import {HeadingXLarge} from 'baseui/typography'
 
 const PageContainer = styled('div', {
   margin: '30px 0 60px 0',
@@ -24,7 +25,7 @@ const Tags = ({pageContext, data}) => {
   return (
     <Layout>
       <PageContainer>
-        <h2>{tagHeader}</h2>
+        <HeadingXLarge>{tagHeader}</HeadingXLarge>
         <ul>
           {edges.map(({node}) => {
             const {path, title} = node.frontmatter
