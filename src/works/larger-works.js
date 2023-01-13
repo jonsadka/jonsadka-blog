@@ -5,7 +5,7 @@ export const LARGER_WORKS = [
       'A collection of 108 animated NFTs on the Ethereum blockchain.',
     title: 'Formations',
     thumbnail: '/img/thumbnails/formations.gif',
-    url: 'https://opensea.io/collection/formations-by-jon-sadka',
+    url: 'formations',
   },
   {
     createdAt: 1648882800000,

@@ -3,12 +3,7 @@ import {graphql, Link, withPrefix} from 'gatsby'
 import kebabCase from 'lodash/kebabcase'
 import {styled} from 'baseui'
 import {OutboundLink} from 'gatsby-plugin-google-analytics'
-import {
-  HeadingMedium,
-  HeadingSmall,
-  ParagraphLarge,
-  ParagraphSmall,
-} from 'baseui/typography'
+import {HeadingMedium, ParagraphLarge, ParagraphSmall} from 'baseui/typography'
 
 import Layout from '../components/layout'
 import {LARGER_WORKS} from '../works/larger-works'
@@ -212,17 +207,27 @@ export default class Index extends React.Component {
               (work) => (
                 <LargerWorks key={work.url}>
                   <Thumbnail $size={SIZE.LARGE}>
-                    <OutboundLink
-                      href={work.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <ThumbnailImage
-                        $size={SIZE.LARGE}
-                        alt={work.title}
-                        src={withPrefix(work.thumbnail)}
-                      />
-                    </OutboundLink>
+                    {work.url.match('http') ? (
+                      <OutboundLink
+                        href={work.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <ThumbnailImage
+                          $size={SIZE.LARGE}
+                          alt={work.title}
+                          src={withPrefix(work.thumbnail)}
+                        />
+                      </OutboundLink>
+                    ) : (
+                      <Link to={work.url}>
+                        <ThumbnailImage
+                          $size={SIZE.LARGE}
+                          alt={work.title}
+                          src={withPrefix(work.thumbnail)}
+                        />
+                      </Link>
+                    )}
                   </Thumbnail>
                   <WorkDetails>
                     <BlogMetadata>{formatData(work.createdAt)}</BlogMetadata>

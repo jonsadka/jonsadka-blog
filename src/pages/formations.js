@@ -174,7 +174,9 @@ export default function NotFoundPage() {
               blue, or red ink to match the color of the Formation.
             </ParagraphSmall>
 
-            <Button onClick={() => setIsOpen(true)}>Request Prints</Button>
+            <Button disabled onClick={() => setIsOpen(true)}>
+              Print request window closed
+            </Button>
           </div>
         </ArtPlotContainer>
 
