@@ -1,17 +1,17 @@
 import React from 'react'
 import {OutboundLink} from 'gatsby-plugin-google-analytics'
-import {styled} from 'baseui'
+import '../../css/header.css'
 
-const SocialIcon = styled(OutboundLink, ({$theme}) => ({
-  display: 'inline-block',
-  alignSelf: 'flex-end',
-  marginLeft: '15px',
-  fill: $theme.colors.contentSecondary,
-
-  ':hover': {
-    fill: $theme.colors.contentTertiary,
-  },
-}))
+const SocialIcon = ({href, children}) => (
+  <OutboundLink
+    href={href}
+    className="social-icon"
+    target="_blank"
+    rel="noreferrer noopener"
+  >
+    {children}
+  </OutboundLink>
+)
 
 export function TwitterIcon() {
   return (

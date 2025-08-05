@@ -6,8 +6,7 @@
 
 const path = require('path')
 const _ = require('lodash')
-const request = require('request')
-const xml2js = require('xml2js')
+const {JSDOM} = require('jsdom')
 
 const BLOCKS_ID = 'blocks'
 const OBSERVABLE_ID = 'observable'
@@ -44,7 +43,7 @@ exports.createPages = ({actions, graphql}) => {
     const posts = result.data.allMarkdownRemark.edges
 
     posts.forEach(({node}) => {
-      const path = node.frontmatter.path
+      const {path} = node.frontmatter
       createPage({
         component: blogPostTemplate,
         context: {pagePath: path},
@@ -94,7 +93,9 @@ exports.onCreatePage = ({actions, page}) => {
                 // .filter(observable => observable.)
                 .concat(gistsList)
                 .sort(
-                  (a, b) => +new Date(b.updatedAt) - +new Date(a.updatedAt)
+                  (a, b) =>
+                    Number(new Date(b.updatedAt)) -
+                    Number(new Date(a.updatedAt))
                 ),
             },
           })
@@ -107,44 +108,65 @@ exports.onCreatePage = ({actions, page}) => {
 
 function observablesPromise() {
   const observableRequestOptions = {
-    url: 'https://api.observablehq.com/documents/@jonsadka.rss',
+    method: 'GET',
     headers: {
       'User-Agent': 'jon-sadka-personal-website',
     },
   }
 
   return new Promise((observableResolve) => {
-    request(observableRequestOptions, (err, res, observableWebpage) => {
-      observablesListFromObservableSiteRSS(
-        observableWebpage,
-        (err2, observablesList) => {
-          observableResolve({
-            observablesList,
-            observablesErr: err,
-          })
-        }
-      )
-    })
+    fetch(
+      'https://api.observablehq.com/documents/@jonsadka.rss',
+      observableRequestOptions
+    )
+      .then((res) => res.text())
+      .then((observableWebpage) => {
+        observablesListFromObservableSiteRSS(
+          observableWebpage,
+          (err, observablesList) => {
+            observableResolve({
+              observablesList,
+              observablesErr: err,
+            })
+          }
+        )
+      })
+      .catch((err) => {
+        observableResolve({
+          observablesList: [],
+          observablesErr: err,
+        })
+      })
   })
 }
 
 function gistsPromise() {
   const gistsRequestOptions = {
-    url: 'https://api.github.com/users/jonsadka/gists?per_page=100',
+    method: 'GET',
     headers: {
       'User-Agent': 'my-blog',
     },
-    json: true,
   }
 
   return new Promise((gistsResolve) => {
-    request(gistsRequestOptions, (err, res, rawGistsList) => {
-      const gistsList = gistsListFromPayload(rawGistsList)
-      gistsResolve({
-        gistsList,
-        gistsErr: err,
+    fetch(
+      'https://api.github.com/users/jonsadka/gists?per_page=100',
+      gistsRequestOptions
+    )
+      .then((res) => res.json())
+      .then((rawGistsList) => {
+        const gistsList = gistsListFromPayload(rawGistsList)
+        gistsResolve({
+          gistsList,
+          gistsErr: null,
+        })
       })
-    })
+      .catch((err) => {
+        gistsResolve({
+          gistsList: [],
+          gistsErr: err,
+        })
+      })
   })
 }
 
@@ -191,18 +213,30 @@ function observablesListFromObservableSiteRSS(siteRSS, callback) {
 }
 
 function payloadDataFromRSS(siteRSS, callback) {
-  const parser = new xml2js.Parser({
-    mergeAttrs: true,
-    normalize: true,
-    normalizeTags: true,
-    strict: false,
-    trim: false,
-  })
+  const dom = new JSDOM(siteRSS, {contentType: 'text/xml'})
+  const items = Array.from(dom.window.document.querySelectorAll('item'))
 
-  parser.parseString(siteRSS, callback)
+  const notebooks = items.map((item) => ({
+    title: [item.querySelector('title').textContent],
+    guid: [item.querySelector('guid').textContent],
+    description: [item.querySelector('description').textContent],
+    pubdate: [item.querySelector('pubDate').textContent],
+  }))
+
+  const payloadData = {
+    rss: {
+      channel: [
+        {
+          item: notebooks,
+        },
+      ],
+    },
+  }
+
+  callback(null, payloadData)
 }
 
 function getImageUrl(htmlString) {
-  const one = htmlString.split('<img src="')
-  return one[1].split('" width')[0]
+  const dom = new JSDOM(htmlString)
+  return dom.window.document.querySelector('img').getAttribute('src')
 }

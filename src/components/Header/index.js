@@ -1,7 +1,6 @@
 import React from 'react'
+import '../../css/header.css'
 import {Link} from 'gatsby'
-import {styled} from 'baseui'
-import {Button, KIND, SIZE, SHAPE} from 'baseui/button'
 import {
   GithubIcon,
   LinkedInIcon,
@@ -9,64 +8,24 @@ import {
   TwitterIcon,
 } from './SocialIcons'
 
-const MAX_WIDTH = 1280
+const Nav = ({children}) => <div className="header-nav">{children}</div>
 
-const HeaderContainer = styled('div', ({$theme}) => ({
-  display: 'grid',
-  gridTemplateColumns: '1fr 1fr',
-  marginLeft: 'auto',
-  marginRight: 'auto',
-  maxWidth: `${MAX_WIDTH}px`,
-  padding: '1.45rem 1.0875rem',
-}))
-
-const Nav = styled('div', ({$theme}) => ({
-  backgroundColor: $theme.colors.backgroundPrimary,
-  position: 'fixed',
-  top: 0,
-  width: '100%',
-  zIndex: 1,
-}))
-
-const Name = styled('div', {
-  fontSize: '14px',
-  fontWeight: '700',
-})
-
-const SocialIcons = styled('div', {
-  display: 'flex',
-  alignItems: 'end',
-  justifyContent: 'flex-end',
-})
-
-const HeaderName = styled(Link, ({$theme}) => ({
-  color: $theme.colors.contentPrimary,
-  fontFamily: 'Libre Franklin',
-  textDecoration: 'none',
-}))
-
-const Header = ({onToggleTheme, theme}) => (
-  <div style={{marginBottom: 'calc(1.45rem + 83px)'}}>
+const Header = () => (
+  <div className="header-root">
     <Nav>
-      <HeaderContainer>
-        <Name>
-          <HeaderName to="/">Jon Sadka.</HeaderName>
-        </Name>
-        <SocialIcons>
-          {/* <Button
-            onClick={onToggleTheme}
-            kind={KIND.tertiary}
-            size={SIZE.mini}
-            shape={SHAPE.circle}
-          >
-            {theme}
-          </Button> */}
+      <div className="header-container">
+        <div className="header-name">
+          <Link className="header-name-link" to="/">
+            Jon Sadka.
+          </Link>
+        </div>
+        <div className="social-icons">
           <TwitterIcon />
           <ObservableIcon />
           <GithubIcon />
           <LinkedInIcon />
-        </SocialIcons>
-      </HeaderContainer>
+        </div>
+      </div>
     </Nav>
   </div>
 )

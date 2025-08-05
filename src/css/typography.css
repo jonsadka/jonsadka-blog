@@ -1,0 +1,77 @@
+h1, .heading-xxlarge {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+h2, .heading-xlarge {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+h3, .heading-large {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+h4, .heading-medium {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+h5, .heading-small {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+h6, .heading-xsmall {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+p, .paragraph-large {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+small, .paragraph-small {
+  font-size: .875rem;
+  line-height: 1.5;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+label, .label-medium {
+  font-size: .875rem;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-top: 0;
+  margin-bottom: .5rem;
+}
+
+.label-small {
+  font-size: .75rem;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-top: 0;
+  margin-bottom: .5rem;
+}

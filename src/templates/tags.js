@@ -1,19 +1,9 @@
 import React from 'react'
-import {styled} from 'baseui'
 import {graphql, Link} from 'gatsby'
 
 // Components
 import Layout from '../components/layout'
-import {HeadingXLarge} from 'baseui/typography'
-
-const PageContainer = styled('div', {
-  margin: '30px 0 60px 0',
-})
-
-const Tag = styled('li', {
-  marginBottom: '15px',
-  listStyleType: 'none',
-})
+import './tags.css'
 
 const Tags = ({pageContext, data}) => {
   const {tag} = pageContext
@@ -24,15 +14,15 @@ const Tags = ({pageContext, data}) => {
 
   return (
     <Layout>
-      <PageContainer>
-        <HeadingXLarge>{tagHeader}</HeadingXLarge>
+      <div className="page-container">
+        <h1 className="heading-xlarge">{tagHeader}</h1>
         <ul>
           {edges.map(({node}) => {
             const {path, title} = node.frontmatter
             return (
-              <Tag key={path}>
+              <li className="tag" key={path}>
                 <Link to={path}>{title}</Link>
-              </Tag>
+              </li>
             )
           })}
         </ul>
@@ -41,7 +31,7 @@ const Tags = ({pageContext, data}) => {
           We'll come back to it!
         */}
         <Link to="/tags">See all tags</Link>
-      </PageContainer>
+      </div>
     </Layout>
   )
 }

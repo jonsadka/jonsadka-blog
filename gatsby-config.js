@@ -3,7 +3,6 @@ module.exports = {
     DEV_SSR: true,
   },
   plugins: [
-    'gatsby-plugin-styletron',
     'gatsby-plugin-catch-links',
     {
       resolve: 'gatsby-source-filesystem',

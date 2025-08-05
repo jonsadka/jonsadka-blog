@@ -1,17 +1,10 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import {graphql} from 'gatsby'
-import {styled} from 'baseui'
 
 import Layout from '../components/layout'
 
 import '../css/blog-post.css'
-import {
-  HeadingXLarge,
-  HeadingXXLarge,
-  LabelMedium,
-  ParagraphSmall,
-} from 'baseui/typography'
 
 export default function Template({data}) {
   const {markdownRemark: post} = data
@@ -21,16 +14,16 @@ export default function Template({data}) {
       <div>
         <Helmet title={`Jon Sadka - ${post.frontmatter.title}`} />
         <div>
-          <HeadingXLarge>{post.frontmatter.title}</HeadingXLarge>
-          <LabelMedium>
+          <h1 className="heading-xlarge">{post.frontmatter.title}</h1>
+          <label className="label-medium">
             {date.toLocaleDateString(undefined, {
               year: 'numeric',
               month: 'long',
               day: 'numeric',
             })}
-          </LabelMedium>
-          <ParagraphSmall
-            className="blog-post-content"
+          </label>
+          <div
+            className="blog-post-content paragraph-small"
             dangerouslySetInnerHTML={{__html: post.html}}
           />
         </div>
@@ -41,7 +34,7 @@ export default function Template({data}) {
       <div>
         <Helmet title="Jon Sadka" />
         <div>
-          <HeadingXXLarge>Oh No!</HeadingXXLarge>
+          <h1 className="heading-xxlarge">Oh No!</h1>
           <div>We could not find the page you are looking for</div>
         </div>
       </div>

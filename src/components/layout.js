@@ -1,25 +1,14 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import {BaseProvider, styled} from 'baseui'
 
 import Header from '../components/Header'
 import '../layouts/index.css'
-import {LightTheme, DarkTheme} from './theme'
-
-const THEME = {
-  light: 'light',
-  dark: 'dark',
-}
-
-const Background = styled('div', ({$theme}) => ({
-  backgroundColor: $theme.colors.backgroundPrimary,
-}))
+import './layout.css'
+import '../css/typography.css'
 
 const TemplateWrapper = ({children}) => {
-  const [theme, setTheme] = React.useState(THEME.light)
-
   return (
-    <BaseProvider theme={theme === THEME.light ? LightTheme : DarkTheme}>
+    <>
       <Helmet
         title="Jon Sadka Personal Website and Blog"
         meta={[
@@ -44,13 +33,8 @@ const TemplateWrapper = ({children}) => {
       >
         <html lang="en" />
       </Helmet>
-      <Background>
-        <Header
-          onToggleTheme={() =>
-            setTheme(theme === THEME.light ? THEME.dark : THEME.light)
-          }
-          theme={theme}
-        />
+      <div className="background">
+        <Header />
         <div
           style={{
             margin: '0 auto',
@@ -61,8 +45,8 @@ const TemplateWrapper = ({children}) => {
         >
           {children}
         </div>
-      </Background>
-    </BaseProvider>
+      </div>
+    </>
   )
 }
 

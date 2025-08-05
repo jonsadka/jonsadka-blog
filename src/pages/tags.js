@@ -1,5 +1,4 @@
 import React from 'react'
-import {styled} from 'baseui'
 
 // Utilities
 import kebabCase from 'lodash/kebabcase'
@@ -9,21 +8,7 @@ import Helmet from 'react-helmet'
 import {graphql, Link} from 'gatsby'
 
 import Layout from '../components/layout'
-import {HeadingXLarge} from 'baseui/typography'
-
-const PageContainer = styled('div', {
-  margin: '30px 0 60px 0',
-})
-
-const Tag = styled('li', {
-  listStyleType: 'none',
-  marginLeft: '0',
-  marginBottom: '30px',
-})
-
-const ForwardSlash = styled('span', {
-  margin: '0 10px',
-})
+import '../css/tags.css'
 
 const TagsPage = ({
   data: {
@@ -34,25 +19,25 @@ const TagsPage = ({
   },
 }) => (
   <Layout>
-    <PageContainer>
+    <div className="page-container">
       <Helmet title={title} />
       <div>
-        <HeadingXLarge>Tags</HeadingXLarge>
+        <h1 className="heading-xlarge">Tags</h1>
         <ul>
           {group
             .sort((a, b) => b.totalCount - a.totalCount)
             .map((tag) => (
-              <Tag key={tag.fieldValue}>
+              <li className="tag" key={tag.fieldValue}>
                 <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
                   {tag.totalCount < 10 ? `0${tag.totalCount}` : tag.totalCount}
-                  <ForwardSlash>/</ForwardSlash>
+                  <span className="forward-slash">/</span>
                   {tag.fieldValue}
                 </Link>
-              </Tag>
+              </li>
             ))}
         </ul>
       </div>
-    </PageContainer>
+    </div>
   </Layout>
 )
 

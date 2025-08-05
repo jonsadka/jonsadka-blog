@@ -1,0 +1,146 @@
+.blog-preview {
+  margin-bottom: var(--scale1600);
+}
+
+.blog-metadata {
+  color: var(--content-tertiary);
+  display: inline-block;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.blog-tag {
+  color: var(--content-tertiary);
+  display: inline-block;
+  font-size: 12px;
+  padding-right: 10px;
+  transition: color 0.2s ease;
+}
+
+.blog-tag:hover {
+  color: var(--content-primary);
+}
+
+.middle-dot {
+  font-size: 12px;
+  padding: 0 10px;
+}
+
+.read-link {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.05rem;
+}
+
+.works-section {
+  margin: 30px 0 60px 0;
+}
+
+.larger-works-carousel {
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
+}
+
+.smaller-works-carousel {
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  white-space: nowrap;
+}
+
+.larger-works {
+  display: inline-block;
+  margin-right: 30px;
+  vertical-align: top;
+  width: 367px;
+}
+
+.smaller-works {
+  margin-right: 30px;
+  display: inline-block;
+}
+
+.smaller-works:not(:nth-child(3n)) {
+  margin-bottom: 30px;
+}
+
+.smaller-work-image {
+  margin-left: -5px;
+  margin-top: 0;
+  height: 100px;
+}
+
+.smaller-work-image-observable {
+  margin-top: -8px;
+  height: 120px;
+}
+
+.thumbnail {
+  background-color: var(--content-primary);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.thumbnail-large {
+  height: 200px;
+  width: 367px;
+}
+
+.thumbnail-small {
+  height: 100px;
+  width: 184px;
+}
+
+.thumbnail-image-large {
+  width: 367px;
+}
+
+.thumbnail-image-small {
+  width: 184px;
+}
+
+.work-details {
+  padding: 15px 30px 30px 30px;
+}
+
+.work-title {
+  color: var(--content-primary);
+  display: block;
+  margin-bottom: var(--scale600);
+}
+
+.work-description {
+  color: var(--content-tertiary);
+  font-size: 12px;
+  line-height: 20px;
+  white-space: normal;
+}
+
+.tabs {
+  margin-left: 0;
+  margin-bottom: 30px;
+}
+
+.tab {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  margin-right: 30px;
+  min-width: 30px;
+  transition: color 0.2s ease;
+}
+
+.tab-selected {
+  color: var(--content-primary);
+}
+
+.tab-unselected {
+  color: var(--content-tertiary);
+}
+
+.tab:hover {
+  color: var(--content-primary);
+}

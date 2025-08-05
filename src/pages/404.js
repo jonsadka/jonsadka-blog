@@ -1,21 +1,16 @@
 import React from 'react'
-import {styled} from 'baseui'
-import {HeadingXLarge, ParagraphSmall} from 'baseui/typography'
 
 import Layout from '../components/layout'
-
-const PageContainer = styled('div', {
-  margin: '30px 0 60px 0',
-})
+import '../css/404.css'
 
 const NotFoundPage = () => (
   <Layout>
-    <PageContainer>
-      <HeadingXLarge>NOT FOUND</HeadingXLarge>
-      <ParagraphSmall>
+    <div className="page-container">
+      <h1 className="heading-xlarge">NOT FOUND</h1>
+      <p className="paragraph-small">
         You just hit a route that doesn&#39;t exist... the sadness.
-      </ParagraphSmall>
-    </PageContainer>
+      </p>
+    </div>
   </Layout>
 )
 

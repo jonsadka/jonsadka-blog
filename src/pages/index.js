@@ -1,12 +1,11 @@
 import React from 'react'
 import {graphql, Link, withPrefix} from 'gatsby'
 import kebabCase from 'lodash/kebabcase'
-import {styled} from 'baseui'
 import {OutboundLink} from 'gatsby-plugin-google-analytics'
-import {HeadingMedium, ParagraphLarge, ParagraphSmall} from 'baseui/typography'
 
 import Layout from '../components/layout'
 import {LARGER_WORKS} from '../works/larger-works'
+import '../css/index.css'
 
 const DEFAULT_MARGIN = 30
 const SMALL_THUMBNAIL_HEIGHT = 100
@@ -19,142 +18,6 @@ const SIZE = {
   SMALL: 'small',
   LARGE: 'large',
 }
-
-const BlogPreview = styled('div', ({$theme}) => ({
-  marginBottom: $theme.sizing.scale1600,
-}))
-
-const BlogMetadata = styled('div', ({$theme}) => ({
-  color: $theme.colors.contentInverseTertiary,
-  display: 'inline-block',
-  fontSize: '12px',
-  marginBottom: $theme.sizing.scale100,
-}))
-
-const BlogTag = styled(Link, ({$theme}) => ({
-  color: $theme.colors.contentInverseTertiary,
-  display: 'inline-block',
-  fontSize: '12px',
-  paddingRight: '10px',
-  transition: 'color 0.2s ease',
-
-  ':hover': {
-    color: $theme.colors.contentPrimary,
-  },
-}))
-
-const MiddleDot = styled('span', {
-  fontSize: '12px',
-  padding: '0 10px',
-})
-
-const ReadLink = styled(Link, {
-  display: 'block',
-  fontSize: '12px',
-  letterSpacing: '0.05rem',
-})
-
-const WorksSection = styled('div', {
-  margin: `${DEFAULT_MARGIN}px 0 60px 0`,
-})
-
-const LargerWorksCarousel = styled('div', {
-  overflowX: 'scroll',
-  webkitOverflowScrolling: 'touch',
-  whiteSpace: 'nowrap',
-})
-
-const SmallerWorksCarousel = styled('div', {
-  overflowX: 'scroll',
-  webkitOverflowScrolling: 'touch',
-  display: 'flex',
-  flexDirection: 'column',
-  flexWrap: 'wrap',
-  height: `${
-    SMALL_THUMBNAIL_HEIGHT +
-    2 * (SMALL_THUMBNAIL_HEIGHT + DEFAULT_MARGIN) +
-    SCROLL_BAR_HEIGHT
-  }px`,
-  whiteSpace: 'nowrap',
-})
-
-const LargerWorks = styled('div', {
-  display: 'inline-block',
-  marginRight: `${DEFAULT_MARGIN}px`,
-  verticalAlign: 'top',
-  width: '367px',
-})
-
-const SmallerWorks = styled('div', {
-  marginRight: `${DEFAULT_MARGIN}px`,
-  display: 'inline-block',
-
-  ':not(:nth-child(3n))': {
-    marginBottom: `${DEFAULT_MARGIN}px`,
-  },
-})
-
-const SmallerWorkImage = styled('img', ({$workType}) => ({
-  marginLeft: '-5px',
-  marginTop: $workType === OBSERVABLE_ID ? '-8px' : '0',
-  height: $workType === OBSERVABLE_ID ? '120px' : '100px',
-}))
-
-const Thumbnail = styled('div', ({$size, $theme}) => ({
-  backgroundColor: $theme.colors.contentPrimary,
-  borderRadius: '4px',
-  height: $size === SIZE.LARGE ? '200px' : `${SMALL_THUMBNAIL_HEIGHT}px`,
-  overflow: 'hidden',
-  width: $size === SIZE.LARGE ? '367px' : '184px',
-}))
-
-const ThumbnailImage = styled('img', ({$size}) => ({
-  width: $size === SIZE.LARGE ? '367px' : '184px',
-}))
-
-const WorkDetails = styled('div', {
-  padding: `${
-    DEFAULT_MARGIN / 2
-  }px ${DEFAULT_MARGIN}px ${DEFAULT_MARGIN}px ${DEFAULT_MARGIN}px`,
-})
-
-const WorkTitle = styled(OutboundLink, ({$theme}) => ({
-  color: $theme.colors.contentPrimary,
-  display: 'block',
-  marginBottom: $theme.sizing.scale600,
-}))
-
-const WorkTitleLink = styled(ParagraphLarge, ({$theme}) => ({
-  marginTop: 0,
-}))
-
-const WorkDescription = styled('div', ({$theme}) => ({
-  color: $theme.colors.contentTertiary,
-  fontSize: '12px',
-  lineHeight: '20px',
-  whiteSpace: 'normal',
-}))
-
-const Tabs = styled('ul', {
-  marginLeft: 0,
-  marginBottom: `${DEFAULT_MARGIN}px`,
-})
-
-const Tab = styled('li', ({$selected, $theme}) => ({
-  color: $selected
-    ? $theme.colors.contentPrimary
-    : $theme.colors.contentTertiary,
-  cursor: 'pointer',
-  display: 'inline-block',
-  fontSize: '14px',
-  marginRight: `${DEFAULT_MARGIN}px`,
-  minWidth: `${DEFAULT_MARGIN}px`,
-  transition: 'color 0.2s ease',
-
-  ':hover': {
-    color: $theme.colors.contentPrimary,
-  },
-}))
 
 function formatData(ts) {
   const date = new Date(Number(ts))
@@ -200,70 +63,86 @@ export default class Index extends React.Component {
     const {smallerWorks} = pageContext
     return (
       <Layout>
-        <WorksSection>
-          <HeadingMedium>Larger Works</HeadingMedium>
-          <LargerWorksCarousel>
+        <div className="works-section">
+          <h4 className="heading-medium">Larger Works</h4>
+          <div className="larger-works-carousel">
             {LARGER_WORKS.sort((a, b) => b.createdAt - a.createdAt).map(
               (work) => (
-                <LargerWorks key={work.url}>
-                  <Thumbnail $size={SIZE.LARGE}>
+                <div className="larger-works" key={work.url}>
+                  <div className={`thumbnail thumbnail-${SIZE.LARGE}`}>
                     {work.url.match('http') ? (
                       <OutboundLink
                         href={work.url}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <ThumbnailImage
-                          $size={SIZE.LARGE}
+                        <img
+                          className={`thumbnail-image-${SIZE.LARGE}`}
                           alt={work.title}
                           src={withPrefix(work.thumbnail)}
                         />
                       </OutboundLink>
                     ) : (
                       <Link to={work.url}>
-                        <ThumbnailImage
-                          $size={SIZE.LARGE}
+                        <img
+                          className={`thumbnail-image-${SIZE.LARGE}`}
                           alt={work.title}
                           src={withPrefix(work.thumbnail)}
                         />
                       </Link>
                     )}
-                  </Thumbnail>
-                  <WorkDetails>
-                    <BlogMetadata>{formatData(work.createdAt)}</BlogMetadata>
-                    <WorkTitle
+                  </div>
+                  <div className="work-details">
+                    <div className="blog-metadata">
+                      {formatData(work.createdAt)}
+                    </div>
+                    <OutboundLink
                       href={work.url}
                       target="_blank"
                       rel="noopener noreferrer"
+                      className="work-title"
                     >
                       {work.title}
-                    </WorkTitle>
-                    <WorkDescription>{work.description}</WorkDescription>
-                  </WorkDetails>
-                </LargerWorks>
+                    </OutboundLink>
+                    <div className="work-description">{work.description}</div>
+                  </div>
+                </div>
               )
             )}
-          </LargerWorksCarousel>
-        </WorksSection>
+          </div>
+        </div>
 
-        <WorksSection>
-          <HeadingMedium>Smaller Works</HeadingMedium>
-          <Tabs>
+        <div className="works-section">
+          <h4 className="heading-medium">Smaller Works</h4>
+          <ul className="tabs">
             {[
               {id: 'all', text: 'All Sources'},
               {id: OBSERVABLE_ID, text: 'Observable'},
               {id: BLOCKS_ID, text: 'Bl.ocks'},
             ].map((tab) => (
-              <Tab
-                $selected={tab.id === selectedSmallerWorkType}
+              <li
+                className={`tab ${
+                  tab.id === selectedSmallerWorkType
+                    ? 'tab-selected'
+                    : 'tab-unselected'
+                }`}
                 key={tab.id}
                 onClick={() => this._filterSmallerWork(tab.id)}
               >
                 {tab.text}
-              </Tab>
+              </li>
             ))}
-          </Tabs>
-          <SmallerWorksCarousel>
+          </ul>
+          <div
+            className="smaller-works-carousel"
+            style={{
+              height: `${
+                SMALL_THUMBNAIL_HEIGHT +
+                2 * (SMALL_THUMBNAIL_HEIGHT + DEFAULT_MARGIN) +
+                SCROLL_BAR_HEIGHT
+              }px`,
+            }}
+          >
             {smallerWorks
               .filter(
                 (smallerWork) =>
@@ -271,31 +150,32 @@ export default class Index extends React.Component {
                   smallerWork.workType === selectedSmallerWorkType
               )
               .map((smallerWork, i) => (
-                <SmallerWorks key={i}>
-                  <Thumbnail $size={SIZE.SMALL}>
+                <div className="smaller-works" key={i}>
+                  <div className={`thumbnail thumbnail-${SIZE.SMALL}`}>
                     <OutboundLink
                       href={smallerWork.href}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <SmallerWorkImage
-                        $workType={smallerWork.workType}
+                      <img
+                        className={`smaller-work-image ${
+                          smallerWork.workType === OBSERVABLE_ID
+                            ? 'smaller-work-image-observable'
+                            : ''
+                        }`}
                         alt={smallerWork.alt}
                         src={smallerWork.imgUrl}
                       />
                     </OutboundLink>
-                  </Thumbnail>
-                </SmallerWorks>
+                  </div>
+                </div>
               ))}
-          </SmallerWorksCarousel>
-        </WorksSection>
+          </div>
+        </div>
 
-        <WorksSection>
-          <HeadingMedium>Written Works</HeadingMedium>
-          <Tabs>
-            {/*
-              TODO: Make this generative so that adding a new tag updates this list automatically
-            */}
+        <div className="works-section">
+          <h4 className="heading-medium">Written Works</h4>
+          <ul className="tabs">
             {[
               {id: 'all', text: 'All Tags'},
               {id: 'API', text: 'API'},
@@ -305,15 +185,19 @@ export default class Index extends React.Component {
               {id: 'MongoDB', text: 'MongoDB'},
               {id: 'UX / UI', text: 'UX / UI'},
             ].map((tab) => (
-              <Tab
-                $selected={tab.id === selectedWrittenWorkTag}
+              <li
+                className={`tab ${
+                  tab.id === selectedWrittenWorkTag
+                    ? 'tab-selected'
+                    : 'tab-unselected'
+                }`}
                 key={tab.id}
                 onClick={() => this._filterWrittenWork(tab.id)}
               >
                 {tab.text}
-              </Tab>
+              </li>
             ))}
-          </Tabs>
+          </ul>
           <div>
             {posts
               .filter((post) => post.node.frontmatter.title.length > 0)
@@ -324,33 +208,38 @@ export default class Index extends React.Component {
               )
               .map(({node: post}) => {
                 return (
-                  <BlogPreview key={post.id}>
-                    <BlogMetadata>
+                  <div className="blog-preview" key={post.id}>
+                    <div className="blog-metadata">
                       {formatData(post.frontmatter.date)}
-                      <MiddleDot>/</MiddleDot>
+                      <span className="middle-dot">/</span>
                       {post.frontmatter.tags.map((tag) => (
-                        <BlogTag to={`/tags/${kebabCase(tag)}`} key={tag}>
+                        <Link
+                          to={`/tags/${kebabCase(tag)}`}
+                          key={tag}
+                          className="blog-tag"
+                        >
                           {tag}
-                        </BlogTag>
+                        </Link>
                       ))}
-                    </BlogMetadata>
+                    </div>
 
                     <Link to={post.frontmatter.path}>
-                      <WorkTitleLink>{post.frontmatter.title}</WorkTitleLink>
+                      <p className="paragraph-large">
+                        {post.frontmatter.title}
+                      </p>
                     </Link>
-                    <ParagraphSmall
-                      color="contentTertiary"
-                      marginBottom="scale800"
-                    >
-                      {post.excerpt}
-                    </ParagraphSmall>
-                    <ReadLink to={post.frontmatter.path}>Read</ReadLink>
-                  </BlogPreview>
+                    <p className="paragraph-small">{post.excerpt}</p>
+                    <Link to={post.frontmatter.path} className="read-link">
+                      Read
+                    </Link>
+                  </div>
                 )
               })}
-            <BlogTag to="/tags/">See all tags</BlogTag>
+            <Link to="/tags/" className="blog-tag">
+              See all tags
+            </Link>
           </div>
-        </WorksSection>
+        </div>
       </Layout>
     )
   }
