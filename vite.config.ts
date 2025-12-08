@@ -9,8 +9,6 @@ import remarkGfm from 'remark-gfm';
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
 
-const repoName = '/jonsadka-blog/';
-
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
@@ -23,5 +21,4 @@ export default defineConfig({
     TanStackRouterVite(),
     tailwindcss(),
   ],
-  base: repoName,
 });
