@@ -6,6 +6,7 @@ export const LARGER_WORKS = [
     title: 'Formations',
     thumbnail: '/img/thumbnails/formations.gif',
     url: 'formations',
+    tags: [],
   },
   {
     createdAt: 1648882800000,
@@ -13,6 +14,7 @@ export const LARGER_WORKS = [
     title: 'Golani Jewelry',
     thumbnail: '/img/thumbnails/golani.jpg',
     url: 'https://www.mygolani.com/',
+    tags: [],
   },
   {
     createdAt: 1544515200000,
@@ -21,6 +23,7 @@ export const LARGER_WORKS = [
     title: 'Steel Explorer',
     thumbnail: '/img/thumbnails/steel-explorer.png',
     url: 'http://jonsadka.github.io/steel-explorer/',
+    tags: [],
   },
   {
     createdAt: 1525590000000,
@@ -29,6 +32,7 @@ export const LARGER_WORKS = [
     title: 'Live Light Concert Visualizer',
     thumbnail: '/img/thumbnails/live-light.gif',
     url: 'https://jonsadka.github.io/livelight/',
+    tags: [],
   },
   {
     createdAt: 1472713200000,
@@ -37,6 +41,7 @@ export const LARGER_WORKS = [
     thumbnail: '/img/thumbnails/apple-keynote-bingo.png',
     title: 'Apple Keynote Bingo',
     url: 'http://jonsadka.github.io/apple-keynote-bingo/',
+    tags: [],
   },
   {
     collaborators: [
@@ -51,6 +56,7 @@ export const LARGER_WORKS = [
     thumbnail: '/img/thumbnails/uber-analytics.png',
     title: 'Uber Analytics',
     url: 'http://jonsadka.github.io/uberAnalytics/',
+    tags: [],
   },
   {
     collaborators: [
@@ -66,6 +72,7 @@ export const LARGER_WORKS = [
     thumbnail: '/img/thumbnails/watchout.png',
     title: 'Watchout',
     url: 'http://jonsadka.github.io/watchout/',
+    tags: [],
   },
   {
     createdAt: 1448784000000,
@@ -75,5 +82,6 @@ export const LARGER_WORKS = [
     thumbnail: '/img/thumbnails/income-analyzer.png',
     title: 'Income Analyzer',
     url: 'http://jonsadka.github.io/compare-income/',
+    tags: [],
   },
 ]

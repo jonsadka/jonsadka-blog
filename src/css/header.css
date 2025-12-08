@@ -1,11 +1,4 @@
-:root {
-  --max-width: 1280px;
-  --background-primary: #ffffff;
-  --content-primary: #000000;
-  --content-secondary: #666666;
-  --content-tertiary: #888888;
-  --scale300: 8px;
-}
+@import './variables.css';
 
 .header-root {
   margin-bottom: calc(1.45rem + 83px);

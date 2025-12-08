@@ -1,0 +1,36 @@
+.smaller-works-carousel {
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  white-space: nowrap;
+}
+
+.smaller-works {
+  margin-right: 30px;
+  display: inline-block;
+}
+
+.smaller-works:not(:nth-child(3n)) {
+  margin-bottom: 30px;
+}
+
+.smaller-work-image {
+  margin-left: -5px;
+  margin-top: 0;
+  height: 100px;
+}
+
+.smaller-work-image-observable {
+  margin-top: -8px;
+  height: 120px;
+}
+
+.thumbnail-small {
+  background-color: var(--content-tertiary);
+  border-radius: 8px;
+  overflow: hidden;
+  height: 100px;
+  width: 184px;
+}

@@ -1,15 +1,4 @@
-:root {
-  --scale300: 8px;
-  --scale600: 16px;
-  --scale800: 24px;
-  --scale1200: 32px;
-  --scale1600: 40px;
-  --scale2400: 48px;
-  --background-primary: #ffffff;
-  --content-primary: #000000;
-  --content-secondary: #444444;
-  --content-tertiary: #666666;
-}
+@import './variables.css';
 
 .mb1200 {
   margin-bottom: var(--scale1200);
