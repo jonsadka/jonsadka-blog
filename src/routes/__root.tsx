@@ -2,7 +2,6 @@ import { createRootRoute, Outlet } from '@tanstack/react-router';
 import { Navigation } from '../components/Navigation';
 import { Footer } from '../components/Footer';
 import { useState, useEffect } from 'react';
-import { TanStackRouterDevtools } from '@tanstack/router-devtools';
 
 export const Route = createRootRoute({
   component: RootComponent,
@@ -18,7 +17,7 @@ function RootComponent() {
       const offset = 100; // Account for fixed navigation
       window.scrollTo({
         top: offsetTop - offset,
-        behavior: 'smooth'
+        behavior: 'smooth',
       });
       setActiveSection(sectionId);
     }
@@ -90,7 +89,6 @@ function RootComponent() {
         <Outlet />
       </main>
       <Footer />
-      <TanStackRouterDevtools />
     </div>
   );
 }
