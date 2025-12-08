@@ -1,46 +1,43 @@
 {
   "name": "jonsadka-blog",
   "description": "Jon Sadka's personal website and blog",
-  "version": "2.0.0",
-  "author": "Jon Sadka <jonsadka@gmail.com>",
-  "dependencies": {
-    "gatsby": "^5.14.5",
-    "gatsby-plugin-catch-links": "^5.14.0",
-    "gatsby-plugin-google-analytics": "^5.14.0",
-    "gatsby-plugin-image": "^3.14.0",
-    "gatsby-plugin-manifest": "^5.14.0",
-    "gatsby-plugin-offline": "^6.14.0",
-    "gatsby-plugin-sharp": "^5.14.0",
-    "gatsby-plugin-sitemap": "^6.14.0",
-    "gatsby-source-filesystem": "^5.14.0",
-    "gatsby-transformer-remark": "^6.14.0",
-    "gatsby-transformer-sharp": "^5.14.0",
-    "jsdom": "^24.0.0",
-    "lodash": "^4.17.21",
-    "lucide-react": "^0.536.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-helmet": "^6.1.0"
-  },
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "MIT",
-  "main": "n/a",
+  "version": "3.0.0",
+  "type": "module",
   "scripts": {
-    "build": "gatsby build",
-    "dev": "GATSBY_TELEMETRY_DISABLED=1 gatsby develop",
-    "deploy": "gatsby build && gh-pages -d public",
-    "format": "prettier --write \"src/**/*.js\"",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint --config eslint.config.mjs src/"
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@icons-pack/react-simple-icons": "^13.8.0",
+    "@mdx-js/react": "^3.1.1",
+    "@mdx-js/rollup": "^3.1.1",
+    "@tailwindcss/vite": "^4.1.17",
+    "@tanstack/react-router": "^1.140.0",
+    "@tanstack/router-devtools": "^1.140.0",
+    "@tanstack/router-vite-plugin": "^1.140.0",
+    "lucide-react": "^0.525.0",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
+    "rehype-autolink-headings": "^7.1.0",
+    "rehype-slug": "^6.0.0",
+    "remark-frontmatter": "^5.0.0",
+    "remark-gfm": "^4.0.1",
+    "remark-mdx-frontmatter": "^5.2.0",
+    "tailwindcss": "^4.1.17"
   },
   "devDependencies": {
-    "@eslint/js": "^9.32.0",
-    "eslint": "^9.32.0",
-    "eslint-plugin-react": "^7.37.5",
-    "gh-pages": "^6.3.0",
+    "@eslint/js": "^9.30.1",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react": "^4.6.0",
+    "eslint": "^9.30.1",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.3.0",
-    "prettier": "^3.6.2"
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.35.1",
+    "vite": "^7.0.4"
   }
 }
