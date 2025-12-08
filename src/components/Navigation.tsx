@@ -24,7 +24,11 @@ export const Navigation = ({
       scrollToSection(section);
     } else {
       // On other pages: navigate to home page with hash
-      navigate({ to: '/', hash: section });
+      navigate({
+        to: '/',
+        hash: section,
+        search: { scrollTo: undefined },
+      });
     }
   };
 
