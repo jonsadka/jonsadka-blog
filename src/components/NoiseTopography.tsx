@@ -210,8 +210,8 @@ export const NoiseTopography = () => {
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
 
       {/* Controls Overlay */}
-      <div className="absolute bottom-4 right-4 flex flex-col items-end space-y-3 z-10">
-        <div className="bg-white/90 backdrop-blur-sm border border-gray-200 rounded-lg p-3 shadow-lg flex flex-col space-y-3 w-48">
+      <div className="absolute bottom-2 right-2 flex flex-col items-end space-y-3 z-10">
+        <div className="bg-white/90 backdrop-blur-sm border border-gray-200 rounded-3xl p-3 shadow-lg flex flex-col space-y-2 sm:space-y-3 w-48">
           {/* Color & Inverse Row */}
           <div className="flex items-end justify-between gap-3">
             <div className="flex flex-col space-y-1 flex-1">
@@ -272,16 +272,19 @@ export const NoiseTopography = () => {
             <label className="text-[10px] font-mono font-bold text-gray-500 uppercase tracking-wider">
               Resolution
             </label>
-            <div className="flex bg-gray-100 rounded-lg p-1 gap-1">
+            <div className="flex bg-gray-100 rounded-lg rounded-bl-2xl rounded-br-2xl p-1 gap-1">
               {densityOptions.map((option, index) => (
                 <button
                   key={option}
                   onClick={() => setNumCircles(option)}
-                  className={`flex-1 py-1 text-[10px] font-mono font-bold rounded-md text-nowrap transition-all duration-200 ${
-                    numCircles === option
-                      ? 'bg-black text-white shadow-sm'
-                      : 'text-gray-500 hover:text-black hover:bg-gray-200/50'
-                  }`}
+                  className={`flex-1 py-1 text-[10px] font-mono font-bold rounded-md text-nowrap transition-all duration-200 
+                    ${index === 0 ? 'rounded-bl-xl' : ''}
+                    ${index === densityOptions.length - 1 ? 'rounded-br-xl' : ''}
+                    ${
+                      numCircles === option
+                        ? 'bg-black text-white shadow-sm'
+                        : 'text-gray-500 hover:text-black hover:bg-gray-200/50'
+                    }`}
                 >
                   {sizeLabels[index]}
                 </button>
