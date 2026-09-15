@@ -26,11 +26,25 @@ export const LargerWorksSection = () => {
               <div className="bg-white rounded-[2rem] p-3 shadow-sm hover:shadow-xl transition-all duration-500 ease-out border border-white/50 h-full flex flex-col">
                 <div className="relative aspect-[16/9] rounded-[1.5rem] overflow-hidden mb-6 filter grayscale group-hover:grayscale-0 transition-all duration-500">
                   {work.thumbnail ? (
-                    <img
-                      src={work.thumbnail}
-                      alt={work.title}
-                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-                    />
+                    work.thumbnail.endsWith('.mp4') ? (
+                      <video
+                        src={work.thumbnail}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        aria-hidden="true"
+                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                      />
+                    ) : (
+                      <img
+                        src={work.thumbnail}
+                        alt={work.title}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                      />
+                    )
                   ) : (
                     <div className="w-full h-full bg-gray-100" />
                   )}

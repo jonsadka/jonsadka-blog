@@ -1,10 +1,10 @@
 // import bingoThumbnail from '../assets/thumbnails/bingo.png';
-import golaniThumbnail from '../assets/thumbnails/golani-3.png';
+import golaniThumbnail from '../assets/thumbnails/golani-3.webp';
 // import incomeThumbnail from '../assets/thumbnails/income-analyzer.png';
 // import liveLightThumbnail from '../assets/thumbnails/live-light.gif';
-import steelThumbnail from '../assets/thumbnails/steel-explorer.png';
-import formationsThumbnail from '../assets/thumbnails/formations.gif';
-import polestarThumbnail from '../assets/thumbnails/find-a-polestar.png';
+import steelThumbnail from '../assets/thumbnails/steel-explorer.webp';
+import formationsThumbnail from '../assets/thumbnails/formations.mp4';
+import polestarThumbnail from '../assets/thumbnails/find-a-polestar.webp';
 // import watchoutThumbnail from '../assets/thumbnails/watchout.png';
 
 export const LARGER_WORKS = [
