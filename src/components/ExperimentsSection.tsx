@@ -9,7 +9,7 @@ export const ExperimentsSection = () => {
   if (loading)
     return (
       <div className="min-h-[600px] flex flex-col items-center justify-center bg-white gap-12 py-24">
-        <p className="text-gray-400 font-mono text-sm uppercase tracking-widest mb-8">
+        <p className="text-gray-500 font-mono text-sm uppercase tracking-widest mb-8">
           Loading Explorations
         </p>
 
@@ -35,7 +35,7 @@ export const ExperimentsSection = () => {
             </p>
           </div>
           <div className="hidden md:block text-right">
-            <span className="block text-4xl font-light text-gray-300">
+            <span className="block text-4xl font-light text-gray-500">
               {experiments.length.toString().padStart(2, '0')}
             </span>
           </div>
@@ -60,7 +60,7 @@ export const ExperimentsSection = () => {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center text-gray-300">
+                  <div className="w-full h-full flex items-center justify-center text-gray-600">
                     No Preview
                   </div>
                 )}

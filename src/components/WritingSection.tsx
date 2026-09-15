@@ -10,12 +10,12 @@ export const WritingSection = ({ blogPosts }: { blogPosts: BlogPost[] }) => {
         <div className="flex items-end justify-between mb-16 px-2">
           <div className="space-y-4">
             <h2 className="text-4xl md:text-6xl font-serif italic text-white">Writing</h2>
-            <p className="text-gray-500 text-lg">
+            <p className="text-gray-400 text-lg">
               Thoughts on frontend development, engineering practices, and web technologies.
             </p>
           </div>
           <div className="hidden md:block text-right">
-            <span className="block text-4xl font-light text-white/20">
+            <span className="block text-4xl font-light text-white/50">
               {blogPosts.length.toString().padStart(2, '0')}
             </span>
           </div>
@@ -35,7 +35,7 @@ export const WritingSection = ({ blogPosts }: { blogPosts: BlogPost[] }) => {
                   <div className="flex items-center space-x-4 text-sm font-serif text-white/50">
                     <span className="text-lg">0{index + 1}</span>
                     <span className="h-px w-12 bg-white/10" />
-                    <span className="font-mono text-xs tracking-wider text-gray-600 uppercase">
+                    <span className="font-mono text-xs tracking-wider text-gray-400 uppercase">
                       {formatBlogDate(post.date)}
                     </span>
                   </div>
@@ -43,14 +43,14 @@ export const WritingSection = ({ blogPosts }: { blogPosts: BlogPost[] }) => {
                     {post.title}
                   </h3>
                   {post.excerpt && (
-                    <p className="text-lg text-gray-500 max-w-2xl font-light">{post.excerpt}</p>
+                    <p className="text-lg text-gray-400 max-w-2xl font-light">{post.excerpt}</p>
                   )}
                   {post.tags.length > 0 && (
                     <div className="flex flex-wrap gap-2 mt-4">
                       {post.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="px-3 py-1 text-xs font-mono bg-white/5 rounded-full text-gray-500"
+                          className="px-3 py-1 text-xs font-mono bg-white/5 rounded-full text-gray-400"
                         >
                           {tag}
                         </span>

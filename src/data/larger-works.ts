@@ -15,7 +15,7 @@ export const LARGER_WORKS = [
     title: 'Find a Polestar',
     thumbnail: polestarThumbnail,
     url: 'https://findapolestar.com/',
-    tags: ['Data Pipeline', 'Automotive', 'Search'],
+    tags: ['Car Search', 'Automotive', 'Data Pipeline'],
   },
   {
     createdAt: 1648882800000,

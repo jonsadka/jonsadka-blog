@@ -32,7 +32,7 @@ export const Hero6 = () => {
           <h2 className="text-4xl md:text-5xl font-medium text-gray-900 mb-3 sm:mb-6 leading-tight">
             Engineering
             <br className="sm:hidden" />
-            <span className="text-gray-400 font-serif italic sm:ml-2">beautiful</span>
+            <span className="text-gray-500 font-serif italic sm:ml-2">beautiful</span>
             <br />
             interfaces.
           </h2>

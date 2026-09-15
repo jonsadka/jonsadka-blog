@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from '@tanstack/react-router';
+import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
 import { ArrowLeft, Calendar } from 'lucide-react';
 import { lazy, Suspense, useEffect } from 'react';
 import { formatBlogDate, getBlogPosts } from '../utils/getBlogPosts';
@@ -31,21 +31,12 @@ function BlogPostPage() {
 
   return (
     <Suspense fallback={<BlogPostSkeleton />}>
-      <BlogPostContent
-        BlogContent={BlogContent}
-        onBack={() => navigate({ to: '/', search: { scrollTo: 'writing' } })}
-      />
+      <BlogPostContent BlogContent={BlogContent} />
     </Suspense>
   );
 }
 
-function BlogPostContent({
-  BlogContent,
-  onBack,
-}: {
-  BlogContent: React.LazyExoticComponent<any>;
-  onBack: () => void;
-}) {
+function BlogPostContent({ BlogContent }: { BlogContent: React.LazyExoticComponent<any> }) {
   const { path } = Route.useParams();
   const metadata = getBlogPosts().find((post) => post.slug === path);
 
@@ -55,20 +46,21 @@ function BlogPostContent({
 
   return (
     <article className="min-h-screen bg-white">
-      {/* Back to writing button */}
-      <nav className="pt-32 pb-6 px-6 border-b border-gray-100">
+      {/* Back to writing link */}
+      <div className="pt-32 pb-6 px-6 border-b border-gray-100">
         <div className="max-w-4xl mx-auto flex items-center justify-between">
-          <button
-            onClick={onBack}
+          <Link
+            to="/"
+            search={{ scrollTo: 'writing' }}
             className="group flex items-center space-x-2 text-sm font-medium text-gray-500 hover:text-black transition-colors"
           >
             <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all duration-300">
               <ArrowLeft className="w-4 h-4" />
             </div>
             <span>Back to writing</span>
-          </button>
+          </Link>
         </div>
-      </nav>
+      </div>
 
       {/* Article Header */}
       {metadata && (
@@ -115,13 +107,14 @@ function BlogPostContent({
             If you found this article helpful, feel free to share it or reach out to discuss more
             about frontend engineering.
           </p>
-          <button
-            onClick={onBack}
+          <Link
+            to="/"
+            search={{ scrollTo: 'writing' }}
             className="inline-flex items-center space-x-3 bg-black text-white px-8 py-4 rounded-full hover:bg-gray-900 transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-2xl"
           >
             <ArrowLeft className="w-5 h-5" />
-            <span className="font-bold tracking-wide">Return to Overview</span>
-          </button>
+            <span className="font-bold tracking-wide">Back to writing</span>
+          </Link>
         </div>
       </footer>
     </article>
@@ -131,12 +124,12 @@ function BlogPostContent({
 function BlogPostSkeleton() {
   return (
     <article className="min-h-screen bg-white">
-      {/* Navigation skeleton */}
-      <nav className="pt-32 pb-6 px-6 border-b border-gray-100">
+      {/* Back link skeleton */}
+      <div className="pt-32 pb-6 px-6 border-b border-gray-100">
         <div className="max-w-4xl mx-auto">
           <div className="h-8 w-32 bg-gray-200 rounded-full animate-pulse" />
         </div>
-      </nav>
+      </div>
 
       {/* Header skeleton */}
       <header className="pt-20 px-6 bg-white">

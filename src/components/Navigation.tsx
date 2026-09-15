@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type MouseEvent } from 'react';
 import { useNavigate, useRouterState } from '@tanstack/react-router';
 
 // Navigation Component
@@ -15,7 +15,15 @@ export const Navigation = ({
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Determine if we're on the home page
-  const isHomePage = routerState.location.pathname === '/';
+  const { pathname } = routerState.location;
+  const isHomePage = pathname === '/';
+
+  // The section in view on the home page, Writing on blog posts, nothing elsewhere
+  const currentSection = isHomePage
+    ? activeSection
+    : pathname.startsWith('/blog/')
+      ? 'writing'
+      : undefined;
 
   // Helper function to handle navigation - either scroll to section or route to home page
   const handleNavigation = (section: string) => {
@@ -31,6 +39,20 @@ export const Navigation = ({
       });
     }
   };
+
+  // Plain clicks scroll or route within the app; modified clicks (new tab, etc.) follow the href
+  const onLinkClick = (section: string) => (event: MouseEvent<HTMLAnchorElement>) => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+      return;
+    }
+    event.preventDefault();
+    // Unlock page scrolling first; while the mobile menu is open the scroll would be lost
+    document.body.classList.remove('no-scroll');
+    setIsMobileMenuOpen(false);
+    handleNavigation(section);
+  };
+
+  const sectionHref = (section: string) => (section === 'home' ? '/' : `/#${section}`);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,7 +85,10 @@ export const Navigation = ({
 
   return (
     <>
-      <nav className="fixed top-4 left-0 right-0 z-50 transition-all duration-500 ease-out px-4">
+      <nav
+        aria-label="Main"
+        className="fixed top-4 left-0 right-0 z-50 transition-all duration-500 ease-out px-4"
+      >
         <div
           className={`mx-auto transition-all duration-500 rounded-full ease-out ${
             isScrolled
@@ -73,23 +98,26 @@ export const Navigation = ({
         >
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <div
+            <a
+              href="/"
+              onClick={onLinkClick('home')}
               className={`font-bold text-xl tracking-tighter transition-colors duration-300 ${
                 isScrolled ? 'text-white' : 'text-black'
               }`}
-              onClick={() => handleNavigation('home')}
             >
               JON SADKA
-            </div>
+            </a>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-1">
               {navLinks.map((link) => (
-                <button
+                <a
                   key={link.id}
-                  onClick={() => handleNavigation(link.id)}
+                  href={sectionHref(link.id)}
+                  onClick={onLinkClick(link.id)}
+                  aria-current={currentSection === link.id ? 'true' : undefined}
                   className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-full group overflow-hidden ${
-                    activeSection === link.id
+                    currentSection === link.id
                       ? isScrolled
                         ? 'text-black bg-white'
                         : 'text-white bg-black'
@@ -99,18 +127,19 @@ export const Navigation = ({
                   }`}
                 >
                   <span className="relative z-10">{link.label}</span>
-                  {activeSection !== link.id && (
-                    <div
+                  {currentSection !== link.id && (
+                    <span
                       className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 ${
                         isScrolled ? 'bg-white' : 'bg-black'
                       }`}
                     />
                   )}
-                </button>
+                </a>
               ))}
 
-              <button
-                onClick={() => handleNavigation('contact')}
+              <a
+                href={sectionHref('contact')}
+                onClick={onLinkClick('contact')}
                 className={`ml-4 px-6 py-2 text-sm font-bold tracking-wide uppercase border-2 transition-all duration-300 rounded-full hover:scale-105 active:scale-95 ${
                   isScrolled
                     ? 'border-white text-white hover:bg-white hover:text-black'
@@ -118,7 +147,7 @@ export const Navigation = ({
                 }`}
               >
                 Connect
-              </button>
+              </a>
             </div>
 
             {/* Mobile Navigation Toggle */}
@@ -129,6 +158,8 @@ export const Navigation = ({
                   isScrolled ? 'text-white hover:bg-white/10' : 'text-black hover:bg-black/5'
                 }`}
                 aria-label="Toggle menu"
+                aria-expanded={isMobileMenuOpen}
+                aria-controls="mobile-menu"
               >
                 <div className="w-6 h-5 flex flex-col justify-between">
                   <span
@@ -161,36 +192,35 @@ export const Navigation = ({
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Overlay (inert while closed, so its links aren't reachable by Tab) */}
       <div
+        id="mobile-menu"
+        inert={!isMobileMenuOpen}
         className={`fixed inset-0 z-40 bg-black transition-all duration-500 ease-in-out ${
           isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
         <div className="flex flex-col items-center justify-center h-full space-y-8 p-6">
           {navLinks.map((link) => (
-            <button
+            <a
               key={link.id}
-              onClick={() => {
-                handleNavigation(link.id);
-                setIsMobileMenuOpen(false);
-              }}
+              href={sectionHref(link.id)}
+              onClick={onLinkClick(link.id)}
+              aria-current={currentSection === link.id ? 'true' : undefined}
               className={`text-4xl font-bold tracking-tight text-white transition-all duration-300 hover:text-gray-400 ${
-                activeSection === link.id ? 'opacity-100' : 'opacity-60'
+                currentSection === link.id ? 'opacity-100' : 'opacity-60'
               }`}
             >
               {link.label}
-            </button>
+            </a>
           ))}
-          <button
-            onClick={() => {
-              handleNavigation('contact');
-              setIsMobileMenuOpen(false);
-            }}
+          <a
+            href={sectionHref('contact')}
+            onClick={onLinkClick('contact')}
             className="mt-8 px-8 py-3 text-lg font-bold tracking-wide uppercase border-2 border-white text-white rounded-full hover:bg-white hover:text-black transition-all duration-300"
           >
-            Contact
-          </button>
+            Connect
+          </a>
         </div>
       </div>
     </>

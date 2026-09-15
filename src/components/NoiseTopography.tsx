@@ -254,7 +254,7 @@ export const NoiseTopography = () => {
               <label className="text-[10px] font-mono font-bold text-gray-500 uppercase tracking-wider">
                 Radius
               </label>
-              <span className="text-[10px] font-mono text-gray-400">{radiusFactor}</span>
+              <span className="text-[10px] font-mono text-gray-500">{radiusFactor}</span>
             </div>
             <input
               type="range"
@@ -283,7 +283,7 @@ export const NoiseTopography = () => {
                     ${
                       numCircles === option
                         ? 'bg-black text-white shadow-sm'
-                        : 'text-gray-500 hover:text-black hover:bg-gray-200/50'
+                        : 'text-gray-600 hover:text-black hover:bg-gray-200/50'
                     }`}
                 >
                   {sizeLabels[index]}

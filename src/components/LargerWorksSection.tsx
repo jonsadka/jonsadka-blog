@@ -7,7 +7,7 @@ export const LargerWorksSection = () => {
       <div className="container mx-auto px-6 mb-12 flex justify-between items-end">
         <div>
           <h2 className="text-5xl font-serif italic text-gray-900 mb-4">Selected Works</h2>
-          <p className="text-gray-500 text-lg">
+          <p className="text-gray-600 text-lg">
             Where curiosity meets craft. Building ambitious projects from concept to completion.
           </p>
         </div>
@@ -56,7 +56,7 @@ export const LargerWorksSection = () => {
                       <h3 className="text-2xl font-medium text-gray-900 leading-tight">
                         {work.title}
                       </h3>
-                      <div className="flex gap-3 text-sm text-gray-400 font-mono items-center">
+                      <div className="flex gap-3 text-sm text-gray-500 font-mono items-center">
                         <span>{new Date(work.createdAt).getFullYear()}</span>
                         <span>/</span>
                         <div className="flex flex-wrap gap-1">
