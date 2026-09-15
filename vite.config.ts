@@ -8,10 +8,12 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import remarkGfm from 'remark-gfm';
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
+import { blogPosts } from './plugins/blog-posts';
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
+    blogPosts(),
     mdx({
       remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter, remarkGfm],
       rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings],

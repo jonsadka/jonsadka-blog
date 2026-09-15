@@ -1,7 +1,8 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { ArrowLeft, Calendar } from 'lucide-react';
-import { lazy, Suspense, useEffect, useState } from 'react';
-import { formatBlogDate } from '../utils/getBlogPosts';
+import { lazy, Suspense, useEffect } from 'react';
+import { formatBlogDate, getBlogPosts } from '../utils/getBlogPosts';
+import { postTitle } from '../data/site';
 
 export const Route = createFileRoute('/blog/$path')({
   component: BlogPostPage,
@@ -46,20 +47,11 @@ function BlogPostContent({
   onBack: () => void;
 }) {
   const { path } = Route.useParams();
-  const [metadata, setMetadata] = useState<any>(null);
+  const metadata = getBlogPosts().find((post) => post.slug === path);
 
   useEffect(() => {
-    // Load the frontmatter from the MDX file asynchronously
-    import(`../content/blog/${path}.mdx`)
-      .then((module: any) => {
-        if (module?.frontmatter) {
-          setMetadata(module.frontmatter);
-        }
-      })
-      .catch(() => {
-        // Ignore errors, metadata will stay null
-      });
-  }, [path]);
+    if (metadata) document.title = postTitle(metadata.title);
+  }, [metadata]);
 
   return (
     <article className="min-h-screen bg-white">

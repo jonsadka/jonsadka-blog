@@ -1,42 +1,12 @@
+import posts from 'virtual:blog-posts';
 import type { BlogPost } from './blogPost.interface';
 
-// Import all MDX files from the blog directory with frontmatter
-const blogModules = import.meta.glob<{ frontmatter: any }>('/src/content/blog/*.mdx', {
-  eager: true,
-});
-
+// Frontmatter is read at build time (plugins/blog-posts.ts), so listing posts
+// doesn't pull every post's content into the main bundle.
 export function getBlogPosts(): BlogPost[] {
-  const posts: BlogPost[] = [];
-
-  for (const [, module] of Object.entries(blogModules)) {
-    // Extract frontmatter from the MDX module
-    const frontmatter = module.frontmatter || {};
-
-    // Extract slug from path
-    const slug = frontmatter.path?.split('/').pop() || '';
-
-    // Only include published posts
-    if (frontmatter.published) {
-      posts.push({
-        path: frontmatter.path || '',
-        date: frontmatter.date || '',
-        published: frontmatter.published || false,
-        tags: frontmatter.tags || [],
-        title: frontmatter.title || '',
-        slug,
-        excerpt: frontmatter.excerpt,
-      });
-    }
-  }
-
-  // Sort by date (newest first)
-  posts.sort((a, b) => {
-    const dateA = parseInt(a.date);
-    const dateB = parseInt(b.date);
-    return dateB - dateA;
-  });
-
-  return posts;
+  return posts
+    .filter((post) => post.published)
+    .sort((a, b) => parseInt(b.date) - parseInt(a.date));
 }
 
 export function formatBlogDate(timestamp: string): string {

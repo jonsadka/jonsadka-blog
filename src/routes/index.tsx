@@ -5,6 +5,7 @@ import { ExperimentsSection } from '../components/ExperimentsSection';
 import { WritingSection } from '../components/WritingSection';
 import { ContactSection18 } from '../components/ContactSection18';
 import { getBlogPosts } from '../utils/getBlogPosts';
+import { SITE_TITLE } from '../data/site';
 import { useEffect } from 'react';
 
 export const Route = createFileRoute('/')({
@@ -24,6 +25,10 @@ function HomePage() {
   const { blogPosts } = Route.useLoaderData();
   const navigate = useNavigate();
   const { scrollTo } = Route.useSearch();
+
+  useEffect(() => {
+    document.title = SITE_TITLE;
+  }, []);
 
   useEffect(() => {
     if (scrollTo) {
