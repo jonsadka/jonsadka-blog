@@ -4,9 +4,19 @@ import golaniThumbnail from '../assets/thumbnails/golani-3.png';
 // import liveLightThumbnail from '../assets/thumbnails/live-light.gif';
 import steelThumbnail from '../assets/thumbnails/steel-explorer.png';
 import formationsThumbnail from '../assets/thumbnails/formations.gif';
+import polestarThumbnail from '../assets/thumbnails/find-a-polestar.png';
 // import watchoutThumbnail from '../assets/thumbnails/watchout.png';
 
 export const LARGER_WORKS = [
+  {
+    createdAt: 1789282800000,
+    description:
+      'Independent inventory of new and pre-owned Polestars for sale in the US, refreshed hourly. Features faceted filters with live counts, shareable URL state, and a zero-cost pipeline that pulls the public Polestar inventory APIs, validates the results, and redeploys a static site. Built with Python, Astro, TypeScript, GitHub Actions, and Vercel.',
+    title: 'Find a Polestar',
+    thumbnail: polestarThumbnail,
+    url: 'https://findapolestar.com/',
+    tags: ['Data Pipeline', 'Automotive', 'Search'],
+  },
   {
     createdAt: 1648882800000,
     description:

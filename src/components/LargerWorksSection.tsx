@@ -15,7 +15,7 @@ export const LargerWorksSection = () => {
 
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-10 lg:gap-12">
-          {LARGER_WORKS.map((work, index) => (
+          {LARGER_WORKS.map((work) => (
             <a
               key={work.title}
               href={work.url || '#'}
@@ -29,13 +29,11 @@ export const LargerWorksSection = () => {
                     <img
                       src={work.thumbnail}
                       alt={work.title}
-                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                     />
                   ) : (
                     <div className="w-full h-full bg-gray-100" />
                   )}
-
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
                 </div>
 
                 <div className="px-5 pb-4 flex flex-col flex-1">
@@ -45,7 +43,7 @@ export const LargerWorksSection = () => {
                         {work.title}
                       </h3>
                       <div className="flex gap-3 text-sm text-gray-400 font-mono items-center">
-                        <span>0{index + 1}</span>
+                        <span>{new Date(work.createdAt).getFullYear()}</span>
                         <span>/</span>
                         <div className="flex flex-wrap gap-1">
                           {work.tags?.[0] && <span className="uppercase">{work.tags[0]}</span>}
