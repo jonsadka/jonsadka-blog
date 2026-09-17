@@ -9,7 +9,7 @@ export const WritingSection = ({ blogPosts }: { blogPosts: BlogPost[] }) => {
       <div className="max-w-7xl mx-auto">
         <div className="flex items-end justify-between mb-16 px-2">
           <div className="space-y-4">
-            <h2 className="text-4xl md:text-5xl font-medium italic tracking-tight text-white">Writing</h2>
+            <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-white">Writing</h2>
             <p className="text-gray-400 text-lg">
               Thoughts on frontend development, engineering practices, and web technologies.
             </p>

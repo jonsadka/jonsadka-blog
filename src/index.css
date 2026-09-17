@@ -35,12 +35,15 @@ body.no-scroll {
   h5,
   h6 {
     font-family: var(--font-heading);
+    /* Hahmlet has no italic, and a faked slant would betray it */
+    font-synthesis: none;
   }
 }
 
 @theme {
-  /* Headings take the system serif; Archivo carries body copy */
-  --font-heading: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  /* Headings take the system serif (New York on Apple devices) and fall back to Hahmlet, a sharp
+     screen serif with the same tapered J, everywhere ui-serif is not understood; Archivo carries body copy */
+  --font-heading: ui-serif, 'Hahmlet Variable', Georgia, Cambria, 'Times New Roman', Times, serif;
   --font-sans: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, monospace;
 }

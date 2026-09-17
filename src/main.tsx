@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import '@fontsource-variable/archivo'
 import '@fontsource-variable/archivo/wght-italic.css'
 import '@fontsource-variable/jetbrains-mono'
+import '@fontsource-variable/hahmlet'
 import './index.css'
 import App from './App.tsx'
 

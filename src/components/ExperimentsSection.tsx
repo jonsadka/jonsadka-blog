@@ -29,7 +29,7 @@ export const ExperimentsSection = () => {
       <div className="max-w-7xl mx-auto">
         <div className="flex items-end justify-between mb-16 px-2">
           <div className="space-y-4">
-            <h2 className="text-4xl md:text-5xl font-medium italic tracking-tight text-gray-900">Experiments</h2>
+            <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-gray-900">Experiments</h2>
             <p className="text-gray-500 text-lg">
               Small explorations of raw ideas and creative coding sketches.
             </p>

@@ -30,6 +30,7 @@ const Live = ({ value }: { value: string }) => {
 
 // The frame's playhead, written straight into the DOM so the source ticks without re-rendering
 const Playhead = () => {
+  const tempo = 3.75;
   const ref = useRef<HTMLSpanElement>(null);
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -38,12 +39,12 @@ const Playhead = () => {
     }
     let id = 0;
     const tick = () => {
-      if (ref.current) ref.current.textContent = (((Date.now() / 1000) % 5) / 5).toFixed(2);
+      if (ref.current) ref.current.textContent = (((Date.now() / 1000) % tempo) / tempo).toFixed(2);
       id = requestAnimationFrame(tick);
     };
     tick();
     return () => cancelAnimationFrame(id);
-  }, []);
+  }, [tempo]);
   return <span ref={ref} className="tabular-nums" style={{ color: DRAFT_INK.ink }} />;
 };
 
@@ -55,7 +56,7 @@ export const RenderLoopSource = ({ settings }: { settings: DrawingSettings }) =>
       <K>const</K> playhead = <Playhead />;
     </>,
     <>
-      <K>const</K> numPoints = <Live value={settings.numCircles.toLocaleString('en-US').replace(',', '_')} />;
+      <K>const</K> cellsAcross = <Live value={String(settings.cellsAcross)} />;
     </>,
     <>
       <K>const</K> radiusFactor = <Live value={settings.radiusFactor.toFixed(1)} />;
@@ -64,11 +65,11 @@ export const RenderLoopSource = ({ settings }: { settings: DrawingSettings }) =>
       <K>const</K> isInverse = <Live value={String(settings.isInverse)} />;
     </>,
     <>
-      <K>const</K> grid = createNoiseGrid({'{'} width, height, seed: <V>'660939'</V> {'}'});
+      <K>const</K> grid = createNoiseGrid({'{'} width, height, seed: <Live value={`'${settings.seed}'`} /> {'}'});
     </>,
     '',
     <>
-      <K>for</K> (<K>const</K> cell <K>of</K> cells(numPoints)) {'{'}
+      <K>for</K> (<K>const</K> cell <K>of</K> cells(cellsAcross)) {'{'}
     </>,
     <>
       {'  '}<K>const</K> t = (playhead + cell.u * <V>0.2</V> + cell.v * <V>0.1</V>) % <V>1</V>;

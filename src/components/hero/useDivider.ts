@@ -1,59 +1,65 @@
 import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from 'react';
 
-// The load nudge: out and back over about a second, after the page has had a moment to settle
-const NUDGE = { delay: 700, out: 420, hold: 90, back: 620, distance: 72 };
-const easeOutCubic = (t: number) => 1 - (1 - t) ** 3;
-const easeInOutCubic = (t: number) => (t < 0.5 ? 4 * t ** 3 : 1 - (-2 * t + 2) ** 3 / 2);
+// The reveal: the hero loads fully built, then the divider travels in from the left edge to its
+// resting point, uncovering the spec, with a small settle at the end
+const REVEAL = { delay: 700, travel: 1300 };
+// Overshoots by a few percent near the end and comes back, so the divider lands like a handle
+const easeOutBack = (t: number) => {
+  const c1 = 0.9;
+  const c3 = c1 + 1;
+  return 1 + c3 * (t - 1) ** 3 + c1 * (t - 1) ** 2;
+};
 
 // The divider between the spec and the built hero, as a percentage across the frame. Only the
-// handle starts a drag, so whatever sits under the line stays usable. On load the divider nudges
-// toward the built side and settles back, so the eye finds it.
+// handle starts a drag, so whatever sits under the line stays usable.
 export const useDivider = (initial: number) => {
   const [base, setSplit] = useState(initial);
-  // Added on top of the resting position while the nudge plays, so nothing else sees it
-  const [nudge, setNudge] = useState(0);
+  // 0 to 1 while the reveal travels; 1 means at rest
+  const [progress, setProgress] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
   const frameRef = useRef<HTMLDivElement>(null);
   const dragging = useRef(false);
-  const nudgeFrame = useRef(0);
+  const motionFrame = useRef(0);
 
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const settle = requestAnimationFrame(() => setProgress(1));
+      return () => cancelAnimationFrame(settle);
+    }
     let start = 0;
     const tick = (now: number) => {
-      const width = frameRef.current?.getBoundingClientRect().width;
-      if (!width) return;
       start ||= now;
-      const t = now - start;
-      const peak = (NUDGE.distance / width) * 100;
-      if (t < NUDGE.out) {
-        setNudge(peak * easeOutCubic(t / NUDGE.out));
-      } else if (t < NUDGE.out + NUDGE.hold) {
-        setNudge(peak);
-      } else if (t < NUDGE.out + NUDGE.hold + NUDGE.back) {
-        setNudge(peak * (1 - easeInOutCubic((t - NUDGE.out - NUDGE.hold) / NUDGE.back)));
-      } else {
-        setNudge(0);
+      const t = (now - start) / REVEAL.travel;
+      if (t >= 1) {
+        setProgress(1);
         return;
       }
-      nudgeFrame.current = requestAnimationFrame(tick);
+      setProgress(easeOutBack(t));
+      motionFrame.current = requestAnimationFrame(tick);
     };
     const timer = setTimeout(() => {
       // Skip it if someone already moved the divider
-      if (nudgeFrame.current !== -1) nudgeFrame.current = requestAnimationFrame(tick);
-    }, NUDGE.delay);
+      if (motionFrame.current !== -1) motionFrame.current = requestAnimationFrame(tick);
+    }, REVEAL.delay);
     return () => {
       clearTimeout(timer);
-      cancelAnimationFrame(nudgeFrame.current);
+      cancelAnimationFrame(motionFrame.current);
     };
   }, []);
 
-  // Someone reached for the divider, so the nudge gets out of their way
-  const stopNudge = () => {
-    cancelAnimationFrame(nudgeFrame.current);
-    nudgeFrame.current = -1;
-    setNudge(0);
+  // Someone reached for the divider, so the reveal gets out of their way
+  const stopMotion = () => {
+    cancelAnimationFrame(motionFrame.current);
+    motionFrame.current = -1;
+    setProgress(1);
   };
-  const split = Math.max(0, Math.min(100, base + nudge));
+  const split = Math.max(0, Math.min(100, base * progress));
+  // True until the reveal has started moving, so the handle can stay hidden at the edge
+  const beforeReveal = progress === 0;
+  // True while the reveal is still travelling
+  const revealing = progress < 1;
+  // Where the reveal has got to, without the overshoot, so it only ever moves forward
+  const revealSplit = base * Math.min(1, progress);
 
   const setFromPointer = (e: ReactPointerEvent<HTMLElement>) => {
     const rect = frameRef.current?.getBoundingClientRect();
@@ -65,8 +71,9 @@ export const useDivider = (initial: number) => {
     ref: frameRef,
     onPointerDown: (e: ReactPointerEvent<HTMLDivElement>) => {
       if ((e.target as HTMLElement).closest('[data-divider]')) {
-        stopNudge();
+        stopMotion();
         dragging.current = true;
+        setIsDragging(true);
         e.currentTarget.setPointerCapture(e.pointerId);
         setFromPointer(e);
       }
@@ -74,9 +81,10 @@ export const useDivider = (initial: number) => {
     onPointerMove: (e: ReactPointerEvent<HTMLDivElement>) => dragging.current && setFromPointer(e),
     onPointerUp: () => {
       dragging.current = false;
+      setIsDragging(false);
     },
-    onKeyDown: () => stopNudge(),
+    onKeyDown: () => stopMotion(),
   };
 
-  return { split, setSplit, frameProps };
+  return { split, setSplit, frameProps, isDragging, beforeReveal, revealing, revealSplit };
 };

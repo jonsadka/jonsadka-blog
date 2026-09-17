@@ -6,7 +6,7 @@ export const LargerWorksSection = () => {
     <section id="work" className="py-32 bg-[#F3F3F3]">
       <div className="container mx-auto px-6 mb-12 flex justify-between items-end">
         <div>
-          <h2 className="text-4xl md:text-5xl font-medium italic tracking-tight text-gray-900 mb-4">Selected Works</h2>
+          <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-gray-900 mb-4">Selected Works</h2>
           <p className="text-gray-600 text-lg">
             Where curiosity meets craft. Building ambitious projects from concept to completion.
           </p>

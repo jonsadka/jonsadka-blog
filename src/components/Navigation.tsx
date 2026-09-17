@@ -1,5 +1,6 @@
 import { useEffect, useState, type MouseEvent } from 'react';
 import { useNavigate, useRouterState } from '@tanstack/react-router';
+import { useMedia } from '../hooks/useMedia';
 
 // Navigation Component
 export const Navigation = ({
@@ -17,6 +18,45 @@ export const Navigation = ({
   // Determine if we're on the home page
   const { pathname } = routerState.location;
   const isHomePage = pathname === '/';
+
+  // The bar has two states and one moment between them. On the home page, while the hero's own
+  // name is on screen the bar is transparent and wide with no name; when the name slides under the
+  // bar, the pill darkens and narrows and the name fades up into it, on one 500 ms clock. On other
+  // pages the same flip happens once the page has scrolled. Watches the spec copy of the name,
+  // which the divider never clips; the top margin is the bar's height, so the flip happens as the
+  // name disappears under it.
+  const [heroNameVisible, setHeroNameVisible] = useState(isHomePage);
+  useEffect(() => {
+    if (!isHomePage) return;
+    let observer: IntersectionObserver | undefined;
+    let tries = 0;
+    let raf = 0;
+    const attach = () => {
+      const h1 = document.querySelector('[data-hero-name]');
+      if (!h1) {
+        if (tries++ < 30) raf = requestAnimationFrame(attach);
+        return;
+      }
+      observer = new IntersectionObserver(([entry]) => setHeroNameVisible(entry.isIntersecting), {
+        threshold: 0,
+        rootMargin: '-104px 0px 0px 0px',
+      });
+      observer.observe(h1);
+    };
+    attach();
+    return () => {
+      cancelAnimationFrame(raf);
+      observer?.disconnect();
+    };
+  }, [isHomePage]);
+  const nameHidden = isHomePage && heroNameVisible;
+  // On phones the corner keeps a monogram while the name is away, so the bar is never just a hamburger
+  const small = useMedia('(max-width: 767px)');
+  const nameGone = nameHidden && !small;
+  const compact = isHomePage ? !heroNameVisible : isScrolled;
+
+  // The four links stay at the true center of the bar in both states, so the only things that move
+  // on the flip are Connect, drawn in with the pill's edge, and the name fading up on the left
 
   // The section in view on the home page, Writing on blog posts, nothing elsewhere
   const currentSection = isHomePage
@@ -85,31 +125,34 @@ export const Navigation = ({
 
   return (
     <>
-      <nav
-        aria-label="Main"
-        className="fixed top-4 left-0 right-0 z-50 transition-all duration-500 ease-out px-4"
-      >
+      <nav aria-label="Main" className="fixed top-4 left-0 right-0 z-50 px-4">
+        {/* Same padding in both states, so nothing moves vertically; only width, color and shadow change */}
         <div
-          className={`mx-auto transition-all duration-500 rounded-full ease-out ${
-            isScrolled
-              ? 'max-w-5xl bg-black/90 backdrop-blur-md border border-white/10 shadow-2xl py-2 md:py-4 px-6'
-              : 'max-w-7xl bg-black/0 backdrop-blur-sm border border-transparent py-1 md:py-5 px-6'
+          className={`mx-auto rounded-full border py-2 md:py-4 px-6 transition-[max-width,background-color,border-color,box-shadow] duration-500 ease-out ${
+            compact
+              ? 'max-w-5xl bg-black/90 backdrop-blur-md border-white/10 shadow-2xl'
+              : 'max-w-7xl bg-black/0 border-transparent'
           }`}
         >
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <a
-              href="/"
-              onClick={onLinkClick('home')}
-              className={`font-bold text-xl tracking-tighter transition-colors duration-300 ${
-                isScrolled ? 'text-white' : 'text-black'
-              }`}
-            >
-              JON SADKA
-            </a>
-
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-1">
+          <div className="relative flex items-center min-h-10">
+            {/* Logo. Absolute so the links can take its place. On desktop it is away while the hero's
+                name is on screen and fades up into the bar after; on phones it folds to the monogram
+                JS and unfolds */}
+            <div className="absolute left-0 top-1/2 -translate-y-1/2">
+              <a
+                href="/"
+                onClick={onLinkClick('home')}
+                aria-hidden={nameGone || undefined}
+                tabIndex={nameGone ? -1 : undefined}
+                className={`block font-bold text-xl tracking-tighter whitespace-nowrap transition-[color,opacity,transform] duration-500 ease-out ${
+                  compact ? 'text-white' : 'text-black'
+                } ${nameHidden ? 'md:opacity-0 md:translate-y-3 md:pointer-events-none' : 'opacity-100 translate-y-0'}`}
+              >
+                J<Fold hidden={nameHidden}>ON </Fold>S<Fold hidden={nameHidden}>ADKA</Fold>
+              </a>
+            </div>
+            {/* Desktop Navigation, pinned to the center */}
+            <div className="hidden md:flex items-center space-x-1 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
               {navLinks.map((link) => (
                 <a
                   key={link.id}
@@ -118,10 +161,10 @@ export const Navigation = ({
                   aria-current={currentSection === link.id ? 'true' : undefined}
                   className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-full group overflow-hidden ${
                     currentSection === link.id
-                      ? isScrolled
+                      ? compact
                         ? 'text-black bg-white'
-                        : 'text-white bg-black'
-                      : isScrolled
+                        : 'text-white bg-gray-900/90'
+                      : compact
                         ? 'text-gray-300 hover:text-white'
                         : 'text-gray-600 hover:text-black'
                   }`}
@@ -130,32 +173,31 @@ export const Navigation = ({
                   {currentSection !== link.id && (
                     <span
                       className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 ${
-                        isScrolled ? 'bg-white' : 'bg-black'
+                        compact ? 'bg-white' : 'bg-black'
                       }`}
                     />
                   )}
                 </a>
               ))}
-
-              <a
-                href={sectionHref('contact')}
-                onClick={onLinkClick('contact')}
-                className={`ml-4 px-6 py-2 text-sm font-bold tracking-wide uppercase border-2 transition-all duration-300 rounded-full hover:scale-105 active:scale-95 ${
-                  isScrolled
-                    ? 'border-white text-white hover:bg-white hover:text-black'
-                    : 'border-black text-black hover:bg-black hover:text-white'
-                }`}
-              >
-                Connect
-              </a>
             </div>
+            <a
+              href={sectionHref('contact')}
+              onClick={onLinkClick('contact')}
+              className={`hidden md:block ml-auto px-6 py-2 text-sm font-bold tracking-wide uppercase border-2 transition-all duration-300 rounded-full hover:scale-105 active:scale-95 ${
+                compact
+                  ? 'border-white text-white hover:bg-white hover:text-black'
+                  : 'border-black text-black hover:bg-black hover:text-white'
+              }`}
+            >
+              Connect
+            </a>
 
             {/* Mobile Navigation Toggle */}
-            <div className="md:hidden flex">
+            <div className="md:hidden flex ml-auto">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className={`p-2 rounded-full transition-colors ${
-                  isScrolled ? 'text-white hover:bg-white/10' : 'text-black hover:bg-black/5'
+                  compact ? 'text-white hover:bg-white/10' : 'text-black hover:bg-black/5'
                 }`}
                 aria-label="Toggle menu"
                 aria-expanded={isMobileMenuOpen}
@@ -166,21 +208,21 @@ export const Navigation = ({
                     className={`w-full h-0.5 transition-all duration-300 ${
                       isMobileMenuOpen
                         ? 'rotate-45 translate-y-2 bg-white'
-                        : isScrolled
+                        : compact
                           ? 'bg-white'
                           : 'bg-black'
                     }`}
                   />
                   <span
                     className={`w-full h-0.5 transition-all duration-300 ${
-                      isMobileMenuOpen ? 'opacity-0' : isScrolled ? 'bg-white' : 'bg-black'
+                      isMobileMenuOpen ? 'opacity-0' : compact ? 'bg-white' : 'bg-black'
                     }`}
                   />
                   <span
                     className={`w-full h-0.5 transition-all duration-300 ${
                       isMobileMenuOpen
                         ? '-rotate-45 -translate-y-2.5 bg-white'
-                        : isScrolled
+                        : compact
                           ? 'bg-white'
                           : 'bg-black'
                     }`}
@@ -226,3 +268,14 @@ export const Navigation = ({
     </>
   );
 };
+
+// Letters of the name that fold away on phones while the hero's own name is on screen
+const Fold = ({ hidden, children }: { hidden: boolean; children: string }) => (
+  <span
+    className={`inline-block overflow-hidden align-bottom whitespace-pre transition-[max-width,opacity] duration-500 ease-out ${
+      hidden ? 'max-md:max-w-0 max-md:opacity-0' : ''
+    } max-w-[6ch]`}
+  >
+    {children}
+  </span>
+);
