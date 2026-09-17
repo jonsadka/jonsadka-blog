@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jon Sadka</title>
+    <link>https://jonsadka.com/</link>
+    <description>Portfolio and blog of Jon Sadka: selected work, creative coding experiments, and writing on frontend engineering and data visualization.</description>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 27 May 2020 07:00:00 GMT</lastBuildDate>
+    <atom:link href="https://jonsadka.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to deploy imgproxy to Google Cloud using Docker and Cloud Run</title>
+      <link>https://jonsadka.com/blog/how-to-deploy-imgproxy-to-google-cloud-using-docker-and-cloud-run</link>
+      <guid isPermaLink="true">https://jonsadka.com/blog/how-to-deploy-imgproxy-to-google-cloud-using-docker-and-cloud-run</guid>
+      <pubDate>Wed, 27 May 2020 07:00:00 GMT</pubDate>
+      <description>Be able to host a production instance of imgproxy on Google Cloud within minutes.</description>
+      <category>Infrastructure</category>
+    </item>
+    <item>
+      <title>How to export Photoshop images at custom resolutions using Adobe Photoshop Scripting and JavaScript</title>
+      <link>https://jonsadka.com/blog/how-to-export-photoshop-images-at-custom-resolutions-using-scripting</link>
+      <guid isPermaLink="true">https://jonsadka.com/blog/how-to-export-photoshop-images-at-custom-resolutions-using-scripting</guid>
+      <pubDate>Tue, 17 Dec 2019 08:00:00 GMT</pubDate>
+      <description>For a recent project, a goal was set to improve page load times on mobile devices. One quick win was to develop images at varying breakpoints and load the…</description>
+      <category>JavaScript</category>
+      <category>Photoshop</category>
+      <category>Scripting</category>
+    </item>
+    <item>
+      <title>Designing and engineering the Steel Explorer, a visualization tool for structural engineers to select the most efficient beam</title>
+      <link>https://jonsadka.com/blog/designing-and-engineering-a-visualization-tool-for-structural-engineers</link>
+      <guid isPermaLink="true">https://jonsadka.com/blog/designing-and-engineering-a-visualization-tool-for-structural-engineers</guid>
+      <pubDate>Tue, 18 Dec 2018 08:00:00 GMT</pubDate>
+      <description>The purpose of this post is to highlight things that come to mind when reflecting on my time designing, iterating, and building the Steel Explorer. Some…</description>
+      <category>Design</category>
+      <category>JavaScript</category>
+      <category>UX/UI</category>
+    </item>
+    <item>
+      <title>Overview and usage of the Steel Explorer, a visualization tool for structural engineers to select the most efficient beam</title>
+      <link>https://jonsadka.com/blog/overview-and-usage-of-the-steel-explorer</link>
+      <guid isPermaLink="true">https://jonsadka.com/blog/overview-and-usage-of-the-steel-explorer</guid>
+      <pubDate>Tue, 11 Dec 2018 08:00:00 GMT</pubDate>
+      <description>To find the optimal beam, enter your requirements in the Input Bar at the top and watch the Steel Explorer update the charts to show you which beams still…</description>
+      <category>Design</category>
+      <category>UX/UI</category>
+    </item>
+    <item>
+      <title>How to create live updating and flexible D3.js line charts using D3.js v5 and pseudo-data (interactive tutorial and example)</title>
+      <link>https://jonsadka.com/blog/how-to-create-live-updating-and-flexible-d3-line-charts-using-d3-js-v5-and-pseudo-data</link>
+      <guid isPermaLink="true">https://jonsadka.com/blog/how-to-create-live-updating-and-flexible-d3-line-charts-using-d3-js-v5-and-pseudo-data</guid>
+      <pubDate>Thu, 16 Aug 2018 07:00:00 GMT</pubDate>
+      <description>One of the bigger challenges in visualizing data is making your charts responsive so that they can resize no matter what range of data is thrown at it…</description>
+      <category>D3.js</category>
+      <category>JavaScript</category>
+    </item>
+    <item>
+      <title>How to debug an issue in Chrome for iOS using remote debugging</title>
+      <link>https://jonsadka.com/blog/how-to-debug-a-chrome-specific-bug-on-ios-using-remote-debugging</link>
+      <guid isPermaLink="true">https://jonsadka.com/blog/how-to-debug-a-chrome-specific-bug-on-ios-using-remote-debugging</guid>
+      <pubDate>Wed, 16 May 2018 07:00:00 GMT</pubDate>
+      <description>I recently had the opportunity to implement some new visualizations for Uber City Guides. Before launch, we discovered a strange bug that only occurred on…</description>
+      <category>JavaScript</category>
+    </item>
+    <item>
+      <title>Choosing the best numbers in nfl football squares to beat your friends</title>
+      <link>https://jonsadka.com/blog/choosing-the-best-numbers-in-nfl-football-squares-to-beat-your-friends</link>
+      <guid isPermaLink="true">https://jonsadka.com/blog/choosing-the-best-numbers-in-nfl-football-squares-to-beat-your-friends</guid>
+      <pubDate>Fri, 05 Feb 2016 08:00:00 GMT</pubDate>
+      <description>The Super Bowl Square gambling game is all luck, right? Not according to our calculations.</description>
+      <category>D3.js</category>
+      <category>JavaScript</category>
+    </item>
+    <item>
+      <title>How to generate time series aggregations in MongoDB using Unix / Epoch timestamps (week over week, year over year, etc. tutorial and example)</title>
+      <link>https://jonsadka.com/blog/how-to-generate-time-series-week-over-week-year-over-year-aggregations-in-mongodb-using-unix-epoch-timestamps-tutorial-and-example</link>
+      <guid isPermaLink="true">https://jonsadka.com/blog/how-to-generate-time-series-week-over-week-year-over-year-aggregations-in-mongodb-using-unix-epoch-timestamps-tutorial-and-example</guid>
+      <pubDate>Wed, 14 Oct 2015 07:00:00 GMT</pubDate>
+      <description>ECMAScript5 introduced Date.now(), a method that returns the milliseconds elapsed since 1 January 1970 00:00:00 UTC up until now as a Number. Date.now()…</description>
+      <category>JavaScript</category>
+      <category>MongoDB</category>
+    </item>
+    <item>
+      <title>How to write data to the beginning of a file with Node.js / JavaScript (tutorial and example)</title>
+      <link>https://jonsadka.com/blog/how-to-write-data-to-the-beginning-of-a-file-with-node-javascript-tutorial-and-example</link>
+      <guid isPermaLink="true">https://jonsadka.com/blog/how-to-write-data-to-the-beginning-of-a-file-with-node-javascript-tutorial-and-example</guid>
+      <pubDate>Tue, 30 Jun 2015 07:00:00 GMT</pubDate>
+      <description>Recently I have had to do a lot of work building infrastructure converting data from .json to .csv. One challenge that presented itself was figuring out a…</description>
+      <category>JavaScript</category>
+    </item>
+    <item>
+      <title>How Apple can catch up to Google ratings and Yelp reviews overnight</title>
+      <link>https://jonsadka.com/blog/how-apple-can-catch-up-to-google-ratings-and-yelp-reviews-overnight</link>
+      <guid isPermaLink="true">https://jonsadka.com/blog/how-apple-can-catch-up-to-google-ratings-and-yelp-reviews-overnight</guid>
+      <pubDate>Tue, 20 Jan 2015 08:00:00 GMT</pubDate>
+      <description>Yelp. The word is synonymous with ratings. Although Yelp is very powerful and has millions of reviews, they have not gained my trust. There are tales of…</description>
+      <category>UX / UI</category>
+    </item>
+    <item>
+      <title>Best and worst times to take an Uber in San Francisco, Los Angeles, and New York</title>
+      <link>https://jonsadka.com/blog/best-and-worst-times-to-take-an-uber</link>
+      <guid isPermaLink="true">https://jonsadka.com/blog/best-and-worst-times-to-take-an-uber</guid>
+      <pubDate>Tue, 02 Dec 2014 08:00:00 GMT</pubDate>
+      <description>About two months ago, Nicolas and I were curious to see if we could nail down the cheapest and priciest hours to order an Uber. To do this, we requested…</description>
+      <category>API</category>
+      <category>D3.js</category>
+      <category>JavaScript</category>
+    </item>
+    <item>
+      <title>How to create adaptive pie donut charts with transitions in D3.js (interactive tutorial and example)</title>
+      <link>https://jonsadka.com/blog/how-to-create-adaptive-pie-charts-with-transitions-in-d3</link>
+      <guid isPermaLink="true">https://jonsadka.com/blog/how-to-create-adaptive-pie-charts-with-transitions-in-d3</guid>
+      <pubDate>Fri, 24 Oct 2014 07:00:00 GMT</pubDate>
+      <description>Following up with my last blog post about adaptive line chart graphs (link), I decided to apply this same concept of adaptive charts to a pie / donut…</description>
+      <category>D3.js</category>
+      <category>JavaScript</category>
+    </item>
+    <item>
+      <title>How to create live updating and flexible D3.js line charts using D3.js v3 and pseudo-data (interactive tutorial and example)</title>
+      <link>https://jonsadka.com/blog/how-to-create-live-updating-and-flexible-d3-line-charts-using-pseudo-data</link>
+      <guid isPermaLink="true">https://jonsadka.com/blog/how-to-create-live-updating-and-flexible-d3-line-charts-using-pseudo-data</guid>
+      <pubDate>Tue, 14 Oct 2014 07:00:00 GMT</pubDate>
+      <description>One of the bigger challenges in visualizing data is making your charts responsive so that they can resize no matter what range of data is thrown at it…</description>
+      <category>D3.js</category>
+      <category>JavaScript</category>
+    </item>
+    <item>
+      <title>How to modify, filter, and save JSON files locally using jQuery</title>
+      <link>https://jonsadka.com/blog/how-to-modify-filter-and-save-json-files-locally-using-jquery</link>
+      <guid isPermaLink="true">https://jonsadka.com/blog/how-to-modify-filter-and-save-json-files-locally-using-jquery</guid>
+      <pubDate>Tue, 07 Oct 2014 07:00:00 GMT</pubDate>
+      <description>There are many API’s available for use, many of which are free and provide lots of fun data to play with, however there is one common hurdle to overcome…</description>
+      <category>jQuery</category>
+      <category>JavaScript</category>
+    </item>
+    <item>
+      <title>How to quickly create randomly generated datasets in JavaScript with D3.js</title>
+      <link>https://jonsadka.com/blog/how-to-quickly-create-randomly-generated-datasets-in-javascript-with-d3</link>
+      <guid isPermaLink="true">https://jonsadka.com/blog/how-to-quickly-create-randomly-generated-datasets-in-javascript-with-d3</guid>
+      <pubDate>Mon, 29 Sep 2014 07:00:00 GMT</pubDate>
+      <description>Often times in JavaScript and D3.js, we want to quickly create randomly-generated, &quot;fake&quot; data on the fly for testing and iterative development. To help…</description>
+      <category>D3.js</category>
+      <category>JavaScript</category>
+    </item>
+    <item>
+      <title>Using .reduce() to create arrays and objects in JavaScript</title>
+      <link>https://jonsadka.com/blog/using-reduce-to-create-arrays-and-objects-in-javascript</link>
+      <guid isPermaLink="true">https://jonsadka.com/blog/using-reduce-to-create-arrays-and-objects-in-javascript</guid>
+      <pubDate>Fri, 19 Sep 2014 07:00:00 GMT</pubDate>
+      <description>I love functional programming and things just got better because of reduce and reduceRight. In ECMAScript5.1, the Ecma integrated some really common array…</description>
+      <category>JavaScript</category>
+    </item>
+    <item>
+      <title>How to use the Uber API to get pricing data</title>
+      <link>https://jonsadka.com/blog/how-to-use-the-uber-api-to-get-pricing-data</link>
+      <guid isPermaLink="true">https://jonsadka.com/blog/how-to-use-the-uber-api-to-get-pricing-data</guid>
+      <pubDate>Fri, 29 Aug 2014 07:00:00 GMT</pubDate>
+      <description>Uber opened up their API to developer and as a fun experiment, I decided to play around with the Uber API, collect a few days worth of data and see if any…</description>
+      <category>API</category>
+      <category>JavaScript</category>
+    </item>
+    <item>
+      <title>Fight on! The power of JavaScript closures</title>
+      <link>https://jonsadka.com/blog/fight-on-the-power-of-javascript-closures</link>
+      <guid isPermaLink="true">https://jonsadka.com/blog/fight-on-the-power-of-javascript-closures</guid>
+      <pubDate>Sat, 16 Aug 2014 07:00:00 GMT</pubDate>
+      <description>In addition to these three requirements, when you exit the scope of the function of interest, that scope is retained. What does this mean? Let’s take a…</description>
+      <category>JavaScript</category>
+    </item>
+    <item>
+      <title>Prototypal and pseudoclassical instantiation in JavaScript</title>
+      <link>https://jonsadka.com/blog/prototypal-and-pseudoclassical-instantiation-in-javascript</link>
+      <guid isPermaLink="true">https://jonsadka.com/blog/prototypal-and-pseudoclassical-instantiation-in-javascript</guid>
+      <pubDate>Sun, 10 Aug 2014 07:00:00 GMT</pubDate>
+      <description>In JavaScript, there are four ways to instantiate a new object. This blog post will cover the differences between the prototypal and pseudoclassical…</description>
+      <category>JavaScript</category>
+    </item>
+    <item>
+      <title>Type coercion in D3.js</title>
+      <link>https://jonsadka.com/blog/type-coercion-in-d3js</link>
+      <guid isPermaLink="true">https://jonsadka.com/blog/type-coercion-in-d3js</guid>
+      <pubDate>Mon, 04 Aug 2014 07:00:00 GMT</pubDate>
+      <description>D3.js is an amazing platform that allows software engineers to bind data to each DOM element that exists, or will be, created. This data can then be used…</description>
+      <category>D3.js</category>
+      <category>JavaScript</category>
+    </item>
+    <item>
+      <title>Supercharge your falsey &amp;&amp; conditional statements in JavaScript</title>
+      <link>https://jonsadka.com/blog/supercharge-your-falsey-conditional-statements-in-javascript</link>
+      <guid isPermaLink="true">https://jonsadka.com/blog/supercharge-your-falsey-conditional-statements-in-javascript</guid>
+      <pubDate>Wed, 30 Jul 2014 07:00:00 GMT</pubDate>
+      <description>Over the past few days, I have discovered the large potential of falsey values (false, 0, &quot;&quot;, null, undefined, NaN) to provide direction and simplify code…</description>
+      <category>JavaScript</category>
+    </item>
+  </channel>
+</rss>

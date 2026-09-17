@@ -6,21 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <!-- Title and share tags are filled in by plugins/blog-posts.ts -->
     <!-- seo -->
-    <title>How to deploy imgproxy to Google Cloud using Docker and Cloud Run | Jon Sadka</title>
+    <title>Deploy imgproxy to Google Cloud Run with Docker | Jon Sadka</title>
     <meta name="description" content="Be able to host a production instance of imgproxy on Google Cloud within minutes." />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Jon Sadka" />
+    <meta name="theme-color" content="#ffffff" />
     <link rel="canonical" href="https://jonsadka.com/blog/how-to-deploy-imgproxy-to-google-cloud-using-docker-and-cloud-run" />
+    <link rel="alternate" type="application/rss+xml" title="Jon Sadka" href="/rss.xml" />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Jon Sadka" />
-    <meta property="og:title" content="How to deploy imgproxy to Google Cloud using Docker and Cloud Run" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="Deploy imgproxy to Google Cloud Run with Docker" />
     <meta property="og:description" content="Be able to host a production instance of imgproxy on Google Cloud within minutes." />
     <meta property="og:url" content="https://jonsadka.com/blog/how-to-deploy-imgproxy-to-google-cloud-using-docker-and-cloud-run" />
     <meta property="og:image" content="https://jonsadka.com/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="2400" />
+    <meta property="og:image:height" content="1260" />
+    <meta property="og:image:alt" content="Jon Sadka, drawn as a spec beside the working drawing it describes" />
+    <meta property="article:published_time" content="2020-05-27T07:00:00.000Z" />
+    <meta property="article:author" content="https://jonsadka.com/" />
+    <meta property="article:tag" content="Infrastructure" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@jonsadka" />
+    <meta name="twitter:creator" content="@jonsadka" />
+    <meta name="twitter:title" content="Deploy imgproxy to Google Cloud Run with Docker" />
+    <meta name="twitter:description" content="Be able to host a production instance of imgproxy on Google Cloud within minutes." />
     <meta name="twitter:image" content="https://jonsadka.com/og-image.png" />
+    <meta name="twitter:image:alt" content="Jon Sadka, drawn as a spec beside the working drawing it describes" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://jonsadka.com/blog/how-to-deploy-imgproxy-to-google-cloud-using-docker-and-cloud-run#article","headline":"Deploy imgproxy to Google Cloud Run with Docker","description":"Be able to host a production instance of imgproxy on Google Cloud within minutes.","url":"https://jonsadka.com/blog/how-to-deploy-imgproxy-to-google-cloud-using-docker-and-cloud-run","mainEntityOfPage":"https://jonsadka.com/blog/how-to-deploy-imgproxy-to-google-cloud-using-docker-and-cloud-run","datePublished":"2020-05-27T07:00:00.000Z","author":{"@type":"Person","name":"Jon Sadka","url":"https://jonsadka.com/"},"publisher":{"@type":"Person","@id":"https://jonsadka.com/#person","name":"Jon Sadka"},"image":{"@type":"ImageObject","url":"https://jonsadka.com/og-image.png","width":2400,"height":1260},"keywords":"Infrastructure","inLanguage":"en","isPartOf":{"@id":"https://jonsadka.com/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://jonsadka.com/"},{"@type":"ListItem","position":2,"name":"Deploy imgproxy to Google Cloud Run with Docker","item":"https://jonsadka.com/blog/how-to-deploy-imgproxy-to-google-cloud-using-docker-and-cloud-run"}]}]}</script>
     <!-- /seo -->
     <link rel="icon" type="image/png" href="/favicon.png" />
-    <script type="module" crossorigin src="/assets/index-BHGTRh0p.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CBLtdzLf.css">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <script type="module" crossorigin src="/assets/index-BiV1rcgb.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-5SrTsjjq.css">
   </head>
 
   <body>
