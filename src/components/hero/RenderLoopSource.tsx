@@ -28,21 +28,30 @@ const Live = ({ value }: { value: string }) => {
   );
 };
 
-// The frame's playhead, written straight into the DOM so the source ticks without re-rendering
-const Playhead = () => {
+// The frame's playhead, written straight into the DOM so the source ticks without re-rendering. It
+// runs at the drawing's speed, and a speed change carries on from where it is.
+const Playhead = ({ speed }: { speed: number }) => {
   const tempo = 3.75;
   const ref = useRef<HTMLSpanElement>(null);
+  const speedRef = useRef(speed);
+  useEffect(() => {
+    speedRef.current = speed;
+  }, [speed]);
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       if (ref.current) ref.current.textContent = '0.50';
       return;
     }
     let id = 0;
-    const tick = () => {
-      if (ref.current) ref.current.textContent = (((Date.now() / 1000) % tempo) / tempo).toFixed(2);
+    let phase = 0;
+    let last = performance.now();
+    const tick = (now: number) => {
+      phase = (phase + ((now - last) / 1000 / tempo) * speedRef.current) % 1;
+      last = now;
+      if (ref.current) ref.current.textContent = phase.toFixed(2);
       id = requestAnimationFrame(tick);
     };
-    tick();
+    tick(last);
     return () => cancelAnimationFrame(id);
   }, [tempo]);
   return <span ref={ref} className="tabular-nums" style={{ color: DRAFT_INK.ink }} />;
@@ -53,13 +62,16 @@ export const RenderLoopSource = ({ settings }: { settings: DrawingSettings }) =>
   const lines: ReactNode[] = [
     <C>{'// NoiseTopography.tsx, once per frame'}</C>,
     <>
-      <K>const</K> playhead = <Playhead />;
+      <K>const</K> speed = <Live value={String(settings.speed)} />;
+    </>,
+    <>
+      <K>const</K> playhead = <Playhead speed={settings.speed} />;
     </>,
     <>
       <K>const</K> cellsAcross = <Live value={String(settings.cellsAcross)} />;
     </>,
     <>
-      <K>const</K> radiusFactor = <Live value={settings.radiusFactor.toFixed(1)} />;
+      <K>const</K> radiusFactor = <Live value={String(settings.radiusFactor)} />;
     </>,
     <>
       <K>const</K> isInverse = <Live value={String(settings.isInverse)} />;

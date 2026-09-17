@@ -13,6 +13,7 @@ const DEFAULT_SETTINGS: DrawingSettings = {
   radiusFactor: 0.5,
   isInverse: false,
   seed: '660939',
+  speed: 1,
 };
 
 // The divider's client x while the reveal travels, null otherwise. Callouts pop in as it passes them.
@@ -26,7 +27,11 @@ const RevealContext = createContext<number | null>(null);
 export const Hero = () => {
   const small = useMedia('(max-width: 767px)');
   const coarse = useMedia('(pointer: coarse)');
-  const { split, setSplit, frameProps, isDragging, beforeReveal, revealing, revealSplit } = useDivider(42);
+  // On phones a drag stops with the knob just inside the card, clear of the screen edges
+  const { split, setSplit, setReach, frameProps, isDragging, beforeReveal, revealing, revealSplit } = useDivider(
+    42,
+    small ? 32 : 0
+  );
   const [settings, setSettings] = useState(DEFAULT_SETTINGS);
 
   // Covers the whole section, as the frame the divider is measured against
@@ -35,8 +40,10 @@ export const Hero = () => {
   // The settings panel lives in that layer, above the divider, so it is never clipped
   const [panelPosition, setPanelPosition] = useState<{ right: number; bottom: number } | null>(null);
 
-  // Start the divider 15% into the drawing, or on phones 20 px past the name so it reads whole, and
-  // keep it there as the layout settles or the window resizes, until someone moves it
+  // Rest the divider between the name and the drawing, so none of the drawing starts as spec, or on
+  // phones 20 px past the name so it reads whole. Keep it there as the layout settles or the window
+  // resizes, until someone moves it. On larger screens the reveal first travels 15% into the
+  // drawing and pulls back to rest.
   const phoneRest = small;
   const placed = useRef<number | null>(null);
   useLayoutEffect(() => {
@@ -47,8 +54,10 @@ export const Hero = () => {
     const place = () => {
       const f = frame.getBoundingClientRect();
       const a = art.getBoundingClientRect();
-      const restX = phoneRest ? name.getBoundingClientRect().right + 20 : a.left + a.width * 0.15;
+      const nameRight = name.getBoundingClientRect().right;
+      const restX = phoneRest ? nameRight + 20 : Math.min((nameRight + a.left) / 2, a.left);
       const next = ((restX - f.left) / f.width) * 100;
+      setReach(phoneRest ? null : ((a.left + a.width * 0.15 - f.left) / f.width) * 100);
       setFrameRect({ left: f.left, width: f.width });
       setPanelPosition({ right: f.right - a.right + 12, bottom: f.bottom - a.bottom + 12 });
       // Only follow the layout while the divider still sits where it was last placed
@@ -62,7 +71,7 @@ export const Hero = () => {
     observer.observe(art);
     observer.observe(name);
     return () => observer.disconnect();
-  }, [frameLayer, setSplit, phoneRest]);
+  }, [frameLayer, setSplit, setReach, phoneRest]);
 
   // On phones the callouts are the bare element names; there is no room for the measurements
   const layerProps = { settings, tagsOnly: small };
@@ -239,7 +248,7 @@ const HeroLayer = ({ spec = false, settings, tagsOnly }: { spec?: boolean; setti
           >
             {spec ? (
               <div
-                className="absolute inset-3 rounded-[2.25rem] border border-dashed overflow-hidden"
+                className="absolute inset-3 max-md:top-0 rounded-[2.25rem] border border-dashed overflow-hidden"
                 style={{ borderColor: DRAFT_INK.line }}
               >
                 <div className="absolute left-4 top-16">

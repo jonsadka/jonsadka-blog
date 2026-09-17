@@ -13,6 +13,8 @@ export type DrawingSettings = {
   isInverse: boolean;
   // Seed of the noise field that sets each cell's floor
   seed: string;
+  // How fast the breath and the drift run; 1 is a breath every TEMPO seconds
+  speed: number;
 };
 
 // Seconds per breath, and the exponent that makes it a swell rather than a sway
@@ -30,10 +32,16 @@ const FADE_MS = 300;
 // On mount the cells grow in, in the same order as the breath
 const STAGGER_MS = 550;
 const STAGGER_CELL_MS = 350;
-// Below this cell size the outer squares are drawn faint, as texture
-const FAINT_BELOW = 14;
+// Grids finer than this many cells across draw their outer squares faint, as texture, and finer
+// than the second a step fainter, and only in inverse
+const FAINT_ABOVE = 9;
+const FAINTER_ABOVE = 45;
 // Cells never get smaller than this, whatever the step asks for
-const MIN_CELL = 8;
+const MIN_CELL = 5;
+// Squares per path when the grid is stroked in batches
+const CHUNK = 8;
+// Preview only: ?outline=mid draws the coarsest grid's outer squares at half strength. Remove once decided.
+const MID_OUTLINES = new URLSearchParams(window.location.search).get('outline') === 'mid';
 
 type GridSnapshot = Pick<DrawingSettings, 'cellsAcross' | 'seed'>;
 const gridChanged = (a: GridSnapshot, b: GridSnapshot) => a.cellsAcross !== b.cellsAcross || a.seed !== b.seed;
@@ -48,10 +56,12 @@ export const NoiseTopography = ({ settings }: { settings: DrawingSettings }) => 
   // Draws a frame straight away, so a change shows even while the loop is paused
   const drawRef = useRef(() => {});
   // What is currently shown: eases toward the settings each frame
-  const shownRef = useRef({ radius: settings.radiusFactor, inverse: settings.isInverse ? 1 : 0 });
+  const shownRef = useRef({ radius: settings.radiusFactor, inverse: settings.isInverse ? 1 : 0, speed: settings.speed });
   const fadeRef = useRef<{ from: GridSnapshot; start: number } | null>(null);
   // The breath's phase, 0 to 1, advanced by the frame time so a tempo change never jumps
   const phaseRef = useRef(0);
+  // Seconds of drift, advanced the same way so the drift keeps pace with the breath
+  const clockRef = useRef(0);
   // Stamped once the canvas is set up, so the stagger counts from the first frame
   const mountedAt = useRef(0);
 
@@ -132,9 +142,36 @@ export const NoiseTopography = ({ settings }: { settings: DrawingSettings }) => 
       const offsetX = (width - gridWidth) / 2;
       const offsetY = (height - gridHeight) / 2;
 
-      const faint = Math.min(cellWidth, cellHeight) < FAINT_BELOW;
-      const stroke = faint ? `rgba(0, 0, 0, 8%)` : getColor(color);
+      const faint = snapshot.cellsAcross > FAINT_ABOVE;
+      const fainter = snapshot.cellsAcross > FAINTER_ABOVE;
+      const stroke = fainter ? `rgba(0, 0, 0, 5%)` : faint ? `rgba(0, 0, 0, 8%)` : getColor(color, MID_OUTLINES ? 50 : 100);
       const innerStroke = getColor(color);
+      // The finest grid's outer squares fade in and out with inverse
+      const outerAlpha = fainter ? inverseMix : 1;
+
+      // The squares are gathered into paths of CHUNK per stroke and opacity, and each path is stroked
+      // once. A stroke per square slows the fine grids in Chrome, and one path for the whole grid
+      // stalls Safari. Opacity is rounded to 1/32 while the cells stagger in.
+      type Batch = { paths: Path2D[]; squares: number };
+      const outerPaths = new Map<number, Batch>();
+      const innerPaths = new Map<number, Batch>();
+      const pathFor = (batches: Map<number, Batch>, opacity: number) => {
+        const key = Math.round(opacity * 32) / 32;
+        let batch = batches.get(key);
+        if (!batch) {
+          batch = { paths: [], squares: 0 };
+          batches.set(key, batch);
+        }
+        if (batch.squares++ % CHUNK === 0) batch.paths.push(new Path2D());
+        return batch.paths[batch.paths.length - 1];
+      };
+      const addSquare = (path: Path2D, x: number, y: number, size: number, radius: number) => {
+        if (path.roundRect) {
+          path.roundRect(x, y, size, size, radius);
+        } else {
+          path.rect(x, y, size, size);
+        }
+      };
 
       for (let xdx = 0; xdx < drawnCols; xdx++) {
         for (let ydx = 0; ydx < drawnRows; ydx++) {
@@ -165,30 +202,23 @@ export const NoiseTopography = ({ settings }: { settings: DrawingSettings }) => 
           const { noiseValue } = lookupResult;
 
           const isLast = xdx === drawnCols - 1 || ydx === drawnRows - 1;
-
-          // Draw directly
-          context.save();
-          context.globalAlpha = alpha * appear;
-          context.lineWidth = LINE_WIDTH;
-          context.strokeStyle = stroke;
-          context.translate(centroidX + fullRadius, centroidY + fullRadius);
+          const centerX = centroidX + fullRadius;
+          const centerY = centroidY + fullRadius;
 
           // Outer
-          context.beginPath();
-          if (context.roundRect) {
-            context.roundRect(-maxRadius, -maxRadius, maxRadius * 2, maxRadius * 2, maxRadius * radiusFactor);
-          } else {
-            context.rect(-maxRadius, -maxRadius, maxRadius * 2, maxRadius * 2);
+          if (outerAlpha > 0.001) {
+            addSquare(
+              pathFor(outerPaths, alpha * appear * outerAlpha),
+              centerX - maxRadius,
+              centerY - maxRadius,
+              maxRadius * 2,
+              maxRadius * radiusFactor
+            );
           }
-          context.closePath();
-          context.stroke();
 
           // In inverse the last row and column keep only their outer square; mid-tween it fades
           const innerAlpha = isLast ? 1 - inverseMix : 1;
-          if (innerAlpha <= 0.001) {
-            context.restore();
-            continue;
-          }
+          if (innerAlpha <= 0.001) continue;
 
           // Inner
           const radiusInner = Math.max(
@@ -196,25 +226,31 @@ export const NoiseTopography = ({ settings }: { settings: DrawingSettings }) => 
             maxRadius * Math.abs(noiseValue) + maxRadius * (1 - Math.abs(noiseValue)) * mod
           );
 
-          context.strokeStyle = innerStroke;
-          context.globalAlpha = alpha * appear * innerAlpha;
-
           // Centered for the normal drawing, tucked into the corner for inverse; the mix slides between
           const shift = -radiusInner + maxRadius * inverseMix;
-          context.translate(shift, shift);
-
-          context.beginPath();
-          if (context.roundRect) {
-            context.roundRect(0, 0, radiusInner * 2, radiusInner * 2, radiusInner * radiusFactor);
-          } else {
-            context.rect(0, 0, radiusInner * 2, radiusInner * 2);
-          }
-          context.closePath();
-          context.stroke();
-
-          context.restore();
+          addSquare(
+            pathFor(innerPaths, alpha * appear * innerAlpha),
+            centerX + shift,
+            centerY + shift,
+            radiusInner * 2,
+            radiusInner * radiusFactor
+          );
         }
       }
+
+      context.lineWidth = LINE_WIDTH;
+      for (const [batches, style] of [
+        [outerPaths, stroke],
+        [innerPaths, innerStroke],
+      ] as const) {
+        context.strokeStyle = style;
+        for (const [opacity, { paths }] of batches) {
+          if (opacity <= 0) continue;
+          context.globalAlpha = opacity;
+          for (const path of paths) context.stroke(path);
+        }
+      }
+      context.globalAlpha = 1;
     };
 
     const render = () => {
@@ -243,21 +279,28 @@ export const NoiseTopography = ({ settings }: { settings: DrawingSettings }) => 
         const k = 1 - Math.exp(-dt / 90);
         shown.radius += (current.radiusFactor - shown.radius) * k;
         shown.inverse += (targetInverse - shown.inverse) * k;
+        shown.speed += (current.speed - shown.speed) * k;
         if (Math.abs(shown.radius - current.radiusFactor) < 0.002) shown.radius = current.radiusFactor;
         if (Math.abs(shown.inverse - targetInverse) < 0.005) shown.inverse = targetInverse;
+        if (Math.abs(shown.speed - current.speed) < 0.005) shown.speed = current.speed;
       } else {
         shown.radius = current.radiusFactor;
         shown.inverse = targetInverse;
+        shown.speed = current.speed;
       }
 
-      const seconds = now / 1000;
+      // The breath and drift advance by the frame time at the shown speed; a still frame when the
+      // visitor asks for reduced motion
+      if (looping) {
+        const step = (dt / 1000) * shown.speed;
+        clockRef.current += step;
+        phaseRef.current = (phaseRef.current + step / TEMPO) % 1;
+      }
+      const seconds = clockRef.current;
       const drift = {
         x: DRIFT_MARGIN / 2 + Math.sin(seconds / 19) * (DRIFT_MARGIN / 2),
         y: DRIFT_MARGIN / 2 + Math.cos(seconds / 23) * (DRIFT_MARGIN / 2),
       };
-
-      // The breath advances by the frame time; a still frame when the visitor asks for reduced motion
-      if (looping) phaseRef.current = (phaseRef.current + dt / 1000 / TEMPO) % 1;
       const playhead = motionQuery.matches ? 0.5 : phaseRef.current;
       const elapsed = now - mountedAt.current;
 
