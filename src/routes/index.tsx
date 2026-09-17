@@ -1,5 +1,5 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import { Hero6 } from '../components/Hero6';
+import { Hero } from '../components/hero/Hero';
 import { LargerWorksSection } from '../components/LargerWorksSection';
 import { ExperimentsSection } from '../components/ExperimentsSection';
 import { WritingSection } from '../components/WritingSection';
@@ -52,7 +52,7 @@ function HomePage() {
 
   return (
     <>
-      <Hero6 />
+      <Hero />
       <LargerWorksSection />
       <ExperimentsSection />
       <WritingSection blogPosts={blogPosts} />

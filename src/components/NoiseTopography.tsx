@@ -1,22 +1,29 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 import Random from '../utils/random';
 import { createNoiseGrid } from '../utils/noise';
 import { getColor, numX } from '../utils/pathUtils';
 
-export const NoiseTopography = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [color, setColor] = useState('black');
-  const [numCircles, setNumCircles] = useState(73);
-  const [radiusFactor, setRadiusFactor] = useState(0.5);
-  const [isInverse, setIsInverse] = useState(false);
+export type DrawingSettings = {
+  color: string;
+  numCircles: number;
+  radiusFactor: number;
+  isInverse: boolean;
+};
 
-  // Use a ref to access the latest state in the animation loop without restarting it
-  const paramsRef = useRef({ color, numCircles, radiusFactor, isInverse });
+// The drawing only draws: its settings come from outside, so a panel and the source beside it can share them
+export const NoiseTopography = ({ settings }: { settings: DrawingSettings }) => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  // Use a ref to access the latest settings in the animation loop without restarting it
+  const paramsRef = useRef(settings);
+  // Draws a frame straight away, so a change shows even while the loop is paused
+  const drawRef = useRef(() => {});
 
   useEffect(() => {
-    paramsRef.current = { color, numCircles, radiusFactor, isInverse };
-  }, [color, numCircles, radiusFactor, isInverse]);
+    paramsRef.current = settings;
+    drawRef.current();
+  }, [settings]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -25,8 +32,23 @@ export const NoiseTopography = () => {
     const context = canvas.getContext('2d');
     if (!context) return;
 
-    let animationFrameId: number;
+    let animationFrameId = 0;
+    let isVisible = true;
     const duration = 5; // seconds
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    // The noise grid only changes with the canvas size, so build it once per size
+    let cached: { key: string; grid: ReturnType<typeof createNoiseGrid> } | null = null;
+    const getGrid = (width: number, height: number, resolution: number, seed: string | number) => {
+      const key = `${Math.round(width)}x${Math.round(height)}x${resolution}`;
+      if (!cached || cached.key !== key) {
+        cached = {
+          key,
+          grid: createNoiseGrid({ height, resolution, seed, width, xInc: 0.0145, yInc: 0.0145 }),
+        };
+      }
+      return cached.grid;
+    };
 
     const render = () => {
       const {
@@ -47,9 +69,6 @@ export const NoiseTopography = () => {
       // Apply dpr scale
       context.scale(dpr, dpr);
 
-      // context.fillStyle = 'transparent'; // Background color
-      // context.fillRect(0, 0, width, height);
-
       // Settings
       Random.setSeed('660939');
       const resolution = Random.rangeFloor(125, 175);
@@ -64,14 +83,7 @@ export const NoiseTopography = () => {
       const padding = 24;
       const numPoints = currentNumCircles;
 
-      const grid = createNoiseGrid({
-        height,
-        resolution,
-        seed: Random.getSeed(),
-        width,
-        xInc: 0.0145,
-        yInc: 0.0145,
-      });
+      const grid = getGrid(width, height, resolution, Random.getSeed());
 
       const xCount = numX(numPoints, width - 2 * padding, height - 2 * padding);
       const yCount = numPoints / xCount;
@@ -90,9 +102,9 @@ export const NoiseTopography = () => {
       const offsetX = (width - gridWidth) / 2;
       const offsetY = (height - gridHeight) / 2;
 
-      // Animation time
+      // Animation time; a still frame when the visitor asks for reduced motion
       const time = Date.now() / 1000;
-      const playhead = (time % duration) / duration;
+      const playhead = motionQuery.matches ? 0.5 : (time % duration) / duration;
 
       for (let xdx = 0; xdx < drawnCols; xdx++) {
         for (let ydx = 0; ydx < drawnRows; ydx++) {
@@ -173,8 +185,17 @@ export const NoiseTopography = () => {
         }
       }
 
-      animationFrameId = requestAnimationFrame(render);
+      // Keep animating only while the drawing is on screen and motion is welcome
+      if (isVisible && !motionQuery.matches) {
+        animationFrameId = requestAnimationFrame(render);
+      }
     };
+
+    const draw = () => {
+      cancelAnimationFrame(animationFrameId);
+      render();
+    };
+    drawRef.current = draw;
 
     const handleResize = () => {
       const parent = canvas.parentElement;
@@ -182,6 +203,7 @@ export const NoiseTopography = () => {
         const dpr = window.devicePixelRatio || 1;
         canvas.width = parent.clientWidth * dpr;
         canvas.height = parent.clientHeight * dpr;
+        draw();
       }
     };
 
@@ -190,109 +212,35 @@ export const NoiseTopography = () => {
       resizeObserver.observe(canvas.parentElement);
     }
 
-    // Initial resize
-    handleResize();
+    // Stop drawing once the hero scrolls away, and pick it up again when it returns
+    const visibilityObserver = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+        if (isVisible) draw();
+        else cancelAnimationFrame(animationFrameId);
+      },
+      { threshold: 0 }
+    );
+    visibilityObserver.observe(canvas);
 
-    // Start loop
-    render();
+    const handleMotionPreference = () => draw();
+    motionQuery.addEventListener('change', handleMotionPreference);
+
+    // Sizes the canvas and draws the first frame
+    handleResize();
 
     return () => {
       resizeObserver.disconnect();
+      visibilityObserver.disconnect();
+      motionQuery.removeEventListener('change', handleMotionPreference);
       cancelAnimationFrame(animationFrameId);
+      drawRef.current = () => {};
     };
   }, []);
-
-  const densityOptions = [73, 512, 1800, 3276];
-  const sizeLabels = ['1x', '7x', '25x', '45x'];
 
   return (
     <div className="absolute inset-0 w-full h-full">
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
-
-      {/* Controls Overlay */}
-      <div className="absolute bottom-2 right-2 flex flex-col items-end space-y-3 z-10">
-        <div className="bg-white/90 backdrop-blur-sm border border-gray-200 rounded-3xl p-3 shadow-lg flex flex-col space-y-2 sm:space-y-3 w-48">
-          {/* Color & Inverse Row */}
-          <div className="flex items-end justify-between gap-3">
-            <div className="flex flex-col space-y-1 flex-1">
-              <label className="text-[10px] font-mono font-bold text-gray-500 uppercase tracking-wider">
-                Color
-              </label>
-              <select
-                value={color}
-                onChange={(e) => setColor(e.target.value)}
-                className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-xs rounded h-5 py-0 px-1.5 focus:ring-2 focus:ring-black focus:border-transparent outline-none cursor-pointer hover:bg-gray-100 hover:border-gray-300 transition-colors"
-              >
-                <option value="black">Black</option>
-                <option value="blue">Blue</option>
-                <option value="red">Red</option>
-              </select>
-            </div>
-
-            <div className="flex flex-col space-y-1">
-              <label className="text-[10px] font-mono font-bold text-gray-500 uppercase tracking-wider">
-                Inverse
-              </label>
-              <button
-                onClick={() => setIsInverse(!isInverse)}
-                className={`w-8 h-5 rounded-full relative transition-colors duration-200 ease-in-out ${
-                  isInverse ? 'bg-black' : 'bg-gray-200'
-                }`}
-              >
-                <span
-                  className={`absolute top-1 left-1 w-3 h-3 bg-white rounded-full shadow transform transition-transform duration-200 ease-in-out ${
-                    isInverse ? 'translate-x-3' : 'translate-x-0'
-                  }`}
-                />
-              </button>
-            </div>
-          </div>
-
-          {/*  Radius Slider */}
-          <div className="flex flex-col space-y-1">
-            <div className="flex justify-between items-center">
-              <label className="text-[10px] font-mono font-bold text-gray-500 uppercase tracking-wider">
-                Radius
-              </label>
-              <span className="text-[10px] font-mono text-gray-500">{radiusFactor}</span>
-            </div>
-            <input
-              type="range"
-              min="0.1"
-              max="1"
-              step="0.1"
-              value={radiusFactor}
-              onChange={(e) => setRadiusFactor(parseFloat(e.target.value))}
-              className="w-full h-1.5 bg-gray-200 rounded-lg appearance-none cursor-grab active:cursor-grabbing accent-black transition-all hover:accent-gray-800"
-            />
-          </div>
-
-          {/* Resolution Segmented Control */}
-          <div className="flex flex-col space-y-1">
-            <label className="text-[10px] font-mono font-bold text-gray-500 uppercase tracking-wider">
-              Resolution
-            </label>
-            <div className="flex bg-gray-100 rounded-lg rounded-bl-2xl rounded-br-2xl p-1 gap-1">
-              {densityOptions.map((option, index) => (
-                <button
-                  key={option}
-                  onClick={() => setNumCircles(option)}
-                  className={`flex-1 py-1 text-[10px] font-mono font-bold rounded-md text-nowrap transition-all duration-200 
-                    ${index === 0 ? 'rounded-bl-xl' : ''}
-                    ${index === densityOptions.length - 1 ? 'rounded-br-xl' : ''}
-                    ${
-                      numCircles === option
-                        ? 'bg-black text-white shadow-sm'
-                        : 'text-gray-600 hover:text-black hover:bg-gray-200/50'
-                    }`}
-                >
-                  {sizeLabels[index]}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 };

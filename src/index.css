@@ -26,56 +26,31 @@ body.no-scroll {
   height: 100%;
 }
 
+@layer base {
+  /* Every heading takes the display face, whatever the body face is */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+  }
+}
+
 @theme {
-  --animate-gradient: gradient 8s linear infinite;
-  --animate-blob: blob 7s infinite;
-
-  @keyframes gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-
-    50% {
-      background-position: 100% 50%;
-    }
-
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-
-  @keyframes blob {
-    0% {
-      transform: translate(0px, 0px) scale(1);
-    }
-
-    33% {
-      transform: translate(30px, -50px) scale(1.1);
-    }
-
-    66% {
-      transform: translate(-20px, 20px) scale(0.9);
-    }
-
-    100% {
-      transform: translate(0px, 0px) scale(1);
-    }
-  }
-}
-
-@utility bg-300% {
-  background-size: 300% auto;
-}
-
-@utility animate-bounce-slow {
-  animation: bounce 3s infinite;
+  /* Headings take the system serif; Archivo carries body copy */
+  --font-heading: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  --font-sans: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 /* Blog Post Content Styling */
 .prose {
   color: rgb(55 65 81);
   /* gray-700 */
-  max-width: 65ch;
+  max-width: 58ch;
+  /* about 60 characters a line in Archivo */
 }
 
 .prose :where(p):not(:where([class~='not-prose'] *)) {
@@ -87,7 +62,7 @@ body.no-scroll {
   /* leading-relaxed */
   color: rgb(55 65 81);
   /* gray-700 */
-  font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  font-family: var(--font-sans);
 }
 
 .prose :where(a):not(:where([class~='not-prose'] *)) {
@@ -119,7 +94,7 @@ body.no-scroll {
 
 .prose :where(h2):not(:where([class~='not-prose'] *)) {
   color: rgb(0 0 0);
-  font-weight: 700;
+  font-weight: 600;
   font-size: 1.875rem;
   /* text-3xl */
   margin-top: 4rem;
@@ -130,7 +105,7 @@ body.no-scroll {
 
 .prose :where(h3):not(:where([class~='not-prose'] *)) {
   color: rgb(0 0 0);
-  font-weight: 700;
+  font-weight: 600;
   font-size: 1.5rem;
   /* text-2xl */
   margin-top: 3rem;
@@ -170,7 +145,7 @@ body.no-scroll {
 
 .prose :where(em):not(:where([class~='not-prose'] *)) {
   font-style: italic;
-  font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  font-family: var(--font-sans);
 }
 
 .prose :where(code):not(:where([class~='not-prose'] *, pre *)) {
@@ -239,7 +214,7 @@ body.no-scroll {
   line-height: 1.75;
   color: rgb(55 65 81);
   /* gray-700 */
-  font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  font-family: var(--font-sans);
 }
 
 .prose :where(li):not(:where([class~='not-prose'] *))::marker {
@@ -258,7 +233,7 @@ body.no-scroll {
   margin-top: 1.6em;
   margin-bottom: 1.6em;
   padding-left: 1em;
-  font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  font-family: var(--font-sans);
 }
 
 .prose :where(hr):not(:where([class~='not-prose'] *)) {

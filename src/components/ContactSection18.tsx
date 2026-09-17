@@ -4,7 +4,7 @@ export const ContactSection18 = () => {
   return (
     <section id="contact" className="h-screen bg-black text-white flex items-center justify-center border-t border-white/10">
       <div className="text-center">
-        <p className="text-4xl font-serif italic text-gray-500 mb-24">Say Hello.</p>
+        <p className="text-4xl md:text-5xl font-medium italic tracking-tight text-gray-500 mb-24">Say Hello.</p>
 
         <div className="flex items-center gap-16 sm:gap-32 justify-center">
           <a href="https://github.com/jonsadka" target="_blank" rel="noreferrer" className="group">

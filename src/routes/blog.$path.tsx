@@ -83,7 +83,7 @@ function BlogPostContent({ BlogContent }: { BlogContent: React.LazyExoticCompone
               )}
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-black leading-[1.1] tracking-tight mb-12 text-black">
+            <h1 className="text-4xl md:text-6xl font-medium leading-[1.05] tracking-tight mb-12 text-black">
               {metadata.title}
             </h1>
           </div>
@@ -102,7 +102,7 @@ function BlogPostContent({ BlogContent }: { BlogContent: React.LazyExoticCompone
       {/* Article Footer */}
       <footer className="bg-gray-50 py-32 px-6 border-t border-gray-100">
         <div className="max-w-2xl mx-auto text-center">
-          <h3 className="text-3xl font-bold mb-6">Thanks for reading</h3>
+          <h3 className="text-3xl font-medium tracking-tight mb-6">Thanks for reading</h3>
           <p className="text-gray-600 mb-12 text-lg leading-relaxed">
             If you found this article helpful, feel free to share it or reach out to discuss more
             about frontend engineering.

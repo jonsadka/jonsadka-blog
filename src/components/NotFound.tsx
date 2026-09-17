@@ -9,7 +9,7 @@ export const NotFound = () => {
 
   return (
     <section className="min-h-[70vh] flex flex-col items-center justify-center px-6 pt-40 pb-24 text-center">
-      <h1 className="text-4xl md:text-6xl font-serif italic text-gray-900 mb-4">Page not found</h1>
+      <h1 className="text-4xl md:text-5xl font-medium tracking-tight text-gray-900 mb-4">Page not found</h1>
       <p className="text-gray-600 text-lg mb-10">
         There's no page at this address. The link may be old or mistyped.
       </p>
