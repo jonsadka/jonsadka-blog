@@ -10,10 +10,25 @@ html {
   text-size-adjust: 100%;
 }
 
+/* Safari 26 tints its bars from the body's background and fills any gap with the root's, so both
+   are set: page gray on the home page, which opens on the gray hero, and white elsewhere */
+html,
+body {
+  background-color: #fff;
+}
+
+html:has(#home),
+html:has(#home) body {
+  background-color: #e5e5e5;
+}
+
 body {
   overflow-x: hidden;
   position: relative;
   width: 100%;
+  /* With viewport-fit=cover the page reaches under the notch in landscape; keep content clear of it */
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

@@ -3,7 +3,7 @@ import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } f
 // The reveal: the hero loads fully built, then the divider travels in from the left edge,
 // uncovering the spec. It lands at its resting point with a small settle, or, given a reach past
 // that point, travels as it would to the reach and pulls back to rest from where it turns.
-const REVEAL = { delay: 700, travel: 1300, pullback: 700 };
+const REVEAL = { delay: 700, travel: 1300, pullback: 900 };
 const C1 = 0.9;
 const C3 = C1 + 1;
 // Overshoots by a few percent near the end and comes back, so the divider lands like a handle

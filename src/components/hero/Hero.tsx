@@ -16,6 +16,9 @@ const DEFAULT_SETTINGS: DrawingSettings = {
   speed: 1,
 };
 
+// On phones a drag stops this far from the screen's edges, and the divider rests no nearer than it
+const PHONE_EDGE = 32;
+
 // The divider's client x while the reveal travels, null otherwise. Callouts pop in as it passes them.
 const RevealContext = createContext<number | null>(null);
 
@@ -30,7 +33,7 @@ export const Hero = () => {
   // On phones a drag stops with the knob just inside the card, clear of the screen edges
   const { split, setSplit, setReach, frameProps, isDragging, beforeReveal, revealing, revealSplit } = useDivider(
     42,
-    small ? 32 : 0
+    small ? PHONE_EDGE : 0
   );
   const [settings, setSettings] = useState(DEFAULT_SETTINGS);
 
@@ -40,10 +43,10 @@ export const Hero = () => {
   // The settings panel lives in that layer, above the divider, so it is never clipped
   const [panelPosition, setPanelPosition] = useState<{ right: number; bottom: number } | null>(null);
 
-  // Rest the divider between the name and the drawing, so none of the drawing starts as spec, or on
-  // phones 20 px past the name so it reads whole. Keep it there as the layout settles or the window
-  // resizes, until someone moves it. On larger screens the reveal first travels 15% into the
-  // drawing and pulls back to rest.
+  // Rest the divider where none of the drawing starts as spec: between the name and the drawing, or
+  // on phones, where the drawing sits below the name, just left of the name. The reveal first
+  // travels three quarters across the drawing, so most of its source shows, and pulls back to rest.
+  // Keep it there as the layout settles or the window resizes, until someone moves it.
   const phoneRest = small;
   const placed = useRef<number | null>(null);
   useLayoutEffect(() => {
@@ -54,10 +57,11 @@ export const Hero = () => {
     const place = () => {
       const f = frame.getBoundingClientRect();
       const a = art.getBoundingClientRect();
-      const nameRight = name.getBoundingClientRect().right;
-      const restX = phoneRest ? nameRight + 20 : Math.min((nameRight + a.left) / 2, a.left);
+      const n = name.getBoundingClientRect();
+      const restX = phoneRest ? Math.max(f.left + PHONE_EDGE, n.left - 16) : Math.min((n.right + a.left) / 2, a.left);
+      const reachX = a.left + a.width * 0.75;
       const next = ((restX - f.left) / f.width) * 100;
-      setReach(phoneRest ? null : ((a.left + a.width * 0.15 - f.left) / f.width) * 100);
+      setReach(((reachX - f.left) / f.width) * 100);
       setFrameRect({ left: f.left, width: f.width });
       setPanelPosition({ right: f.right - a.right + 12, bottom: f.bottom - a.bottom + 12 });
       // Only follow the layout while the divider still sits where it was last placed
@@ -193,7 +197,7 @@ const HeroLayer = ({ spec = false, settings, tagsOnly }: { spec?: boolean; setti
 
         <div
           ref={cardRef}
-          className={`relative w-full rounded-[2.5rem] md:rounded-[3rem] flex flex-col md:flex-row min-h-[600px] md:min-h-[680px] ${
+          className={`relative w-full rounded-[2.5rem] md:rounded-[3rem] flex flex-col md:flex-row md:min-h-[680px] ${
             spec ? 'border border-dashed' : 'bg-white shadow-2xl overflow-hidden border border-white/50'
           }`}
           style={spec ? { borderColor: DRAFT_INK.ink, backgroundColor: DRAFT_INK.card } : undefined}
@@ -224,7 +228,7 @@ const HeroLayer = ({ spec = false, settings, tagsOnly }: { spec?: boolean; setti
               </h1>
             </div>
 
-            <div className="relative mt-12">
+            <div className="relative mt-6 md:mt-12">
               <a
                 href="/#work"
                 tabIndex={spec ? -1 : undefined}

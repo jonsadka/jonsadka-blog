@@ -125,7 +125,10 @@ export const Navigation = ({
 
   return (
     <>
-      <nav aria-label="Main" className="fixed top-4 left-0 right-0 z-50 px-4">
+      <nav
+        aria-label="Main"
+        className="fixed top-4 left-0 right-0 z-50 pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))]"
+      >
         {/* Same padding in both states, so nothing moves vertically; only width, color and shadow change */}
         <div
           className={`mx-auto rounded-full border py-2 md:py-4 px-6 transition-[max-width,background-color,border-color,box-shadow] duration-500 ease-out ${
@@ -234,12 +237,14 @@ export const Navigation = ({
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay (inert while closed, so its links aren't reachable by Tab) */}
+      {/* Mobile Menu Overlay (inert while closed, so its links aren't reachable by Tab). Closed, it is
+          display: none once it fades out; Safari 26 tints its toolbars from a fixed overlay's
+          background even at opacity 0. */}
       <div
         id="mobile-menu"
         inert={!isMobileMenuOpen}
-        className={`fixed inset-0 z-40 bg-black transition-all duration-500 ease-in-out ${
-          isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        className={`fixed inset-0 z-40 bg-black transition-[opacity,display] transition-discrete duration-500 ease-in-out ${
+          isMobileMenuOpen ? 'block opacity-100 starting:opacity-0 pointer-events-auto' : 'hidden opacity-0 pointer-events-none'
         }`}
       >
         <div className="flex flex-col items-center justify-center h-full space-y-8 p-6">
